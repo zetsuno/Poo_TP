@@ -1,9 +1,4 @@
-#include <iostream>
-#include <string>
-#include <sstream>
-#include "sala.h"
-
-using namespace std;
+#include "nave.h"
 
 int sala::getDano(){
 
