@@ -1,9 +1,4 @@
-#include <iostream>
-#include <string>
-#include <sstream>
-
-using namespace std;
-
+#include "sala.h"
 class nave
 {
 	int escudo;
