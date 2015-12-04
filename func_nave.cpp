@@ -1,6 +1,3 @@
-#include <iostream>
-#include <string>
-#include <sstream>
 #include "nave.h"
 
 using namespace std;
