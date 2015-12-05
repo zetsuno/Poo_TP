@@ -1,6 +1,7 @@
 #include "sala.h"
 class nave
 {
+	vector <sala *> salas[12];
 	int escudo;
 public:
 	nave();
