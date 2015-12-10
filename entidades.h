@@ -17,10 +17,10 @@ class entidades
 public:
 	entidades();
 	~entidades();
-	int getVida();
-	int getDano();
-	void setVida(int vida);
-	void setDano(int dano);
+	int getVida() const;
+	int getDano() const;
+	void setVida(const int &vida);
+	void setDano(const int &dano);
 
 };
 

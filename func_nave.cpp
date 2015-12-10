@@ -2,11 +2,11 @@
 
 using namespace std;
 
-int nave::getEscudo(){
+int nave::getEscudo() const{
 
 	return escudo;
 }
-void nave::setEscudo(int escudo){
+void nave::setEscudo(const int &escudo){
 
 	this->escudo = escudo;
 }

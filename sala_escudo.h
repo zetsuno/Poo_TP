@@ -1,22 +1,19 @@
 #include "sala.h"
 
-class nave
+class sala_escudo
 {
 	int escudo;
-	vector <sala *> salas[4][3];
-
 public:
-	nave();
-	~nave();
+	sala_escudo();
+	~sala_escudo();
 	int getEscudo() const;
 	void setEscudo(const int &escudo);
-
 };
 
-nave::nave()
+sala_escudo::sala_escudo()
 {
 }
 
-nave::~nave()
+sala_escudo::~sala_escudo()
 {
 }

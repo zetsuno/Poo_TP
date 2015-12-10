@@ -1,18 +1,18 @@
 #include "nave.h"
 
-int entidades::getDano(){
+int entidades::getDano() const{
 	return dano;
 }
 
-int entidades::getVida(){
+int entidades::getVida() const{
 	return vida;
 }
 
-void entidades::setDano(int dano){
+void entidades::setDano(const int &dano){
 	this->dano = dano;
 }
 
-void entidades::setVida(int vida){
+void entidades::setVida(const int &vida){
 	this->vida = vida;
 }
 
