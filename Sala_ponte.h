@@ -1,6 +1,6 @@
 #include "sala.h"
 
-class sala_ponte
+class sala_ponte: public sala
 {
 	int dano;
 	int vida;
@@ -21,10 +21,3 @@ public:
 	bool operada();
 };
 
-sala_ponte::sala_ponte()
-{
-}
-
-sala_ponte::~sala_ponte()
-{
-}

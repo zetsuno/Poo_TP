@@ -1,5 +1,13 @@
 #include "nave.h"
 
+nave::nave()
+{
+}
+
+nave::~nave()
+{
+}
+
 using namespace std;
 
 int nave::getEscudo() const{

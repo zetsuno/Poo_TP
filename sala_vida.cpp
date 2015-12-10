@@ -1,6 +1,13 @@
 #include "sala_vida.h"
 
 
+sala_vida::sala_vida()
+{
+}
+
+sala_vida::~sala_vida()
+{
+}
 
 int sala_vida::getDano() const{
 

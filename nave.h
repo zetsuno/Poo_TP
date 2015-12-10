@@ -13,10 +13,3 @@ public:
 
 };
 
-nave::nave()
-{
-}
-
-nave::~nave()
-{
-}

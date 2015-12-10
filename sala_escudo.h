@@ -1,6 +1,6 @@
 #include "sala.h"
 
-class sala_escudo
+class sala_escudo : public sala
 {
 	int escudo;
 public:
@@ -10,10 +10,3 @@ public:
 	void setEscudo(const int &escudo);
 };
 
-sala_escudo::sala_escudo()
-{
-}
-
-sala_escudo::~sala_escudo()
-{
-}

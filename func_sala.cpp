@@ -1,5 +1,13 @@
 #include "nave.h"
 
+sala::sala()
+{
+}
+
+sala::~sala()
+{
+}
+
 int sala::getDano() const{
 
 	return dano;

@@ -1,6 +1,6 @@
 #include "sala.h"
 
-class sala_vida
+class sala_vida: public sala
 {
 	int dano;
 	int vida;
@@ -19,10 +19,3 @@ public:
 
 };
 
-sala_vida::sala_vida()
-{
-}
-
-sala_vida::~sala_vida()
-{
-}

@@ -8,9 +8,8 @@ using namespace std;
 
 class sala;
 class entidades
-{
-	string tipo;  //good guy / bad guy
-	int vida, combate_flag;
+{			
+	int vida, combate_flag; //0 = fora de combate, 1 =  em combate
 	int dano;
 	sala *ondeestou_entidade;
 
@@ -19,16 +18,19 @@ public:
 	~entidades();
 	int getVida() const;
 	int getDano() const;
+	int getCombatFlag() const;
+	sala *getSalaPointer() const;
 	void setVida(const int &vida);
 	void setDano(const int &dano);
+	void setCombatFlag(const int &flag);
+	void setPointerSala(sala *room);
 
 };
 
-class crew_member {
+class crew_member: public entidades {
 
-	string nome, tipo;
-	int vida, combate_flag; //0 = fora de combate, 1 =  em combate
-	sala *ondeestou_entidade;
+	string tipo, nome;  //good guy  / bad guy 
+	entidades * enti_ptr;
 
 public:
 	crew_member(const string &nome);
@@ -42,23 +44,5 @@ public:
 
 };
 
-entidades::entidades()
-{
-}
 
-entidades::~entidades()
-{
-}
 
-crew_member::crew_member(const string &nome){
-	this->tipo = "Good Guy";
-	this->nome = nome;
-	this->vida = 5;
-	this->combate_flag = 0;
-	cout << " A construir uma entidade do tipo crewmember de nome " << nome << endl;
-}
-
-crew_member::~crew_member() {
-
-	cout << "A destruir uma entidade do tipo crewmember de nome " << nome << endl;
-}

@@ -25,10 +25,3 @@ public:
 
 };
 
-sala::sala()
-{
-}
-
-sala::~sala()
-{
-}

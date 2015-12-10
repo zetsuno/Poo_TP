@@ -1,7 +1,7 @@
 #include "nave.h"
 
 
-int main() {
+int main(){
 
 
 

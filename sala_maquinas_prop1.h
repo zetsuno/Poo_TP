@@ -1,6 +1,6 @@
 #include "sala.h"
 
-class sala_maquinas
+class sala_maquinas: public sala
 {
 	int propulsor;
 public:
@@ -12,10 +12,3 @@ public:
 
 };
 
-sala_maquinas::sala_maquinas()
-{
-}
-
-sala_maquinas::~sala_maquinas()
-{
-}

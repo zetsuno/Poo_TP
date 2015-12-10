@@ -1,6 +1,12 @@
 #include "Sala_ponte.h"
 
+sala_ponte::sala_ponte()
+{
+}
 
+sala_ponte::~sala_ponte()
+{
+}
 
 int sala_ponte::getDano() const{
 
