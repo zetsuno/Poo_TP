@@ -3,7 +3,7 @@
 
 int main(){
 
-
+	crew_member a("ze");
 
 
 

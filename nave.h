@@ -1,9 +1,9 @@
 #include "sala.h"
-class sala;
+
 class nave
 {
 	int escudo;
-	array <sala *, 12> salas;
+	vector <sala *> salas[4][3];
 
 public:
 	nave();
@@ -14,7 +14,3 @@ public:
 	bool addSala(const int &val, const string &tipo);
 
 };
-
-//WAZAA MOFO
-
-mothafucka indahouse

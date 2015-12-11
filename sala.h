@@ -2,7 +2,7 @@
 
 class sala
 {
-
+	int id;
 	int oxigenio;
 	int integridade = 100;
 	vector <entidades *> pessoas_sala;

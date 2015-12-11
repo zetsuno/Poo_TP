@@ -15,7 +15,7 @@ bool sala_ponte::getOperada() const {
 }
 
 
-bool sala_ponte::setOperada(const bool &valor) {
+void sala_ponte::setOperada(const bool &valor) {
 
 	this->operada = valor;
 }

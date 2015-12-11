@@ -8,6 +8,6 @@ public:
 	~sala_ponte();
 
 	bool getOperada() const;
-	bool setOperada(const bool &condi);
+	void setOperada(const bool &condi);
 };
 

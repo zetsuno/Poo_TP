@@ -1,7 +1,10 @@
 #include "nave.h"
 
+
+static int id_sala = 500;
 sala::sala()
 {
+
 }
 
 sala::~sala()

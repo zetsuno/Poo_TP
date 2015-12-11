@@ -1,13 +1,24 @@
 #include "nave.h"
-
-entidades::entidades()
+#include "defines.h"
+static int id_enti = 0;
+entidades::entidades(int vida, int dano)
 {
+	this->vida = vida;
+	this->dano = dano;
+	this->combate_flag = 0;
+	this->id = id_enti;
+	id_enti++;
+	cout << "A construir uma entidade..." << endl;
 }
 
 entidades::~entidades()
 {
+
 }
 
+int entidades::getID() const{
+	return id;
+}
 int entidades::getDano() const{
 	return dano;
 }
@@ -46,11 +57,9 @@ void entidades::setPointerSala(sala *room) {
 
 
 /*==============================   CREW MEMBER   ===================*/
-crew_member::crew_member(const string &nome) {
-	this->tipo = "Good Guy";
+crew_member::crew_member(const string &nome):entidades(CREW_HP, CREW_ATTACK){
+	this->tipo = "crewmember";
 	this->nome = nome;
-	this->setVida(5);
-	this->setCombatFlag(0);
 	cout << " A construir uma entidade do tipo crewmember de nome " << nome << endl;
 }
 
@@ -61,7 +70,7 @@ crew_member::~crew_member() {
 
 string crew_member::toString() const {
 	ostringstream os;
-	os << "Tripulante: Nome: " << this->nome << " Vida: " << this->getVida() << endl;
+	os << "Tripulante: " << this->getID() <<" Nome: " << this->nome << " Vida: " << this->getVida() << endl;
 	return os.str();
 }
 

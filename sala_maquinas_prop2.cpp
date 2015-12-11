@@ -17,11 +17,11 @@ void sala_maquinas_dir::setPropulsor(const int &propulsor){
 	this->propulsor = propulsor;
 }
 
-string sala_maquianas_dir::toString() const {
+string sala_maquinas_dir::toString() const {
 
 	ostringstream os;
 
-	os << "Sala: Oxigenio: " << this->getOxigenio() << " | Integridade: " << this->getIntegridade() << " |  Escudo: " << this->getEscudo() << endl;
+	os << "Sala: Oxigenio: " << this->getOxigenio() << " | Integridade: " << this->getIntegridade() << endl;
 
 	return os.str();
 }

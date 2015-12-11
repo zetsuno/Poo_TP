@@ -3,7 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <cmath>
-#include <array>
+#include "defines.h"
 
 using namespace std;
 
@@ -11,12 +11,13 @@ class sala;
 class entidades
 {			
 	int vida, combate_flag; //0 = fora de combate, 1 =  em combate
-	int dano;
+	int dano, id;
 	sala *ondeestou_entidade;
 
 public:
-	entidades();
+	entidades(int vida, int dano);
 	~entidades();
+	int getID() const;
 	int getVida() const;
 	int getDano() const;
 	int getCombatFlag() const;
