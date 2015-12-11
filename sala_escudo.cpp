@@ -17,3 +17,12 @@ void sala_escudo::setEscudo(const int &escudo){
 
 	this->escudo = escudo;
 }
+
+string sala_escudo::toString() const {
+
+	ostringstream os;
+
+	os << "Sala: Oxigenio: " << this->getOxigenio() << " | Integridade: " << this->getIntegridade() << " |  Escudo: " << this->getEscudo() << endl;
+
+	return os.str();
+}

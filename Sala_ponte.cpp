@@ -8,44 +8,14 @@ sala_ponte::~sala_ponte()
 {
 }
 
-int sala_ponte::getDano() const{
 
-	return dano;
+bool sala_ponte::getOperada() const {
+
+	return this->operada;
 }
 
 
-int sala_ponte::getOxigenio() const{
+bool sala_ponte::setOperada(const bool &valor) {
 
-	return oxigenio;
-}
-
-int sala_ponte::getVida() const{
-
-	return vida;
-}
-
-int sala_ponte::getIntegridade() const{
-
-	return integridade;
-}
-
-void sala_ponte::setDano(const int &dano){
-
-	this->dano = dano;
-}
-
-
-void sala_ponte::setOxigenio(const int &oxigenio){
-
-	this->oxigenio = oxigenio;
-}
-
-void sala_ponte::setVida(const int &vida){
-
-	this->vida = vida;
-}
-
-void sala_ponte::setIntegridade(const int &integridade){
-
-	this->integridade = integridade;
+	this->operada = valor;
 }

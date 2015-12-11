@@ -8,5 +8,7 @@ public:
 	~sala_escudo();
 	int getEscudo() const;
 	void setEscudo(const int &escudo);
+	string toString() const;
+
 };
 

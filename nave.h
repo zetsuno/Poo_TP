@@ -1,15 +1,17 @@
 #include "sala.h"
-
+class sala;
 class nave
 {
 	int escudo;
-	vector <sala *> salas[4][3];
+	array <sala *, 12> salas;
 
 public:
 	nave();
 	~nave();
 	int getEscudo() const;
 	void setEscudo(const int &escudo);
+	string toString() const;
+	bool addSala(const int &val, const string &tipo);
 
 };
 

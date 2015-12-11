@@ -8,10 +8,6 @@ sala::~sala()
 {
 }
 
-int sala::getDano() const{
-
-	return dano;
-}
 
 int sala::getIntegridade() const{
 
@@ -21,16 +17,6 @@ int sala::getIntegridade() const{
 int sala::getOxigenio() const{
 
 	return oxigenio;
-}
-
-int sala::getSaude() const{
-
-	return saude;
-}
-
-void sala::setDano(const int &dano){
-
-	this->dano = dano;
 }
 
 void sala::setIntegridade(const int &integridade){
@@ -43,12 +29,15 @@ void sala::setOxigenio(const int &oxigenio){
 	this->oxigenio = oxigenio;
 }
 
-void sala::setSaude(const int &saude){
 
-	this->saude = saude;
+ string sala::toString() const {
+
+	ostringstream os;
+
+	os << "Sala: Oxigenio: " << this->getOxigenio() << " |  Integridade: " << this->getIntegridade() << endl;
+
+	return os.str();
 }
-
-
 void sala::atacaEnimigoRandom(const int &a, const crew_member &atacante){
 
 	int r = rand() % 10;   //random nº de 0 a 9
