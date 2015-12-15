@@ -3,7 +3,7 @@
 class nave
 {
 	int escudo;
-	vector <sala *> salas[4][3];
+	sala* salas[4][3];
 
 public:
 	nave();
