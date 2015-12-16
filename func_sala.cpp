@@ -1,14 +1,25 @@
 #include "nave.h"
 
 
-static int id_sala = 500;
+
+
 sala::sala()
 {
-
+	this->id = id_sala;
+	id_sala++;
+	this->oxigenio = SALA_OXI;
+	this->integridade = SALA_INT;
+	cout << "A construir uma sala" << endl;
 }
 
 sala::~sala()
-{
+{	
+	for (unsigned i = 0; i<pessoas_sala.size(); i ++ ) {
+		if (pessoas_sala[i] != nullptr) {
+			pessoas_sala.erase(pessoas_sala.begin() + (i - 1));
+		}
+	}
+	cout << "A a apagar uma sala" << endl;
 }
 
 

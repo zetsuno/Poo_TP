@@ -1,11 +1,12 @@
 #include "nave.h"
 #include "defines.h"
+
 static int id_enti = 0;
 entidades::entidades(int vida, int dano)
 {
 	this->vida = vida;
 	this->dano = dano;
-	this->combate_flag = 0;
+	this->combate_flag = DEFAULT_CBT_FLAG;
 	this->id = id_enti;
 	id_enti++;
 	cout << "A construir uma entidade..." << endl;
@@ -13,7 +14,7 @@ entidades::entidades(int vida, int dano)
 
 entidades::~entidades()
 {
-
+	cout << "A destruir uma entidade" << endl;
 }
 
 int entidades::getID() const{

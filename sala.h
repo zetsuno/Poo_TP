@@ -1,10 +1,12 @@
 #include "entidades.h"
 
+static int id_sala = 500;
+
 class sala
 {
 	int id;
 	int oxigenio;
-	int integridade = 100;
+	int integridade;
 	vector <entidades *> pessoas_sala;
 public:
 

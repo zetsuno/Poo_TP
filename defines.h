@@ -1,5 +1,14 @@
 #ifndef DEFINES
 #define DEFINES
+
+/* ===== NAVE ====== */
+
+#define SHIP_HP 100
+/* ====== SALA  ===== */
+
+#define SALA_OXI 100
+#define SALA_INT 100
+
 /* =====  CREWMEMBERS =====*/
 #define CREW_REGEN 1
 #define CREW_ATTACK 1
@@ -57,4 +66,8 @@
 #define MIT_CHNG_ROOM 10
 
 
+
+/* ===== OTHERS ======*/
+
+#define DEFAULT_CBT_FLAG 0
 #endif

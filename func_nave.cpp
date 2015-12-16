@@ -2,10 +2,24 @@
 
 nave::nave()
 {
+	this->escudo = SHIP_HP;
+	for (int i = 0; i != 4; i++) {
+		for (int j = 0; j != 3; j++) {
+			salas[i][j] = new sala();
+			}
+		}
+	
+	cout << "A construir uma nave" << endl;
 }
 
 nave::~nave()
 {
+	for (int i = 0; i != 4; i++) {
+		for (int j = 0; j != 3; j++) {
+			delete salas[i][j];
+		}
+	}
+	cout << "A destruir a nave" << endl;
 }
 
 using namespace std;
@@ -23,7 +37,7 @@ string nave::toString() const {
 
 	ostringstream os;
 	
-	os << "Integridade da nave: " << (((*salas)[0][0]->getIntegridade() * .5) + ((*salas)[2][0]->getIntegridade() * .5)) << "%" << endl;
+	os << "Integridade da nave: " << ((salas[0][0]->getIntegridade() * .5) + (salas[2][0]->getIntegridade() * .5)) << "%" << endl;
 
 		return os.str();
 }
