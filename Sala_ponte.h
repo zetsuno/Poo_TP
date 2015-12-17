@@ -1,3 +1,5 @@
+#ifndef SALA_PONTE_H
+#define SALA_PONTE_H
 #include "sala.h"
 
 class sala_ponte: public sala
@@ -11,3 +13,4 @@ public:
 	void setOperada(const bool &condi);
 };
 
+#endif

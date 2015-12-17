@@ -1,3 +1,5 @@
+#ifndef SALA_MAQUINAS_PROP1_H
+#define SALA_MAQUINAS_PROP1_H
 #include "sala.h"
 
 class sala_maquinas_esq: public sala
@@ -12,3 +14,4 @@ public:
 
 };
 
+#endif

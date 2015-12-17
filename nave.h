@@ -1,3 +1,5 @@
+#ifndef NAVE_H
+#define NAVE_H
 #include "sala.h"
 
 class nave
@@ -14,3 +16,5 @@ public:
 	bool addSala(const int &val, const string &tipo);
 
 };
+
+#endif

@@ -1,3 +1,5 @@
+#ifndef SALA_ESCUDO_H
+#define SALA_ESCUDO_H
 #include "sala.h"
 
 class sala_escudo : public sala
@@ -12,3 +14,4 @@ public:
 
 };
 
+#endif

@@ -1,15 +1,12 @@
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <vector>
-#include <cmath>
+#ifndef ENTIDADES_H
+#define ENTIDADES_H
 #include "defines.h"
 
 using namespace std;
 
 class sala;
 class entidades
-{			
+{
 	int vida, combate_flag; //0 = fora de combate, 1 =  em combate
 	int dano, id;
 	sala *ondeestou_entidade;
@@ -29,22 +26,6 @@ public:
 
 };
 
-class crew_member: public entidades {
-
-	string tipo, nome;  //good guy  / bad guy 
-	entidades * enti_ptr;
-
-public:
-	crew_member(const string &nome);
-	~crew_member();
-	string toString() const;
-	string getNome() const;
-	int getVida() const;
-	void respira();
-	void reparador(const int a = 1);
-	void combatente(const int a = 1);
-
-};
 
 
-
+#endif

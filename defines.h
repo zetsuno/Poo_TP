@@ -1,5 +1,12 @@
-#ifndef DEFINES
-#define DEFINES
+#ifndef DEFINES_H
+#define DEFINES_H
+
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <cmath>
+#include <ctime>
 
 /* ===== NAVE ====== */
 
@@ -70,4 +77,6 @@
 /* ===== OTHERS ======*/
 
 #define DEFAULT_CBT_FLAG 0
+
+
 #endif

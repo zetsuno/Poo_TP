@@ -1,3 +1,5 @@
+#ifndef SALA_H
+#define SALA_H
 #include "entidades.h"
 
 static int id_sala = 500;
@@ -16,7 +18,7 @@ public:
 	int getIntegridade() const;
 	void setOxigenio(const int &oxigenio);
 	void setIntegridade(const int &integridade);
-	void atacaEnimigoRandom(const int &a, const crew_member &atacante);
 	virtual string toString() const;
 };
 
+#endif
