@@ -1,36 +1,26 @@
-#include "nave.h"
+#include "utils.h"
 
 nave::nave()
-{
-	this->escudo = SHIP_HP;
-	for (int i = 0; i != 4; i++) {
-		for (int j = 0; j != 3; j++) {
-			salas[i][j] = new sala();
-			}
+{	
+	for (unsigned int i = 0; i < 4; i++) {
+		for (unsigned int j = 0; j < 3; j++) {
+			salas[i][j] = nullptr;
 		}
-	
+	}
+	salas[3][0] = new sala_escudo();
 	cout << "A construir uma nave" << endl;
 }
 
 nave::~nave()
 {
-	for (int i = 0; i != 4; i++) {
-		for (int j = 0; j != 3; j++) {
-			delete salas[i][j];
+	for (unsigned int i = 0; i < 4; i++) {
+		for (unsigned int j = 0; j < 3; j++) {
+			if (salas[i][j] != nullptr) {
+				delete salas[i][j];
+			}
 		}
 	}
 	cout << "A destruir a nave" << endl;
-}
-
-using namespace std;
-
-int nave::getEscudo() const{
-
-	return escudo;
-}
-void nave::setEscudo(const int &escudo){
-
-	this->escudo = escudo;
 }
 
 string nave::toString() const {

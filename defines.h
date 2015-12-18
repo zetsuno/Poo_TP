@@ -11,6 +11,11 @@
 /* ===== NAVE ====== */
 
 #define SHIP_HP 100
+#define SHIP_SHIELD 100
+
+/* ===== PROPULSORES =====*/
+#define PROP_HP 100
+
 /* ====== SALA  ===== */
 
 #define SALA_OXI 100

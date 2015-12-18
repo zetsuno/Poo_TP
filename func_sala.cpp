@@ -1,4 +1,4 @@
-#include "sala.h"
+#include "utils.h"
 
 
 
@@ -9,17 +9,17 @@ sala::sala()
 	id_sala++;
 	this->oxigenio = SALA_OXI;
 	this->integridade = SALA_INT;
-	cout << "A construir uma sala" << endl;
+	cout << "A construir uma sala";
 }
 
 sala::~sala()
 {	
-	for (unsigned i = 0; i<pessoas_sala.size(); i ++ ) {
-		if (pessoas_sala[i] != nullptr) {
-			pessoas_sala.erase(pessoas_sala.begin() + (i - 1));
+	for (unsigned int k = 0; k<pessoas_sala.size(); k ++ ) {
+		if (pessoas_sala[k] != nullptr) {
+			pessoas_sala.erase(pessoas_sala.begin() + (k - 1));
 		}
 	}
-	cout << "A a apagar uma sala" << endl;
+	cout << " A a apagar uma sala" << endl;
 }
 
 

@@ -10,8 +10,7 @@ class sala_vida: public sala
 
 public:
 	sala_vida();
-	~sala_vida();
-
+	virtual ~sala_vida();
 	int getOxigenio() const;
 	int getDano() const;
 	int getVida() const;

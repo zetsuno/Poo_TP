@@ -1,6 +1,6 @@
-#include "entidades.h"
+#include "utils.h"
 
-static int id_enti = 0;
+static int id_enti = 1;
 
 entidades::entidades(int vida, int dano)
 {

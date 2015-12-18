@@ -9,14 +9,12 @@ class crew_member : public entidades {
 
 public:
 	crew_member(const string &nome);
-	~crew_member();
+	virtual ~crew_member();
 	string toString() const;
 	string getNome() const;
 	int getVida() const;
 	void respira();
 	void reparador(const int a = 1);
-	void combatente(const int a = 1);
-
 };
 
 #endif

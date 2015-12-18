@@ -1,11 +1,14 @@
-#include "sala_maquinas_prop1.h"
+#include "utils.h"
 
 sala_maquinas_esq::sala_maquinas_esq()
 {
+	this->propulsor = PROP_HP;
+	cout << " do tipo: Propulsor_Esquerdo" << endl;
 }
 
 sala_maquinas_esq::~sala_maquinas_esq()
 {
+	cout << "do tipo: Propulsor_Esquerdo ";
 }
 
 int sala_maquinas_esq::getPropulsor() const{

@@ -1,4 +1,4 @@
-#include "sala_maquinas_prop2.h"
+#include "utils.h"
 
 sala_maquinas_dir::sala_maquinas_dir()
 {

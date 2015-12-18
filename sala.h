@@ -2,7 +2,7 @@
 #define SALA_H
 #include "entidades.h"
 
-static int id_sala = 500;
+static int id_sala = 1;
 
 class sala
 {
@@ -13,7 +13,7 @@ class sala
 public:
 
 	sala();
-	~sala();
+	virtual ~sala();
 	int getOxigenio() const;
 	int getIntegridade() const;
 	void setOxigenio(const int &oxigenio);

@@ -1,11 +1,14 @@
-#include "sala_escudo.h"
+#include "utils.h"
 
 sala_escudo::sala_escudo()
 {
+	this->escudo = SHIP_SHIELD;
+	cout << " do tipo: Escudo" << endl;
 }
 
 sala_escudo::~sala_escudo()
 {
+	cout << "do tipo: Escudo ";
 }
 
 int  sala_escudo::getEscudo() const{
