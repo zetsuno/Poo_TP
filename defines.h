@@ -8,6 +8,19 @@
 #include <cmath>
 #include <ctime>
 
+/* ==== MISC =====*/
+
+#define ZERO 0
+#define DIFICULTY_LEVEL_3 3
+#define DIFICULTY_LEVEL_2 2
+#define DIFICULTY_LEVEL_1 1
+#define min_1 4
+#define max_1 8
+#define min_2 6
+#define max_2 12
+#define SALAS_TABLE_Y 4
+#define SALAS_TABLE_X 3
+
 /* ===== NAVE ====== */
 
 #define SHIP_HP 100

@@ -10,6 +10,7 @@ public:
 	virtual ~sala_ponte();
 	bool getOperada() const;
 	void setOperada(const bool &condi);
+	void meteor_nave();
 };
 
 #endif

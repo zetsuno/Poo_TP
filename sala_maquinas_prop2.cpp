@@ -2,10 +2,12 @@
 
 sala_maquinas_dir::sala_maquinas_dir()
 {
+	cout << " do tipo: Propulsor_Direito" << endl;
 }
 
 sala_maquinas_dir::~sala_maquinas_dir()
 {
+	cout << "A destruir um Propulsor Direito... ";
 }
 
 int sala_maquinas_dir::getPropulsor() const{

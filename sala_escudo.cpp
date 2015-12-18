@@ -4,6 +4,7 @@ sala_escudo::sala_escudo()
 {
 	this->escudo = SHIP_SHIELD;
 	cout << " do tipo: Escudo" << endl;
+
 }
 
 sala_escudo::~sala_escudo()
@@ -28,4 +29,9 @@ string sala_escudo::toString() const {
 	os << "Sala: Oxigenio: " << this->getOxigenio() << " | Integridade: " << this->getIntegridade() << " |  Escudo: " << this->getEscudo() << endl;
 
 	return os.str();
+}
+
+void sala_escudo::disableShield() {
+
+	this->escudo = NULL;
 }

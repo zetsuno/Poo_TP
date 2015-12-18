@@ -7,6 +7,9 @@ sala::sala()
 {
 	this->id = id_sala;
 	id_sala++;
+	this->brecha = false;
+	this->CC = false;
+	this->fogo = false;
 	this->oxigenio = SALA_OXI;
 	this->integridade = SALA_INT;
 	cout << "A construir uma sala";
@@ -33,6 +36,11 @@ int sala::getOxigenio() const{
 	return oxigenio;
 }
 
+int sala::getSaude() const {
+
+	return saude;
+}
+
 void sala::setIntegridade(const int &integridade){
 
 	this->integridade = integridade;
@@ -43,7 +51,10 @@ void sala::setOxigenio(const int &oxigenio){
 	this->oxigenio = oxigenio;
 }
 
+void sala::setSaude(const int &saude) {
 
+	this->saude = saude;
+}
  string sala::toString() const {
 
 	ostringstream os;
@@ -52,3 +63,13 @@ void sala::setOxigenio(const int &oxigenio){
 
 	return os.str();
 }
+
+ void sala::setNavePtr(nave *n) {
+
+	 this->nave_ptr = n;
+ }
+
+ nave * sala::getNavePtr() const {
+
+	 return this->nave_ptr;
+ }
