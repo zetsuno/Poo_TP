@@ -2,6 +2,7 @@
 
 sala_escudo::sala_escudo()
 {
+	this->setTipo("Escudo");
 	this->escudo = SHIP_SHIELD;
 	cout << " do tipo: Escudo" << endl;
 

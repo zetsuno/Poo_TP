@@ -2,9 +2,12 @@
 
 int main(){
 	nave nova;
-	crew_member a("ze");
+	crew_member *a = new crew_member("ze");
 	sala sala_nova;
-	return 1;
 	sala_vida vida;
+	vida.addEntidade(a);
 	vida.distributeOxi();
+	sala_beliche beliche;
+	nova.cosmic_dust();
+	cout << nova.toString();
 }

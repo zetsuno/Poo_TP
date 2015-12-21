@@ -17,11 +17,7 @@ sala::sala()
 
 sala::~sala()
 {	
-	for (unsigned int k = 0; k<pessoas_sala.size(); k ++ ) {
-		if (pessoas_sala[k] != nullptr) {
-			pessoas_sala.erase(pessoas_sala.begin() + (k - 1));
-		}
-	}
+	
 	cout << " A a apagar uma sala" << endl;
 }
 
@@ -41,6 +37,11 @@ int sala::getSaude() const {
 	return saude;
 }
 
+string sala::getTipo() const {
+
+	return this->tipo;
+}
+
 void sala::setIntegridade(const int &integridade){
 
 	this->integridade = integridade;
@@ -49,6 +50,11 @@ void sala::setIntegridade(const int &integridade){
 void sala::setOxigenio(const int &oxigenio){
 
 	this->oxigenio = oxigenio;
+}
+
+void sala::setTipo(const string &s){
+
+	this->tipo = s;
 }
 
 void sala::setSaude(const int &saude) {
@@ -72,4 +78,8 @@ void sala::setSaude(const int &saude) {
  nave * sala::getNavePtr() const {
 
 	 return this->nave_ptr;
+ }
+
+ void sala::addEntidade(entidades *e) {
+	 this->pessoas_sala.push_back(e);
  }

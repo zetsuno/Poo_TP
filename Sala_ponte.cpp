@@ -2,6 +2,8 @@
 
 sala_ponte::sala_ponte()
 {
+	this->setTipo("Sala_Ponte");
+	this->operada = false;
 	cout << " do tipo: Ponte" << endl;
 }
 

@@ -7,7 +7,8 @@ static int id_sala = 1;
 
 class nave;
 class sala
-{
+{	
+	string tipo;
 	int id, saude, oxigenio, integridade;
 	bool brecha, fogo, CC;
 	vector <entidades *> pessoas_sala;
@@ -20,12 +21,15 @@ public:
 	int getOxigenio() const;
 	int getIntegridade() const;
 	int getSaude() const;
+	string getTipo() const;
 	void setOxigenio(const int &oxigenio);
 	void setIntegridade(const int &integridade);
 	void setSaude(const int &saude);
+	void setTipo(const string &s);
 	virtual string toString() const;
 	void setNavePtr(nave *n);
 	nave * getNavePtr() const;
+	void addEntidade(entidades *e);
 };
 
 #endif

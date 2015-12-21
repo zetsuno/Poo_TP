@@ -6,16 +6,18 @@ class sala_ponte;
 class nave
 {	
 
-	sala* salas[4][3];
+	sala* salas[3][4];
 
 public:
 	nave();
+	nave(const nave &n);
 	virtual ~nave();
 	string toString() const;
 	bool addSala(const int &val, const string &tipo);
 	void associar_sala(sala *s);
 	void oxigena_salas();
 	void meteor(sala_ponte *s);
+	void cosmic_dust();
 };
 
 #endif

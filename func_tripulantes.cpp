@@ -23,9 +23,6 @@ string crew_member::getNome() const {
 	return this->nome;
 }
 
-int crew_member::getVida() const {
-	return enti_ptr->getVida();
-}
 
 void crew_member::respira() {
 

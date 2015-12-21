@@ -3,6 +3,7 @@
 
 sala_vida::sala_vida()
 {
+	this->setTipo("Sala_Vida");
 	cout << " do tipo: Vida" << endl;
 }
 

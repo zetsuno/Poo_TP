@@ -2,6 +2,7 @@
 
 sala_maquinas_esq::sala_maquinas_esq()
 {
+	this->setTipo("Propulsor_Esquerdo");
 	this->propulsor = PROP_HP;
 	cout << " do tipo: Propulsor_Esquerdo" << endl;
 }

@@ -3,6 +3,7 @@
 
 sala_maquinas::sala_maquinas() {
 
+	this->setTipo("Sala_Maquinas");
 	cout << " do tipo: Maquinas" << endl;
 }
 

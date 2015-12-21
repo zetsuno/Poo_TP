@@ -14,12 +14,15 @@
 #define DIFICULTY_LEVEL_3 3
 #define DIFICULTY_LEVEL_2 2
 #define DIFICULTY_LEVEL_1 1
-#define min_1 4
-#define max_1 8
-#define min_2 6
-#define max_2 12
-#define SALAS_TABLE_Y 4
-#define SALAS_TABLE_X 3
+#define meteor_min_1 4
+#define meteor_max_1 8
+#define meteor_min_2 6
+#define meteor_max_2 12
+#define cosmic_min 3
+#define cosmic_max 5
+#define METEOR_COSMIC_DMG 10
+#define SALAS_TABLE_Y 3
+#define SALAS_TABLE_X 4
 
 /* ===== NAVE ====== */
 
