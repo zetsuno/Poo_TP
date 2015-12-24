@@ -19,6 +19,7 @@ public:
 	void oxigena_salas();
 	void meteor(sala_ponte *s);
 	void cosmic_dust();
+	void opt_salas();
 };
 
 #endif

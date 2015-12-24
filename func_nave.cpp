@@ -1,8 +1,8 @@
 #include "utils.h"
 
 nave::nave()
-{	
-	
+{
+
 	for (unsigned int i = 0; i < 3; i++) {
 		for (unsigned int j = 0; j < 4; j++) {
 			salas[i][j] = nullptr;
@@ -16,15 +16,18 @@ nave::nave()
 	salas[1][2] = new sala_escudo();           salas[1][2]->setNavePtr(this);
 	salas[1][3] = new sala_ponte();            salas[1][3]->setNavePtr(this);
 	salas[2][0] = new sala_maquinas_dir();     salas[2][0]->setNavePtr(this);
-	 
+
+	opt_salas();
+
 	cout << "A construir uma nave" << endl;
 }
 
-nave::nave(const nave &n){
+nave::nave(const nave &n) {
 
 
 
 }
+
 nave::~nave()
 {
 	for (unsigned int i = 0; i < 3; i++) {
@@ -38,6 +41,47 @@ nave::~nave()
 	cout << "A destruir a nave" << endl;
 }
 
+
+void nave::opt_salas() {
+
+	string opcao_sala, opcao_sn;
+	int add_flag = 0, while_flag, salas_livres = 6;
+
+
+	do{
+
+		cout << "Salas livres: " << salas_livres;
+		cout << "\nInsira o tipo de sala que quer inserir na nave:\nTipos:\n\t*Propulsor;\n\t*Beliche;\n\t*Raio Laser;\n\t*Auto-Reparador;\n\t*Sistema de segurança interno;\n\t*Enfermaria;\n\t*Sala de armas;\n\t*Alojamentos do Capitão;\n\t*Oficina Robótica;\n";
+		cin >> opcao_sala;
+
+		if (opcao_sala == "beliche" || opcao_sala == "Beliche") {
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 4; j++) {
+					if (salas[i][j] == nullptr) {
+						salas[i][j] = new sala_beliche; salas[i][j]->setNavePtr(this);
+						add_flag = 1;
+						salas_livres--;
+						goto end_cycle;
+					}
+				}
+			}
+		end_cycle:
+
+			if (add_flag != 1) 
+				cout << "[ERRO] - Sala nao adicionada, falta de espaco na nave possivel?..." << endl;
+			}
+			else {
+			cout << "Salas ainda nao implementadas" << endl;
+			}
+
+			cout << "\nAdicionar mais salas?(S/N): ";
+			cin >> opcao_sn;
+
+			if (opcao_sn == "S" || opcao_sn == "s")
+			while_flag = 1;
+		
+	} while (salas_livres > 0 && while_flag == 1);
+}
 string nave::toString() const {
 
 	ostringstream os;

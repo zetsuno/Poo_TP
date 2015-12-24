@@ -11,6 +11,7 @@ Jogo::~Jogo()
 
 bool Jogo::lecomando()
 {
+	c.clrscr();
 	c.setScreenSize(40, 80);
 	c.setBackgroundColor(c.PRETO);
 	/*c.gotoxy(51, 0);
