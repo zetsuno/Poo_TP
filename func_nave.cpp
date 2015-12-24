@@ -77,8 +77,13 @@ void nave::opt_salas() {
 			cout << "\nAdicionar mais salas?(S/N): ";
 			cin >> opcao_sn;
 
-			if (opcao_sn == "S" || opcao_sn == "s")
-			while_flag = 1;
+			if (opcao_sn == "S" || opcao_sn == "s") {
+				while_flag = 1;
+			}
+			else {
+				break;
+			}
+
 		
 	} while (salas_livres > 0 && while_flag == 1);
 }
