@@ -6,9 +6,10 @@ class sala_ponte;
 class nave
 {	
 
-	sala* salas[3][4];
+	
 
 public:
+	sala* salas[3][4];
 	nave();
 	nave(const nave &n);
 	virtual ~nave();

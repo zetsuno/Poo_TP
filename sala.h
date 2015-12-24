@@ -1,6 +1,7 @@
 #ifndef SALA_H
 #define SALA_H
 #include "entidades.h"
+#include "consola.h"
 
 
 static int id_sala = 1;
@@ -13,6 +14,8 @@ class sala
 	bool brecha, fogo, CC;
 	vector <entidades *> pessoas_sala;
 	nave * nave_ptr;
+
+	
 
 public:
 
@@ -30,6 +33,8 @@ public:
 	void setNavePtr(nave *n);
 	nave * getNavePtr() const;
 	void addEntidade(entidades *e);
+
+	virtual void mostra_info_sala(int x, int y, Consola &c);
 };
 
 #endif
