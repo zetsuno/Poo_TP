@@ -126,6 +126,13 @@ void sala::setSaude(const int &saude) {
 
 		 c.gotoxy(x,y+6);
 
+		c.gotoxy(x+1,y+4);
+
+		 
+		 for (int i = 0; i < pessoas_sala.size(); i++)
+		 {
+			 cout << "["<<pessoas_sala[i]->getID()<<"]";
+		 }
 		 
 		// ostringstream os;
 
