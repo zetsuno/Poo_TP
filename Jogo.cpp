@@ -88,7 +88,7 @@ bool Jogo::lecomando()
 		<< (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196
 		<< (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196
 		<< (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196
-		<< (char)196 << (char)191; // linha de cima das informaçoes
+		<< (char)196 << (char)191; // linha de cima das informaÃ§oes
 	c.gotoxy(49, 36);
 	cout << (char)179;
 	c.gotoxy(49, 37);
@@ -100,7 +100,7 @@ bool Jogo::lecomando()
 		<< (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196
 		<< (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196
 		<< (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196 << (char)196
-		<< (char)196 << (char)217; //linha de baixo das informações
+		<< (char)196 << (char)217; //linha de baixo das informaÃ§Ãµes
 	
 	c.gotoxy(0, 36);
 	cout << (char)179 << "INFORMACOES:";
@@ -157,6 +157,26 @@ void Jogo::fazcomando()
 
 }
 
+void Jogo::inicia_jogo(int num_crew_mem)
+{
+	string nome[] = {"A","B","C","D","E","F","G"};
+	
+	// fica por resolver gerar letras difereentes
+
+
+	for (int i = 0; i < num_crew_mem; i++)
+	{
+		crew_member *a = new crew_member(nome[i]);
+		cm.push_back(a);
+
+
+		nave_jogo.salas[1][3]->addEntidade(a);
+	}
+
+
+	
+}
+
 void Jogo::mostra(){
 
 	//c.gotoxy(10,10);
@@ -165,7 +185,7 @@ void Jogo::mostra(){
 		for (int j = 0; j < 4; j++)
 		{
 			if (nave_jogo.salas[i][j] != NULL)
-			nave_jogo.salas[i][j]->mostra_info_sala(10 + j * 20, 10 + i * 6, c); //i=y é as linhas e j=x é as colunas
+			nave_jogo.salas[i][j]->mostra_info_sala(10 + j * 20, 10 + i * 6, c); //i=y Ã© as linhas e j=x Ã© as colunas
 		}
 	
 	
