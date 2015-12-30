@@ -1,17 +1,21 @@
 #ifndef SALA_H
 #define SALA_H
 #include "entidades.h"
+#include "consola.h"
 
 
 static int id_sala = 1;
 
 class nave;
 class sala
-{
+{	
+	string tipo;
 	int id, saude, oxigenio, integridade;
 	bool brecha, fogo, CC;
 	vector <entidades *> pessoas_sala;
 	nave * nave_ptr;
+
+	
 
 public:
 
@@ -20,12 +24,17 @@ public:
 	int getOxigenio() const;
 	int getIntegridade() const;
 	int getSaude() const;
+	string getTipo() const;
 	void setOxigenio(const int &oxigenio);
 	void setIntegridade(const int &integridade);
 	void setSaude(const int &saude);
+	void setTipo(const string &s);
 	virtual string toString() const;
 	void setNavePtr(nave *n);
 	nave * getNavePtr() const;
+	void addEntidade(entidades *e);
+	virtual void mostra_info_sala(int x, int y, Consola &c);
+	bool move_pessoa(const int &id, const int &new_sala_x, const int &new_sala_y);
 };
 
 #endif

@@ -1,10 +1,35 @@
 #include "utils.h"
+#include "Jogo.h"
 
 int main(){
-	nave nova;
-	crew_member a("ze");
-	sala sala_nova;
-	return 1;
-	sala_vida vida;
-	vida.distributeOxi();
+
+	Jogo j;
+	Consola c;
+	
+	//crew_member ze("ze nando");
+	//cout << ze.toString();
+	//crew_member nando(ze);
+	//cout << nando.toString();
+	bool EXIT = false;
+	while (!EXIT)
+	{
+		j.meu_Clean();
+		//c.clrscr();
+		j.mostra();
+		EXIT = j.lecomando();
+		j.fazcomando();
+		if (!EXIT)
+		{
+			
+		}
+	}
+
+	
+	//nave nova;
+	//crew_member *a = new crew_member("ze");
+	//sala sala_nova;
+	//sala_vida vida;
+	//vida.addEntidade(a);
+	//vida.distributeOxi();
+	
 }

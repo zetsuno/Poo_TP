@@ -11,4 +11,5 @@
 #include "tripulantes.h"
 #include "entidades.h"
 #include "defines.h"
+#include "sala_beliche.h"
 #endif

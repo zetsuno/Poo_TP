@@ -8,6 +8,7 @@ public:
 	bool Chk_Props() const;
 	sala_maquinas();
 	virtual ~sala_maquinas();
+
 };
 
 

@@ -11,6 +11,7 @@ public:
 	int getPropulsor() const;
 	void setPropulsor(const int &propulsor);
 	string toString() const;
+	void mostra_info_sala(int x, int y, Consola &c);
 
 };
 

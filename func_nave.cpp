@@ -1,9 +1,10 @@
 #include "utils.h"
 
 nave::nave()
-{	
-	for (unsigned int i = 0; i < 4; i++) {
-		for (unsigned int j = 0; j < 3; j++) {
+{
+
+	for (unsigned int i = 0; i < 3; i++) {
+		for (unsigned int j = 0; j < 4; j++) {
 			salas[i][j] = nullptr;
 		}
 	}
@@ -15,26 +16,81 @@ nave::nave()
 	salas[1][2] = new sala_escudo();           salas[1][2]->setNavePtr(this);
 	salas[1][3] = new sala_ponte();            salas[1][3]->setNavePtr(this);
 	salas[2][0] = new sala_maquinas_dir();     salas[2][0]->setNavePtr(this);
-	 
+
+	opt_salas();
+
 	cout << "A construir uma nave" << endl;
+}
+
+nave::nave(const nave &n) {
+
+
+
 }
 
 nave::~nave()
 {
-	for (unsigned int i = 0; i < 4; i++) {
-		for (unsigned int j = 0; j < 3; j++) {
+	for (unsigned int i = 0; i < 3; i++) {
+		for (unsigned int j = 0; j < 4; j++) {
 			if (salas[i][j] != nullptr) {
 				delete salas[i][j];
+				cout << endl;
 			}
 		}
 	}
 	cout << "A destruir a nave" << endl;
 }
 
+
+void nave::opt_salas() {
+
+	string opcao_sala, opcao_sn;
+	int add_flag = 0, while_flag, salas_livres = 6;
+
+
+	do{
+
+		cout << "Salas livres: " << salas_livres;
+		cout << "\nInsira o tipo de sala que quer inserir na nave:\nTipos:\n\t*Propulsor;\n\t*Beliche;\n\t*Raio Laser;\n\t*Auto-Reparador;\n\t*Sistema de segurança interno;\n\t*Enfermaria;\n\t*Sala de armas;\n\t*Alojamentos do Capitão;\n\t*Oficina Robótica;\n";
+		cin >> opcao_sala;
+
+		if (opcao_sala == "beliche" || opcao_sala == "Beliche") {
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 4; j++) {
+					if (salas[i][j] == nullptr) {
+						salas[i][j] = new sala_beliche; salas[i][j]->setNavePtr(this);
+						add_flag = 1;
+						salas_livres--;
+						goto end_cycle;
+					}
+				}
+			}
+		end_cycle:
+
+			if (add_flag != 1) 
+				cout << "[ERRO] - Sala nao adicionada, falta de espaco na nave possivel?..." << endl;
+			}
+			else {
+			cout << "Salas ainda nao implementadas" << endl;
+			}
+
+			cout << "\nAdicionar mais salas?(S/N): ";
+			cin >> opcao_sn;
+
+			if (opcao_sn == "S" || opcao_sn == "s") {
+				while_flag = 1;
+			}
+			else {
+				break;
+			}
+
+		
+	} while (salas_livres > 0 && while_flag == 1);
+}
 string nave::toString() const {
 
 	ostringstream os;
-	
+
 	os << "Integridade da nave: " << ((salas[0][0]->getIntegridade() * .5) + (salas[2][0]->getIntegridade() * .5)) << "%" << endl;
 
 		return os.str();
@@ -43,7 +99,7 @@ string nave::toString() const {
 bool nave::addSala(const int &val, const string &tipo){
 
 	if (val == 0 || val == 4 || val == 5 || val == 6 || val == 7 || val == 8) {
-		cout << endl << "Salas nao configuraveis!" << endl << "Uma destas salas pode ser configurada:\n " << "1;\n2;\n3;\n9;\n10;\n11;" << endl;
+		cout << endl << "Salas nao configuraveis!" << endl << "Uma destas salas pode ser configurada:\n" << "1;\n2;\n3;\n9;\n10;\n11;" << endl;
 		return false;
 	}
 	return true;
@@ -56,14 +112,13 @@ void nave::associar_sala(sala *s) {
 
 void nave::oxigena_salas() {
 
-	for (unsigned int i = 0; i < 4; i++) {
-		for (unsigned int j = 0; j < 3; j++) {
+	for (unsigned int i = 0; i < 3; i++) {
+		for (unsigned int j = 0; j < 4; j++) {
 			if (salas[i][j]->getNavePtr() != nullptr && salas[i][j]->getOxigenio() < SALA_OXI) {
 				if (salas[i][j]->getOxigenio() == (SALA_OXI - 1)) {
 					salas[i][j]->setOxigenio(SALA_OXI);
 				}
 				else {
-
 					salas[i][j]->setOxigenio(salas[i][j]->getOxigenio() + 2);
 				}
 			}
@@ -78,16 +133,63 @@ void nave::meteor(sala_ponte *s) {
 	srand((unsigned int)time(NULL)); //Seed = Hora
 	
 	if (s->getOperada() == true) {
-
-		random = rand() % (max_1 - min_1 + 1) + min_1;
-		for (int i = 0; i < random; i++) {
-			
-			//acabo dps
+		random = rand() % (meteor_max_1 - meteor_min_1 + 1) + meteor_min_1;
+		for (int i = 0; i < random; i++) {	
 		}
 	}
 	else {
+		random = rand() % (meteor_max_2 - meteor_min_2 + 1) + meteor_min_2;
+	}
+}
 
-		random = rand() % (max_2 - min_2 + 1) + min_2;
-	
+void nave::cosmic_dust() {
+
+	int random, random_x, random_y, prev_values[20], contador = ZERO;
+
+	srand((unsigned int)time(NULL)); //Seed = Hora
+
+	random = rand() % (cosmic_max - cosmic_min + 1) + cosmic_min;
+
+	for (int i = 0; i < random; i++) {
+
+		if (contador == ZERO) {
+
+			random_x = rand() % ((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO;
+			random_y = rand() % ((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO;
+
+			while (salas[random_y][random_x] == nullptr) {
+				random_x = rand() % ((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO;
+				random_y = rand() % ((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO;
+			}
+			cout << "Vetor de valores antigos: ";
+			prev_values[contador] = random_y; cout << prev_values[contador] << " "; contador++;
+			prev_values[contador] = random_x; cout << prev_values[contador] << " "; contador++;
+			salas[random_y][random_x]->setIntegridade(salas[random_y][random_x]->getIntegridade() - METEOR_COSMIC_DMG);
+		}
+		else {
+			
+			random_x = rand() % ((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO;
+			random_y = rand() % ((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO;
+
+			while (salas[random_y][random_x] == nullptr) {
+				random_x = rand() % ((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO;
+				random_y = rand() % ((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO;
+			}
+
+			// CONFIRMAÇÃO DE VALORES UNICOS (NAO HA ATAQUES NA MESMA SALA) - Este código comentado ainda ñ funciona
+			// Ainda tou a pensar em como implementar, (merda dos vetores ._.), O resto do código funciona bem
+            // Para veres o resto do código a funcionar, vê o resultado do toString() da nave, :D
+
+			/*for (int conta_vetor = 0; conta_vetor < contador; conta_vetor += 2) {
+				while(prev_values[conta_vetor] == random_y && prev_values[conta_vetor + 1] == random_x) {
+					random_x = rand() % ((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO;
+					random_y = rand() % ((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO;
+				}
+			}*/
+			
+			prev_values[contador] = random_y; cout << prev_values[contador] << " "; contador++;
+			prev_values[contador] = random_x; cout << prev_values[contador] << " "; contador++;
+			salas[random_y][random_x]->setIntegridade(salas[random_y][random_x]->getIntegridade() - METEOR_COSMIC_DMG);
+		}
 	}
 }

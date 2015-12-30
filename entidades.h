@@ -13,6 +13,7 @@ class entidades
 
 public:
 	entidades(int vida, int dano);
+	entidades(const entidades &old);
 	virtual ~entidades();
 	int getID() const;
 	int getVida() const;
