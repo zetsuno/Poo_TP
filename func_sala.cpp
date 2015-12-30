@@ -144,6 +144,7 @@ void sala::setSaude(const int &saude) {
  bool sala::move_pessoa(const int &id, const int &new_sala_x, const int &new_sala_y) {
 
 	 for (auto p = pessoas_sala.begin(); p != pessoas_sala.end(); p++) {
+<<<<<<< HEAD
 		 
 		 if ((*p)->getID() == id) 
 		 {
@@ -159,6 +160,12 @@ void sala::setSaude(const int &saude) {
 				 return true;
 			 }
 
+=======
+		 if ((*p)->getID() == id) {
+			 this->getNavePtr()->salas[new_sala_y][new_sala_x]->pessoas_sala.push_back(*p);
+			 this->pessoas_sala.erase(p);
+			 return true;
+>>>>>>> origin/master
 		 }
 	 }
 	 return false;

@@ -26,7 +26,10 @@ public:
 	void cosmic_dust();
 	Jogo();
 	virtual ~Jogo();
+<<<<<<< HEAD
 	void meu_Clean();
+=======
+>>>>>>> origin/master
 
 
 };
