@@ -33,8 +33,8 @@ public:
 	void setNavePtr(nave *n);
 	nave * getNavePtr() const;
 	void addEntidade(entidades *e);
-
 	virtual void mostra_info_sala(int x, int y, Consola &c);
+	bool move_pessoa(const int &id, const int &new_sala_x, const int &new_sala_y);
 };
 
 #endif

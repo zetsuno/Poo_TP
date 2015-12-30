@@ -9,6 +9,7 @@ Jogo::~Jogo()
 {
 }
 
+
 bool Jogo::lecomando()
 {
 	c.setScreenSize(40, 120);
@@ -129,10 +130,9 @@ bool Jogo::lecomando()
 
 void Jogo::fazcomando()
 {
-	string str, nome_ent;
-	int num_sala;
+	string str;
+	int sala_x, sala_y, id_ent;
 	vector<sala>salas;
-
 
 	istringstream is(comando);
 	is >> str;
@@ -141,40 +141,31 @@ void Jogo::fazcomando()
 	{
 		istringstream is;
 		
-		is >> str >> nome_ent >> num_sala;
+		is >> str >> id_ent >> sala_x >> sala_y;
 
-		if (num_sala <= 0 || num_sala >= 13)
+		if (sala_x <= 0 || sala_x > 4 || sala_y <= 0 || sala_y > 3)
 		{
 			c.gotoxy(10, 1);
-			cout << "Erro no tamanho da sala ou nome da entidade";
+			cout << "Erro no tamanho da sala!" << endl;
 			lecomando();
 		}
-		
-		
+		else
+			goto_sala(id_ent, sala_x, sala_y);
 	}
-
-	
-
 }
 
-void Jogo::inicia_jogo(int num_crew_mem)
+void Jogo::inicia_jogo(const int &num_crew_mem)
 {
 	string nome[] = {"A","B","C","D","E","F","G"};
 	
 	// fica por resolver gerar letras difereentes
 
-
 	for (int i = 0; i < num_crew_mem; i++)
 	{
 		crew_member *a = new crew_member(nome[i]);
 		cm.push_back(a);
-
-
 		nave_jogo.salas[1][3]->addEntidade(a);
 	}
-
-
-	
 }
 
 void Jogo::mostra(){
@@ -187,8 +178,35 @@ void Jogo::mostra(){
 			if (nave_jogo.salas[i][j] != NULL)
 			nave_jogo.salas[i][j]->mostra_info_sala(10 + j * 20, 10 + i * 6, c); //i=y é as linhas e j=x é as colunas
 		}
-	
-	
+}
+
+void Jogo::showHP_ship() const {
+
+	cout << this->nave_jogo.toString();
+
+}
+
+void Jogo::cosmic_dust(){
+
+	this->nave_jogo.cosmic_dust();
+}
+
+void Jogo::goto_sala(const int &id, const int &sala_x, const int &sala_y) {
 
 
+	if (this->nave_jogo.salas[sala_y][sala_x] == nullptr) {
+		cout << "A sala nao existe na nave!" << endl;
+		return;
+	}
+	else {
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 4; j++) {
+				if (this->nave_jogo.salas[i][j] != nullptr) {
+					if (this->nave_jogo.salas[i][j]->move_pessoa(id, sala_x, sala_y) == true){
+						cout << "Pessoa movida com sucesso!" << endl;
+					}
+				}
+			}
+		}
+	}
 }

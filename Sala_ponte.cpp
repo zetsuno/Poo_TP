@@ -2,6 +2,9 @@
 
 sala_ponte::sala_ponte()
 {
+	crew_member *novo = new crew_member("Ze Bridges");
+	novo->setPointerSala(this);
+	this->addEntidade(novo);
 	this->setTipo("Sala_Ponte");
 	this->operada = false;
 	cout << " do tipo: Ponte" << endl;

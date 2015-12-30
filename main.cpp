@@ -6,7 +6,10 @@ int main(){
 	Jogo j;
 	Consola c;
 	
-
+	//crew_member ze("ze nando");
+	//cout << ze.toString();
+	//crew_member nando(ze);
+	//cout << nando.toString();
 	bool EXIT = false;
 	while (!EXIT)
 	{
@@ -19,14 +22,12 @@ int main(){
 		}
 	}
 
-
+	
 	//nave nova;
 	//crew_member *a = new crew_member("ze");
-	sala sala_nova;
-	sala_vida vida;
-//	vida.addEntidade(a);
-	vida.distributeOxi();
-	sala_beliche beliche;
-	//nova.cosmic_dust();
-	//cout << nova.toString();
+	//sala sala_nova;
+	//sala_vida vida;
+	//vida.addEntidade(a);
+	//vida.distributeOxi();
+	
 }

@@ -11,6 +11,14 @@ entidades::entidades(int vida, int dano)
 	id_enti++;
 	cout << "A construir uma entidade..." << endl;
 }
+entidades::entidades(const entidades &old)
+{
+	this->vida = old.vida;
+	this->dano = old.dano;
+	this->combate_flag = old.getCombatFlag();
+	this->id = old.getID();
+	cout << "A construir uma entidade POR COPIA..." << endl;
+}
 
 entidades::~entidades()
 {

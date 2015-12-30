@@ -129,7 +129,7 @@ void sala::setSaude(const int &saude) {
 		c.gotoxy(x+1,y+4);
 
 		 
-		 for (int i = 0; i < pessoas_sala.size(); i++)
+		 for (unsigned int i = 0; i < pessoas_sala.size(); i++)
 		 {
 			 cout << "["<<pessoas_sala[i]->getID()<<"]";
 		 }
@@ -139,4 +139,16 @@ void sala::setSaude(const int &saude) {
 		// os << "Sala: Oxigenio: " << this->getOxigenio() << " |  Integridade: " << this->getIntegridade() << endl;
 
 		 
+ }
+
+ bool sala::move_pessoa(const int &id, const int &new_sala_x, const int &new_sala_y) {
+
+	 for (auto p = pessoas_sala.begin(); p != pessoas_sala.end(); p++) {
+		 if ((*p)->getID() == id) {
+			 this->getNavePtr()->salas[new_sala_y][new_sala_x]->pessoas_sala.push_back(*p);
+			 this->pessoas_sala.erase(p);
+			 return true;
+		 }
+	 }
+	 return false;
  }

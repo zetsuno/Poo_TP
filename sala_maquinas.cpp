@@ -2,7 +2,9 @@
 
 
 sala_maquinas::sala_maquinas() {
-
+	crew_member *novo = new crew_member("Ze Maquinas");
+	novo->setPointerSala(this);
+	this->addEntidade(novo);
 	this->setTipo("Sala_Maquinas");
 	cout << " do tipo: Maquinas" << endl;
 }

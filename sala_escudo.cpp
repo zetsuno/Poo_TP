@@ -2,6 +2,9 @@
 
 sala_escudo::sala_escudo()
 {
+	crew_member *novo = new crew_member("Ze Escudos");
+	novo->setPointerSala(this);
+	this->addEntidade(novo);
 	this->setTipo("Escudo");
 	this->escudo = SHIP_SHIELD;
 	cout << " do tipo: Escudo" << endl;
