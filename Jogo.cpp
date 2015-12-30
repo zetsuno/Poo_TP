@@ -123,7 +123,6 @@ bool Jogo::lecomando()
 	{
 		return true;
 	}
-<<<<<<< HEAD
 
 
 	c.gotoxy(1, 37);
@@ -135,13 +134,10 @@ bool Jogo::lecomando()
 	}
 	c.gotoxy(1, 37);
 
-=======
->>>>>>> origin/master
 	return false;
 
 }
 
-<<<<<<< HEAD
 void Jogo::meu_Clean()
 {
 	//c.gotoxy(0,4);
@@ -159,8 +155,6 @@ void Jogo::meu_Clean()
 	
 }
 
-=======
->>>>>>> origin/master
 
 void Jogo::fazcomando()
 {
@@ -173,7 +167,6 @@ void Jogo::fazcomando()
 
 	if (str == "move")
 	{
-<<<<<<< HEAD
 		istringstream is(comando);
 		
 		is >> str >> id_ent >> sala_x >> sala_y;
@@ -183,17 +176,6 @@ void Jogo::fazcomando()
 			//c.gotoxy(10, 1);
 			cout << "Erro no tamanho da sala!" << endl;
 			//lecomando();
-=======
-		istringstream is;
-		
-		is >> str >> id_ent >> sala_x >> sala_y;
-
-		if (sala_x <= 0 || sala_x > 4 || sala_y <= 0 || sala_y > 3)
-		{
-			c.gotoxy(10, 1);
-			cout << "Erro no tamanho da sala!" << endl;
-			lecomando();
->>>>>>> origin/master
 		}
 		else
 			goto_sala(id_ent, sala_x, sala_y);
@@ -240,11 +222,7 @@ void Jogo::cosmic_dust(){
 void Jogo::goto_sala(const int &id, const int &sala_x, const int &sala_y) {
 
 
-<<<<<<< HEAD
 	if (this->nave_jogo.salas[sala_x][sala_y] == nullptr) {
-=======
-	if (this->nave_jogo.salas[sala_y][sala_x] == nullptr) {
->>>>>>> origin/master
 		cout << "A sala nao existe na nave!" << endl;
 		return;
 	}
@@ -254,10 +232,7 @@ void Jogo::goto_sala(const int &id, const int &sala_x, const int &sala_y) {
 				if (this->nave_jogo.salas[i][j] != nullptr) {
 					if (this->nave_jogo.salas[i][j]->move_pessoa(id, sala_x, sala_y) == true){
 						cout << "Pessoa movida com sucesso!" << endl;
-<<<<<<< HEAD
 						break;
-=======
->>>>>>> origin/master
 					}
 				}
 			}

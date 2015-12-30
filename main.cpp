@@ -13,11 +13,8 @@ int main(){
 	bool EXIT = false;
 	while (!EXIT)
 	{
-<<<<<<< HEAD
 		j.meu_Clean();
 		//c.clrscr();
-=======
->>>>>>> origin/master
 		j.mostra();
 		EXIT = j.lecomando();
 		j.fazcomando();
