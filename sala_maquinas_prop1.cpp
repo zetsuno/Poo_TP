@@ -42,3 +42,8 @@ void sala_maquinas_esq::mostra_info_sala(int x, int y,Consola &c)
 	c.gotoxy(x+8,y+3);
 	
 }
+
+int sala_maquinas_esq::getDistance() {
+
+	return this->propulsor;
+}

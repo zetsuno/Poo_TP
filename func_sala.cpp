@@ -163,3 +163,9 @@ void sala::setSaude(const int &saude) {
 	 }
 	 return false;
  }
+
+ int sala::getDistance() {
+ 
+	 return 0;
+ }
+

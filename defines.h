@@ -9,7 +9,7 @@
 #include <ctime>
 
 /* ==== MISC =====*/
-
+#define DFT_DISTANCE -200
 #define ZERO 0
 #define DIFICULTY_LEVEL_3 3
 #define DIFICULTY_LEVEL_2 2

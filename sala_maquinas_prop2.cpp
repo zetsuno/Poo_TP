@@ -29,3 +29,8 @@ string sala_maquinas_dir::toString() const {
 
 	return os.str();
 }
+
+int sala_maquinas_dir::getDistance() {
+
+	return this->propulsor;
+}

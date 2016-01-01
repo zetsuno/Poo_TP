@@ -22,3 +22,4 @@ bool sala_maquinas::Chk_Props() const {
 	else
 		return false;
 }
+

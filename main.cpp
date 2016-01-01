@@ -14,10 +14,12 @@ int main(){
 	while (!EXIT)
 	{
 		j.meu_Clean();
-		//c.clrscr();
+		c.clrscr();
 		j.mostra();
 		EXIT = j.lecomando();
 		j.fazcomando();
+		j.avancaTurno();
+		j.updateDistance();
 		if (!EXIT)
 		{
 			

@@ -3,12 +3,19 @@
 
 Jogo::Jogo()
 {
+	this->turno = 0;
 }
 
 Jogo::~Jogo()
 {
 }
 
+void Jogo::avancaTurno() {
+	this->turno++;
+}
+int Jogo::getTurno() {
+	return this->turno;
+}
 
 bool Jogo::lecomando()
 {
@@ -104,7 +111,7 @@ bool Jogo::lecomando()
 		<< (char)196 << (char)217; //linha de baixo das informações
 	
 	c.gotoxy(0, 36);
-	cout << (char)179 << "INFORMACOES:";
+	cout << (char)179 << "[TURNO:" << this->getTurno() <<"]"" INFORMACOES:\nDistancia percorrida: " << this->nave_jogo.showDistance();
 	c.gotoxy(0, 37);
 	cout << (char)179;
 	c.gotoxy(0, 38);
@@ -238,4 +245,10 @@ void Jogo::goto_sala(const int &id, const int &sala_x, const int &sala_y) {
 			}
 		}
 	}
+}
+
+
+void Jogo::updateDistance() {
+
+	this->nave_jogo.updateDistance();
 }

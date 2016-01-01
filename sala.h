@@ -14,7 +14,8 @@ class sala
 	bool brecha, fogo, CC;
 	vector <entidades *> pessoas_sala;
 	nave * nave_ptr;
-
+	friend class sala_maquinas_dir;
+	friend class sala_maquinas_esq;
 	
 
 public:
@@ -35,6 +36,9 @@ public:
 	void addEntidade(entidades *e);
 	virtual void mostra_info_sala(int x, int y, Consola &c);
 	bool move_pessoa(const int &id, const int &new_sala_x, const int &new_sala_y);
+	virtual int getDistance();
 };
+
+	
 
 #endif

@@ -15,6 +15,8 @@ class Jogo
 	nave nave_jogo; // quando crio jogo crio uma nave
 	//crew_member *a = new crew_member("A");
 	vector<crew_member*> cm;
+	int turno;
+
 
 public:
 	void inicia_jogo(const int &num_crew_mem);
@@ -27,6 +29,9 @@ public:
 	Jogo();
 	virtual ~Jogo();
 	void meu_Clean();
+	int getTurno();
+	void avancaTurno();
+	void updateDistance();
 
 
 };

@@ -6,7 +6,7 @@ class sala_ponte;
 class nave
 {	
 
-	
+	int distancia = 0;
 
 public:
 	sala* salas[3][4];
@@ -20,6 +20,8 @@ public:
 	void meteor(sala_ponte *s);
 	void cosmic_dust();
 	void opt_salas();
+	void updateDistance();
+	int showDistance() const;
 };
 
 #endif

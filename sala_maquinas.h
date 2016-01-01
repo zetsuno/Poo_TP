@@ -3,12 +3,14 @@
 #include "sala.h"
 class sala_maquinas: public sala {
 
+	
 
 public:
+	
 	bool Chk_Props() const;
 	sala_maquinas();
 	virtual ~sala_maquinas();
-
+	
 };
 
 

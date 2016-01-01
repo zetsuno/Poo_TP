@@ -2,6 +2,7 @@
 
 nave::nave()
 {
+	distancia = DFT_DISTANCE;
 
 	for (unsigned int i = 0; i < 3; i++) {
 		for (unsigned int j = 0; j < 4; j++) {
@@ -177,7 +178,7 @@ void nave::cosmic_dust() {
 			}
 
 			// CONFIRMAÇÃO DE VALORES UNICOS (NAO HA ATAQUES NA MESMA SALA) - Este código comentado ainda ñ funciona
-			// Ainda tou a pensar em como implementar, (merda dos vetores ._.), O resto do código funciona bem
+			// Ainda tou a pensar em como implementar. O resto do código funciona bem
             // Para veres o resto do código a funcionar, vê o resultado do toString() da nave, :D
 
 			/*for (int conta_vetor = 0; conta_vetor < contador; conta_vetor += 2) {
@@ -192,4 +193,15 @@ void nave::cosmic_dust() {
 			salas[random_y][random_x]->setIntegridade(salas[random_y][random_x]->getIntegridade() - METEOR_COSMIC_DMG);
 		}
 	}
+}
+
+
+void nave::updateDistance() {
+
+	distancia += salas[0][0]->getDistance();
+	distancia += salas[2][0]->getDistance();
+}
+
+int nave::showDistance() const {
+	return this->distancia;
 }
