@@ -250,5 +250,12 @@ void Jogo::goto_sala(const int &id, const int &sala_x, const int &sala_y) {
 
 void Jogo::updateDistance() {
 
-	this->nave_jogo.updateDistance();
+	 this->nave_jogo.updateDistance();
+}
+
+int Jogo::getDistance() {
+
+	int dist;
+	dist = this->nave_jogo.showDistance();
+	return dist;
 }

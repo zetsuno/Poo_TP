@@ -20,6 +20,10 @@ int main(){
 		j.fazcomando();
 		j.avancaTurno();
 		j.updateDistance();
+		if (j.getDistance() == DFT_DISTANCE_TO_WIN) {
+			cout << "Parabéns, ganhou o jogo!" << endl;
+			return 1;
+		}
 		if (!EXIT)
 		{
 			

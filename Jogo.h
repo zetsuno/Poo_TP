@@ -32,6 +32,7 @@ public:
 	int getTurno();
 	void avancaTurno();
 	void updateDistance();
+	int getDistance();
 
 
 };
