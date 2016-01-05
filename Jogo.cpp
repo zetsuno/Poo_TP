@@ -199,7 +199,7 @@ void Jogo::inicia_jogo(const int &num_crew_mem)
 	{
 		crew_member *a = new crew_member(nome[i]);
 		cm.push_back(a);
-		nave_jogo.salas[1][3]->addEntidade(a);
+		nave_jogo.getRoom(1,3)->addEntidade(a);
 	}
 }
 
@@ -210,8 +210,8 @@ void Jogo::mostra(){
 	for (int i = 0; i < 3; i++)
 		for (int j = 0; j < 4; j++)
 		{
-			if (nave_jogo.salas[i][j] != NULL)
-			nave_jogo.salas[i][j]->mostra_info_sala(10 + j * 20, 10 + i * 6, c); //i=y é as linhas e j=x é as colunas
+			if (nave_jogo.getRoom(i,j) != NULL)
+			nave_jogo.getRoom(i,j)->mostra_info_sala(10 + j * 20, 10 + i * 6, c); //i=y é as linhas e j=x é as colunas
 		}
 }
 
@@ -229,15 +229,15 @@ void Jogo::cosmic_dust(){
 void Jogo::goto_sala(const int &id, const int &sala_x, const int &sala_y) {
 
 
-	if (this->nave_jogo.salas[sala_x][sala_y] == nullptr) {
+	if (this->nave_jogo.getRoom(sala_x,sala_y) == nullptr) {
 		cout << "A sala nao existe na nave!" << endl;
 		return;
 	}
 	else {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 4; j++) {
-				if (this->nave_jogo.salas[i][j] != nullptr) {
-					if (this->nave_jogo.salas[i][j]->move_pessoa(id, sala_x, sala_y) == true){
+				if (this->nave_jogo.getRoom(i,j) != nullptr) {
+					if (this->nave_jogo.getRoom(i,j)->move_pessoa(id, sala_x, sala_y) == true){
 						cout << "Pessoa movida com sucesso!" << endl;
 						break;
 					}

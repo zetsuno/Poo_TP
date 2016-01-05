@@ -147,14 +147,14 @@ void sala::setSaude(const int &saude) {
 		 
 		 if ((*p)->getID() == id) 
 		 {
-			 if (this == this->getNavePtr()->salas[new_sala_x][new_sala_y])
+			 if (this == this->getNavePtr()->getRoom(new_sala_x, new_sala_y))
 			 {
 				 cout << "Essa pessoa já se encontra nessa sala\n";
 				 return false;
 			 }
 			 else
 			 {
-				 this->getNavePtr()->salas[new_sala_x][new_sala_y]->pessoas_sala.push_back(*p);
+				 this->getNavePtr()->getRoom(new_sala_x, new_sala_y)->pessoas_sala.push_back(*p);
 				 this->pessoas_sala.erase(p);
 				 return true;
 			 }

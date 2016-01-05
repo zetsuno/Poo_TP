@@ -7,9 +7,10 @@ class nave
 {	
 
 	int distancia = 0;
+	sala* salas[3][4];
 
 public:
-	sala* salas[3][4];
+	
 	nave();
 	nave(const nave &n);
 	virtual ~nave();
@@ -22,6 +23,7 @@ public:
 	void opt_salas();
 	void updateDistance();
 	int showDistance() const;
+	sala * getRoom(const int &y, const int &x);
 };
 
 #endif

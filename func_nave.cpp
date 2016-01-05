@@ -205,3 +205,8 @@ void nave::updateDistance() {
 int nave::showDistance() const {
 	return this->distancia;
 }
+
+sala *nave::getRoom(const int &x, const int &y){
+
+	return salas[x][y];
+}
