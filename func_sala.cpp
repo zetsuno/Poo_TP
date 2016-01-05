@@ -17,7 +17,9 @@ sala::sala()
 
 sala::~sala()
 {	
-	
+	for (auto p = pessoas_sala.begin(); p != pessoas_sala.end(); p++) {
+		delete *p;
+	}
 	cout << " A a apagar uma sala" << endl;
 }
 
