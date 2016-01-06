@@ -4,6 +4,7 @@ sala_maquinas_dir::sala_maquinas_dir()
 {
 	this->setTipo("Propulsor_Direito");
 	this->propulsor = PROP_HP;
+	this->operada = false;
 	cout << " do tipo: Propulsor_Direito" << endl;
 }
 

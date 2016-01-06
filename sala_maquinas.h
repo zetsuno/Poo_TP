@@ -3,7 +3,7 @@
 #include "sala.h"
 class sala_maquinas: public sala {
 
-	
+	bool operada;
 
 public:
 	

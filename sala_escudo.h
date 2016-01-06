@@ -5,6 +5,7 @@
 class sala_escudo : public sala
 {
 	int escudo;
+	bool operada;
 public:
 	sala_escudo();
 	virtual ~sala_escudo();

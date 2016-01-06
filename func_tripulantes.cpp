@@ -3,8 +3,10 @@
 
 
 crew_member::crew_member(const string &nome):entidades(CREW_HP, CREW_ATTACK){
+	this->setAbilities();
 	this->tipo = "crewmember";
 	this->nome = nome;
+	this->setAbilities();
 	cout << " A construir uma entidade do tipo crewmember de nome " << nome << endl;
 }
 
@@ -37,12 +39,15 @@ void crew_member::respira() {
 		getSalaPointer()->setOxigenio(getSalaPointer()->getOxigenio() - 1);
 }
 
-void crew_member::reparador(const int a){
-	this->setVida(getVida() + a);
-}
 
 /*void crew_member::combatente(const int a) {
 
 	getSalaPointer()->atacaEnimigoRandom(a, *this);
 
 }*/
+
+void crew_member::setAbilities() {
+
+	reparador *novo = new reparador(CREW_REPAIR, this);
+	this->insertAbility(novo);
+}

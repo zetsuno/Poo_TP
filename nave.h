@@ -9,6 +9,8 @@ class nave
 	int distancia = 0;
 	sala* salas[3][4];
 
+	nave &operator=(const nave &nave) {};
+
 public:
 	
 	nave();

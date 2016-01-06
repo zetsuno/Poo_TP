@@ -6,6 +6,7 @@ sala_maquinas::sala_maquinas() {
 	novo->setPointerSala(this);
 	this->addEntidade(novo);
 	this->setTipo("Sala_Maquinas");
+	this->operada = false;
 	cout << " do tipo: Maquinas" << endl;
 }
 

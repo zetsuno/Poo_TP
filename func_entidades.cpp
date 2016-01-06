@@ -22,6 +22,9 @@ entidades::entidades(const entidades &old)
 
 entidades::~entidades()
 {
+	for (auto p = abilidades.begin(); p != abilidades.end(); p++) {
+		delete *p;
+	}
 	cout << "A destruir uma entidade" << endl;
 }
 
@@ -64,3 +67,22 @@ void entidades::setPointerSala(sala *room) {
 }
 
 
+void entidades::insertAbility(abils *nova) {
+
+	this->abilidades.push_back(nova);
+}
+
+string entidades::showAbilities() const {
+
+	ostringstream os;
+	for (auto p = abilidades.begin(); p != abilidades.end(); p++) {
+		os << "*" << (*p)->toString() << endl;
+	}
+	return os.str();
+}
+
+string entidades::toString() const {
+
+	ostringstream os;
+	return os.str();
+}

@@ -7,6 +7,7 @@ sala_escudo::sala_escudo()
 	this->addEntidade(novo);
 	this->setTipo("Escudo");
 	this->escudo = SHIP_SHIELD;
+	this->operada = false;
 	cout << " do tipo: Escudo" << endl;
 
 }

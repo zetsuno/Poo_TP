@@ -12,4 +12,5 @@
 #include "entidades.h"
 #include "defines.h"
 #include "sala_beliche.h"
+#include "abilidades.h"
 #endif

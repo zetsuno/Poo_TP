@@ -39,7 +39,7 @@
 #define SALA_INT 100
 
 /* =====  CREWMEMBERS =====*/
-#define CREW_REGEN 1
+#define CREW_REPAIR 1
 #define CREW_ATTACK 1
 #define CREW_HP 5
 

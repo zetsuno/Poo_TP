@@ -17,6 +17,8 @@ class Jogo
 	vector<crew_member*> cm;
 	int turno;
 
+	Jogo(const Jogo &jogo) {};
+	Jogo &operator=(const Jogo &j) {};
 
 public:
 	void inicia_jogo(const int &num_crew_mem);

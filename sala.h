@@ -14,8 +14,9 @@ class sala
 	bool brecha, fogo, CC;
 	vector <entidades *> pessoas_sala;
 	nave * nave_ptr;
-	friend class sala_maquinas_dir;
-	friend class sala_maquinas_esq;
+	sala(const sala &s) {};
+	sala &operator=(const sala &s) {};
+	
 	
 
 public:

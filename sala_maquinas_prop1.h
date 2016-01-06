@@ -6,6 +6,7 @@ class sala_maquinas_esq: public sala
 {
 	int propulsor;  //ESQUERDO
 	sala *sala_ptr;
+	bool operada;
 public:
 	sala_maquinas_esq();
 	virtual ~sala_maquinas_esq();
