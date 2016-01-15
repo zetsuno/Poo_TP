@@ -211,7 +211,6 @@ void nave::cosmic_dust() {
 	}
 }
 
-<<<<<<< HEAD
 bool nave::AtaquePirata(){
 
 	int random_sala_x, random_sala_y, random_piratas, random;
@@ -267,8 +266,6 @@ void nave::PrimeiroAtaquePirata()
 	
 }
 
-=======
->>>>>>> origin/master
 
 void nave::updateDistance() {
 

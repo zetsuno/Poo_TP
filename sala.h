@@ -15,12 +15,9 @@ class sala
 	int id, saude, oxigenio, integridade;
 	bool brecha, fogo, CC;
 	vector <entidades *> pessoas_sala;
-<<<<<<< HEAD
 	vector <pirata *> piratas;
 	vector <xenomorfo*> xenomorfos;
 
-=======
->>>>>>> origin/master
 	nave * nave_ptr;
 	sala(const sala &s) {};
 	sala &operator=(const sala &s) {};

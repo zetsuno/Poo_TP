@@ -14,9 +14,6 @@
 #include "entidades.h"
 #include "defines.h"
 #include "sala_beliche.h"
-<<<<<<< HEAD
 #include "sala_raio_laser.h"
-=======
->>>>>>> origin/master
 #include "abilidades.h"
 #endif

@@ -15,10 +15,7 @@ class Jogo
 	//crew_member *a = new crew_member("A");
 	vector<crew_member*> cm;
 	int turno;
-<<<<<<< HEAD
 	
-=======
->>>>>>> origin/master
 
 	Jogo(const Jogo &jogo) {};
 	Jogo &operator=(const Jogo &j) {};
@@ -38,12 +35,8 @@ public:
 	void avancaTurno();
 	void updateDistance();
 	int getDistance();
-<<<<<<< HEAD
 	bool AtaquePirata();
 	void PrimeiroAtaquePirata();
-=======
-
->>>>>>> origin/master
 
 };
 

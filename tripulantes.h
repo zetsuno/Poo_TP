@@ -15,10 +15,7 @@ public:
 	string getNome() const;
 	void respira();
 	void setAbilities();
-<<<<<<< HEAD
 	int getNewID()const;
-=======
->>>>>>> origin/master
 	
 };
 

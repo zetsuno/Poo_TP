@@ -12,10 +12,7 @@ class entidades
 	int dano, id;
 	sala *ondeestou_entidade;
 	vector <abils *> abilidades;
-<<<<<<< HEAD
 	
-=======
->>>>>>> origin/master
 
 public:
 	entidades(int vida, int dano);
@@ -34,10 +31,7 @@ public:
 	void insertAbility(abils *abil);
 	string showAbilities() const;
 	virtual string toString() const;
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 	
 	
 
