@@ -10,6 +10,7 @@ Jogo::~Jogo()
 }
 
 void Jogo::avancaTurno() {
+<<<<<<< HEAD
 
 	int random;
 
@@ -32,6 +33,8 @@ void Jogo::avancaTurno() {
 		}
 	}
 
+=======
+>>>>>>> origin/master
 	this->turno++;
 }
 int Jogo::getTurno() {
@@ -223,8 +226,11 @@ void Jogo::inicia_jogo(const int &num_crew_mem)
 		crew_member *a = new crew_member(nome[i]);
 		cm.push_back(a);
 		nave_jogo.getRoom(1,3)->addEntidade(a);
+<<<<<<< HEAD
 
 		
+=======
+>>>>>>> origin/master
 	}
 	
 }
@@ -237,7 +243,11 @@ void Jogo::mostra(){
 		for (int j = 0; j < 4; j++)
 		{
 			if (nave_jogo.getRoom(i,j) != NULL)
+<<<<<<< HEAD
 			nave_jogo.getRoom(i,j)->mostra_info_sala(10 + j * 20, 10 + i * 8, c); //i=y é as linhas e j=x é as colunas // i* -> move no y cima e baixo
+=======
+			nave_jogo.getRoom(i,j)->mostra_info_sala(10 + j * 20, 10 + i * 6, c); //i=y é as linhas e j=x é as colunas
+>>>>>>> origin/master
 		}
 }
 

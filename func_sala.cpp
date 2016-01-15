@@ -20,6 +20,7 @@ sala::~sala()
 	for (auto p = pessoas_sala.begin(); p != pessoas_sala.end(); p++) {
 		delete *p;
 	}
+<<<<<<< HEAD
 
 	for (auto p1 = piratas.begin(); p1 != piratas.end(); p1++) {
 		delete *p1;
@@ -29,6 +30,8 @@ sala::~sala()
 		delete *x;
 	}
 
+=======
+>>>>>>> origin/master
 	cout << " A a apagar uma sala" << endl;
 }
 
@@ -200,9 +203,12 @@ void sala::setSaude(const int &saude) {
 	 return 0;
  }
 
+<<<<<<< HEAD
 
  int sala::getNumeroTripulantes()const{
 
 	 return pessoas_sala.size();
  }
 
+=======
+>>>>>>> origin/master

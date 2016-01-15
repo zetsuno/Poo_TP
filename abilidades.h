@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+#pragma once
+
+>>>>>>> origin/master
 #ifndef ABILIDADES_H
 #define ABILIDADES_H
 #include "utils.h"

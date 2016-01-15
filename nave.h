@@ -11,8 +11,11 @@ class nave
 
 	int distancia = 0;
 	sala* salas[3][4];
+<<<<<<< HEAD
 	sala_raio_laser* raio_laser = nullptr;
 	sala_escudo* shield = nullptr;
+=======
+>>>>>>> origin/master
 
 	nave &operator=(const nave &nave) {};
 
@@ -31,10 +34,13 @@ public:
 	void updateDistance();
 	int showDistance() const;
 	sala * getRoom(const int &y, const int &x);
+<<<<<<< HEAD
 	bool AtaquePirata();
 	void PrimeiroAtaquePirata();
 
 
+=======
+>>>>>>> origin/master
 };
 
 #endif
