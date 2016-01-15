@@ -5,6 +5,7 @@
 class sala_escudo : public sala
 {
 	int escudo;
+	bool operada;
 public:
 	sala_escudo();
 	virtual ~sala_escudo();
@@ -12,6 +13,7 @@ public:
 	void setEscudo(const int &escudo);
 	string toString() const;
 	void disableShield();
+	void mostra_info_sala(int x, int y, Consola &c);
 
 };
 

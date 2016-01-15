@@ -9,7 +9,8 @@
 #include <ctime>
 
 /* ==== MISC =====*/
-
+#define DFT_DISTANCE_TO_WIN 4000
+#define DFT_DISTANCE -200
 #define ZERO 0
 #define DIFICULTY_LEVEL_3 3
 #define DIFICULTY_LEVEL_2 2
@@ -38,7 +39,7 @@
 #define SALA_INT 100
 
 /* =====  CREWMEMBERS =====*/
-#define CREW_REGEN 1
+#define CREW_REPAIR 1
 #define CREW_ATTACK 1
 #define CREW_HP 5
 

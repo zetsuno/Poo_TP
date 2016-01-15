@@ -2,6 +2,8 @@
 
 static int id_enti = 1;
 
+
+
 entidades::entidades(int vida, int dano)
 {
 	this->vida = vida;
@@ -9,6 +11,7 @@ entidades::entidades(int vida, int dano)
 	this->combate_flag = DEFAULT_CBT_FLAG;
 	this->id = id_enti;
 	id_enti++;
+
 	cout << "A construir uma entidade..." << endl;
 }
 entidades::entidades(const entidades &old)
@@ -22,6 +25,9 @@ entidades::entidades(const entidades &old)
 
 entidades::~entidades()
 {
+	for (auto p = abilidades.begin(); p != abilidades.end(); p++) {
+		delete *p;
+	}
 	cout << "A destruir uma entidade" << endl;
 }
 
@@ -64,3 +70,22 @@ void entidades::setPointerSala(sala *room) {
 }
 
 
+void entidades::insertAbility(abils *nova) {
+
+	this->abilidades.push_back(nova);
+}
+
+string entidades::showAbilities() const {
+
+	ostringstream os;
+	for (auto p = abilidades.begin(); p != abilidades.end(); p++) {
+		os << "*" << (*p)->toString() << endl;
+	}
+	return os.str();
+}
+
+string entidades::toString() const {
+
+	ostringstream os;
+	return os.str();
+}

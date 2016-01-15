@@ -3,6 +3,8 @@
 
 sala_vida::sala_vida()
 {
+	this->brecha = false;
+	this->operada = false;
 	this->setTipo("Sala_Vida");
 	cout << " do tipo: Vida" << endl;
 }

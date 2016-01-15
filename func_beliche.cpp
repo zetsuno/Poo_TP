@@ -6,6 +6,9 @@ sala_beliche::sala_beliche() {
 	crew_member *p = new crew_member("Ze Nando");
 	p->setPointerSala(this);
 	this->addEntidade(p);
+
+	xenomorfo *x = new xenomorfo("X");
+	this->addXenomorfo(x);
 }
 
 sala_beliche::~sala_beliche() {

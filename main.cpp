@@ -6,6 +6,7 @@ int main(){
 	Jogo j;
 	Consola c;
 	
+	
 	//crew_member ze("ze nando");
 	//cout << ze.toString();
 	//crew_member nando(ze);
@@ -13,14 +14,17 @@ int main(){
 	bool EXIT = false;
 	while (!EXIT)
 	{
-<<<<<<< HEAD
 		j.meu_Clean();
-		//c.clrscr();
-=======
->>>>>>> origin/master
+		c.clrscr();
 		j.mostra();
 		EXIT = j.lecomando();
 		j.fazcomando();
+		j.avancaTurno();
+		j.updateDistance();
+		if (j.getDistance() == DFT_DISTANCE_TO_WIN) {
+			cout << "Parabéns, ganhou o jogo!" << endl;
+			return 1;
+		}
 		if (!EXIT)
 		{
 			

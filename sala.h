@@ -2,9 +2,11 @@
 #define SALA_H
 #include "entidades.h"
 #include "consola.h"
+#include "pirata.h"
+#include "xenomorfo.h"
 
 
-static int id_sala = 1;
+
 
 class nave;
 class sala
@@ -13,8 +15,13 @@ class sala
 	int id, saude, oxigenio, integridade;
 	bool brecha, fogo, CC;
 	vector <entidades *> pessoas_sala;
-	nave * nave_ptr;
+	vector <pirata *> piratas;
+	vector <xenomorfo*> xenomorfos;
 
+	nave * nave_ptr;
+	sala(const sala &s) {};
+	sala &operator=(const sala &s) {};
+	
 	
 
 public:
@@ -33,8 +40,15 @@ public:
 	void setNavePtr(nave *n);
 	nave * getNavePtr() const;
 	void addEntidade(entidades *e);
+	void addPirata(pirata *p);
+	void addXenomorfo(xenomorfo *x);
+	int getNumeroTripulantes()const;
+
 	virtual void mostra_info_sala(int x, int y, Consola &c);
 	bool move_pessoa(const int &id, const int &new_sala_x, const int &new_sala_y);
+	virtual int getDistance();
 };
+
+	
 
 #endif

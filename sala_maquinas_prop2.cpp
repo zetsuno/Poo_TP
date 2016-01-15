@@ -4,6 +4,7 @@ sala_maquinas_dir::sala_maquinas_dir()
 {
 	this->setTipo("Propulsor_Direito");
 	this->propulsor = PROP_HP;
+	this->operada = false;
 	cout << " do tipo: Propulsor_Direito" << endl;
 }
 
@@ -28,4 +29,9 @@ string sala_maquinas_dir::toString() const {
 	os << "Sala: Oxigenio: " << this->getOxigenio() << " | Integridade: " << this->getIntegridade() << endl;
 
 	return os.str();
+}
+
+int sala_maquinas_dir::getDistance() {
+
+	return this->propulsor;
 }

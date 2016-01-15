@@ -2,6 +2,7 @@
 
 nave::nave()
 {
+	distancia = DFT_DISTANCE;
 
 	for (unsigned int i = 0; i < 3; i++) {
 		for (unsigned int j = 0; j < 4; j++) {
@@ -65,9 +66,25 @@ void nave::opt_salas() {
 					}
 				}
 			}
+		}
+
+			if (opcao_sala == "raiolaser" || opcao_sala == "Raio laser") {
+				for (int i = 0; i < 3; i++) {
+					for (int j = 0; j < 4; j++) {
+						if (salas[i][j] == nullptr) {
+							raio_laser = new sala_raio_laser; 
+							salas[i][j] = raio_laser;
+							salas[i][j]->setNavePtr(this);
+							add_flag = 1;
+							salas_livres--;
+							goto end_cycle;
+						}
+					}
+				}
+			}
 		end_cycle:
 
-			if (add_flag != 1) 
+			if (add_flag != 1){
 				cout << "[ERRO] - Sala nao adicionada, falta de espaco na nave possivel?..." << endl;
 			}
 			else {
@@ -177,7 +194,7 @@ void nave::cosmic_dust() {
 			}
 
 			// CONFIRMAÇÃO DE VALORES UNICOS (NAO HA ATAQUES NA MESMA SALA) - Este código comentado ainda ñ funciona
-			// Ainda tou a pensar em como implementar, (merda dos vetores ._.), O resto do código funciona bem
+			// Ainda tou a pensar em como implementar. O resto do código funciona bem
             // Para veres o resto do código a funcionar, vê o resultado do toString() da nave, :D
 
 			/*for (int conta_vetor = 0; conta_vetor < contador; conta_vetor += 2) {
@@ -192,4 +209,75 @@ void nave::cosmic_dust() {
 			salas[random_y][random_x]->setIntegridade(salas[random_y][random_x]->getIntegridade() - METEOR_COSMIC_DMG);
 		}
 	}
+}
+
+bool nave::AtaquePirata(){
+
+	int random_sala_x, random_sala_y, random_piratas, random;
+
+	srand((unsigned int)time(NULL)); //Seed = Hora
+
+	random = rand() % (5 - 3 + 1) + 3;
+
+	if (raio_laser != nullptr)
+	{
+		if (raio_laser->getOperada() == true)
+		{
+			return false;
+		}
+	}
+
+	random_sala_x = rand() % ((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO;
+	random_sala_y = rand() % ((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO;
+
+	while (salas[random_sala_y][random_sala_x] == nullptr) {
+		random_sala_x = rand() % ((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO;
+		random_sala_y = rand() % ((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO;
+	}
+
+	for (int i = 0; i < random; i++)
+	{
+		pirata *pa = new pirata("P");
+		pa->setPointerSala(salas[random_sala_y][random_sala_x]);
+		salas[random_sala_y][random_sala_x]->addPirata(pa);
+
+	}	
+
+
+	return true;
+
+}
+
+void nave::PrimeiroAtaquePirata()
+{
+	int random_sala_x, random_sala_y, random_piratas, random;
+
+	srand((unsigned int)time(NULL)); //Seed = Hora
+
+	random = rand() % (60 - 30 + 1) + 30;
+
+	if (shield != nullptr)
+		if (shield->getEscudo() == 100)
+		{
+			
+			shield->setEscudo(random);
+
+		}
+	
+}
+
+
+void nave::updateDistance() {
+
+	distancia += salas[0][0]->getDistance();
+	distancia += salas[2][0]->getDistance();
+}
+
+int nave::showDistance() const {
+	return this->distancia;
+}
+
+sala *nave::getRoom(const int &x, const int &y){
+
+	return salas[x][y];
 }

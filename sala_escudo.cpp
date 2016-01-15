@@ -7,6 +7,7 @@ sala_escudo::sala_escudo()
 	this->addEntidade(novo);
 	this->setTipo("Escudo");
 	this->escudo = SHIP_SHIELD;
+	this->operada = false;
 	cout << " do tipo: Escudo" << endl;
 
 }
@@ -23,7 +24,7 @@ int  sala_escudo::getEscudo() const{
 
 void sala_escudo::setEscudo(const int &escudo){
 
-	this->escudo = escudo;
+	this->escudo -= escudo;
 }
 
 string sala_escudo::toString() const {
@@ -38,4 +39,17 @@ string sala_escudo::toString() const {
 void sala_escudo::disableShield() {
 
 	this->escudo = NULL;
+}
+
+void sala_escudo::mostra_info_sala(int x, int y, Consola &c)
+{
+
+	sala::mostra_info_sala(x, y, c);
+
+	c.gotoxy(x + 8, y + 2);
+
+	cout << "E:" << this->escudo;
+
+	c.gotoxy(x + 8, y + 3);
+
 }

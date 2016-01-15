@@ -5,6 +5,8 @@
 class sala_maquinas_esq: public sala
 {
 	int propulsor;  //ESQUERDO
+	sala *sala_ptr;
+	bool operada;
 public:
 	sala_maquinas_esq();
 	virtual ~sala_maquinas_esq();
@@ -12,6 +14,7 @@ public:
 	void setPropulsor(const int &propulsor);
 	string toString() const;
 	void mostra_info_sala(int x, int y, Consola &c);
+	int getDistance();
 
 };
 

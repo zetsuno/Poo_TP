@@ -5,6 +5,7 @@
 class sala_vida: public sala
 {
 	bool brecha;
+	bool operada;
 
 public:
 	sala_vida();

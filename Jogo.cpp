@@ -1,14 +1,42 @@
 #include "Jogo.h"
 
-
 Jogo::Jogo()
 {
+	this->turno = 0;
 }
 
 Jogo::~Jogo()
 {
 }
 
+void Jogo::avancaTurno() {
+
+	int random;
+
+	if (turno % 5 == 0)
+	{
+		PrimeiroAtaquePirata();
+
+		if (this->AtaquePirata() == true)
+		{
+
+			
+			c.gotoxy(0, 36);
+			cout << "Foi atacado por piratas\n";
+		}
+
+		else
+		{
+			c.gotoxy(0, 36);
+			cout << "Conseguiu afastar os piratas\n";
+		}
+	}
+
+	this->turno++;
+}
+int Jogo::getTurno() {
+	return this->turno;
+}
 
 bool Jogo::lecomando()
 {
@@ -104,7 +132,7 @@ bool Jogo::lecomando()
 		<< (char)196 << (char)217; //linha de baixo das informações
 	
 	c.gotoxy(0, 36);
-	cout << (char)179 << "INFORMACOES:";
+	cout << (char)179 << "[TURNO:" << this->getTurno() <<"]"" INFORMACOES:\nDistancia percorrida: " << this->nave_jogo.showDistance();
 	c.gotoxy(0, 37);
 	cout << (char)179;
 	c.gotoxy(0, 38);
@@ -123,7 +151,6 @@ bool Jogo::lecomando()
 	{
 		return true;
 	}
-<<<<<<< HEAD
 
 
 	c.gotoxy(1, 37);
@@ -135,13 +162,10 @@ bool Jogo::lecomando()
 	}
 	c.gotoxy(1, 37);
 
-=======
->>>>>>> origin/master
 	return false;
 
 }
 
-<<<<<<< HEAD
 void Jogo::meu_Clean()
 {
 	//c.gotoxy(0,4);
@@ -159,8 +183,6 @@ void Jogo::meu_Clean()
 	
 }
 
-=======
->>>>>>> origin/master
 
 void Jogo::fazcomando()
 {
@@ -173,7 +195,6 @@ void Jogo::fazcomando()
 
 	if (str == "move")
 	{
-<<<<<<< HEAD
 		istringstream is(comando);
 		
 		is >> str >> id_ent >> sala_x >> sala_y;
@@ -183,17 +204,6 @@ void Jogo::fazcomando()
 			//c.gotoxy(10, 1);
 			cout << "Erro no tamanho da sala!" << endl;
 			//lecomando();
-=======
-		istringstream is;
-		
-		is >> str >> id_ent >> sala_x >> sala_y;
-
-		if (sala_x <= 0 || sala_x > 4 || sala_y <= 0 || sala_y > 3)
-		{
-			c.gotoxy(10, 1);
-			cout << "Erro no tamanho da sala!" << endl;
-			lecomando();
->>>>>>> origin/master
 		}
 		else
 			goto_sala(id_ent, sala_x, sala_y);
@@ -208,10 +218,15 @@ void Jogo::inicia_jogo(const int &num_crew_mem)
 
 	for (int i = 0; i < num_crew_mem; i++)
 	{
+		
+
 		crew_member *a = new crew_member(nome[i]);
 		cm.push_back(a);
-		nave_jogo.salas[1][3]->addEntidade(a);
+		nave_jogo.getRoom(1,3)->addEntidade(a);
+
+		
 	}
+	
 }
 
 void Jogo::mostra(){
@@ -221,8 +236,8 @@ void Jogo::mostra(){
 	for (int i = 0; i < 3; i++)
 		for (int j = 0; j < 4; j++)
 		{
-			if (nave_jogo.salas[i][j] != NULL)
-			nave_jogo.salas[i][j]->mostra_info_sala(10 + j * 20, 10 + i * 6, c); //i=y é as linhas e j=x é as colunas
+			if (nave_jogo.getRoom(i,j) != NULL)
+			nave_jogo.getRoom(i,j)->mostra_info_sala(10 + j * 20, 10 + i * 8, c); //i=y é as linhas e j=x é as colunas // i* -> move no y cima e baixo
 		}
 }
 
@@ -237,30 +252,46 @@ void Jogo::cosmic_dust(){
 	this->nave_jogo.cosmic_dust();
 }
 
+bool Jogo::AtaquePirata(){
+
+	return this->nave_jogo.AtaquePirata();
+}
+
+void Jogo::PrimeiroAtaquePirata()
+{
+	return this->nave_jogo.PrimeiroAtaquePirata();
+}
+
 void Jogo::goto_sala(const int &id, const int &sala_x, const int &sala_y) {
 
 
-<<<<<<< HEAD
-	if (this->nave_jogo.salas[sala_x][sala_y] == nullptr) {
-=======
-	if (this->nave_jogo.salas[sala_y][sala_x] == nullptr) {
->>>>>>> origin/master
+	if (this->nave_jogo.getRoom(sala_x,sala_y) == nullptr) {
 		cout << "A sala nao existe na nave!" << endl;
 		return;
 	}
 	else {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 4; j++) {
-				if (this->nave_jogo.salas[i][j] != nullptr) {
-					if (this->nave_jogo.salas[i][j]->move_pessoa(id, sala_x, sala_y) == true){
+				if (this->nave_jogo.getRoom(i,j) != nullptr) {
+					if (this->nave_jogo.getRoom(i,j)->move_pessoa(id, sala_x, sala_y) == true){
 						cout << "Pessoa movida com sucesso!" << endl;
-<<<<<<< HEAD
 						break;
-=======
->>>>>>> origin/master
 					}
 				}
 			}
 		}
 	}
+}
+
+
+void Jogo::updateDistance() {
+
+	 this->nave_jogo.updateDistance();
+}
+
+int Jogo::getDistance() {
+
+	int dist;
+	dist = this->nave_jogo.showDistance();
+	return dist;
 }

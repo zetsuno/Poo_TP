@@ -4,6 +4,7 @@ sala_maquinas_esq::sala_maquinas_esq()
 {
 	this->setTipo("Propulsor_Esquerdo");
 	this->propulsor = PROP_HP;
+	this->operada = false;
 	cout << " do tipo: Propulsor_Esquerdo" << endl;
 }
 
@@ -41,4 +42,9 @@ void sala_maquinas_esq::mostra_info_sala(int x, int y,Consola &c)
 
 	c.gotoxy(x+8,y+3);
 	
+}
+
+int sala_maquinas_esq::getDistance() {
+
+	return this->propulsor;
 }

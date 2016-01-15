@@ -9,7 +9,11 @@
 #include "Sala_ponte.h"
 #include "sala_vida.h"
 #include "tripulantes.h"
+#include "pirata.h"
+#include "xenomorfo.h"
 #include "entidades.h"
 #include "defines.h"
 #include "sala_beliche.h"
+#include "sala_raio_laser.h"
+#include "abilidades.h"
 #endif

@@ -14,7 +14,8 @@ public:
 	string toString() const;
 	string getNome() const;
 	void respira();
-	void reparador(const int a = 1);
+	void setAbilities();
+	int getNewID()const;
 	
 };
 

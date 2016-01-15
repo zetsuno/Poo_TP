@@ -3,13 +3,21 @@
 #include "sala.h"
 
 class sala_ponte;
+class sala_raio_laser;
+class sala_escudo;
+
 class nave
 {	
 
-	
+	int distancia = 0;
+	sala* salas[3][4];
+	sala_raio_laser* raio_laser = nullptr;
+	sala_escudo* shield = nullptr;
+
+	nave &operator=(const nave &nave) {};
 
 public:
-	sala* salas[3][4];
+	
 	nave();
 	nave(const nave &n);
 	virtual ~nave();
@@ -20,6 +28,13 @@ public:
 	void meteor(sala_ponte *s);
 	void cosmic_dust();
 	void opt_salas();
+	void updateDistance();
+	int showDistance() const;
+	sala * getRoom(const int &y, const int &x);
+	bool AtaquePirata();
+	void PrimeiroAtaquePirata();
+
+
 };
 
 #endif

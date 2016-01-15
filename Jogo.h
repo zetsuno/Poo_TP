@@ -6,15 +6,19 @@
 
 
 
-
-
 class Jogo
 {
 	string comando;
 	Consola c;
 	nave nave_jogo; // quando crio jogo crio uma nave
+	
 	//crew_member *a = new crew_member("A");
 	vector<crew_member*> cm;
+	int turno;
+	
+
+	Jogo(const Jogo &jogo) {};
+	Jogo &operator=(const Jogo &j) {};
 
 public:
 	void inicia_jogo(const int &num_crew_mem);
@@ -26,11 +30,13 @@ public:
 	void cosmic_dust();
 	Jogo();
 	virtual ~Jogo();
-<<<<<<< HEAD
 	void meu_Clean();
-=======
->>>>>>> origin/master
-
+	int getTurno();
+	void avancaTurno();
+	void updateDistance();
+	int getDistance();
+	bool AtaquePirata();
+	void PrimeiroAtaquePirata();
 
 };
 
