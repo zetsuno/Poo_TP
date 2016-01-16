@@ -24,7 +24,7 @@ int  sala_escudo::getEscudo() const{
 
 void sala_escudo::setEscudo(const int &escudo){
 
-	this->escudo -= escudo;
+	this->escudo = escudo;
 }
 
 string sala_escudo::toString() const {

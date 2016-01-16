@@ -39,6 +39,16 @@ string xenomorfo::getNome() const {
 	return this->nome;
 }
 
+int xenomorfo::getMaxVida() const {
+	return 0;
+}
+int xenomorfo::getExoSkel() const {
+	return 0;
+}
+
+void xenomorfo::setExoSkel(const int &value) {
+
+}
 
 void xenomorfo::respira() {
 

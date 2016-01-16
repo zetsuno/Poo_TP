@@ -19,7 +19,7 @@ string abils::toString() const {
 	return os.str();
 }
 
-
+/*================  REPARADOR  =================*/
 reparador::reparador(const int &value, entidades *enti) : abils(enti) {
 
 	this->value = value;
@@ -39,3 +39,122 @@ string reparador::toString() const{
 	return temp;
 }
 reparador::~reparador() {}
+
+
+/*====================  RESPIRA  ====================*/
+respira::respira(entidades *enti): abils(enti){}
+respira::~respira(){}
+string respira::toString() const{
+	string temp = "Respira ";
+	return temp;
+}
+void respira::execAbility() {
+	if (this->getEntiPointer()->getSalaPointer()->getOxigenio() > 0) {
+		this->getEntiPointer()->getSalaPointer()->setOxigenio(getEntiPointer()->getSalaPointer()->getOxigenio() - 1);
+	}
+	else
+		this->getEntiPointer()->setVida(this->getEntiPointer()->getVida() - 1);
+
+
+}
+
+/*====================FLAMEJANTE========================*/
+
+flamejante::flamejante(entidades *enti): abils(enti){}
+flamejante::~flamejante(){}
+string flamejante::toString() const {
+	string temp = "Flamejante ";
+	return temp;
+}
+void flamejante::execAbility() {
+
+	if (this->getEntiPointer()->getSalaPointer()->getOxigenio() < 5) {
+		this->getEntiPointer()->getSalaPointer()->setOxigenio(ZERO);
+	}
+	else {
+		this->getEntiPointer()->getSalaPointer()->setOxigenio(this->getEntiPointer()->getSalaPointer()->getOxigenio() - 5);
+	}
+
+}
+
+/*=================TOXICO=====================*/
+
+toxico::toxico(const int &value, entidades *enti) : abils(enti) {
+	this->value = value;
+}
+toxico::~toxico(){}
+string toxico::toString() const{
+	string temp = "Toxico ";
+	return temp;
+}
+void toxico::execAbility() {
+	this->getEntiPointer()->getSalaPointer()->dmgNonToxic(value, this->getEntiPointer()->getSalaPointer());
+}
+
+
+/*================INDECISO===================*/
+indeciso::indeciso(entidades *enti): abils(enti) {}
+indeciso::~indeciso() {};
+string indeciso::toString() const{
+	string temp = "Indeciso ";
+	return temp;
+}
+
+/*==============MISTERIOSO================*/
+
+misterioso::misterioso(entidades *enti) : abils(enti) {}
+misterioso::~misterioso(){}
+string misterioso::toString() const{
+	string temp = "Misterioso ";
+	return temp;
+}
+void misterioso::execAbility(){
+	int flag = 0, aux_num;
+	aux_num = rand() % 100 + 1;
+		if (aux_num <= 25) {
+			if (flag == 1) {
+				this->getEntiPointer()->getSalaPointer()->show(this->getEntiPointer());
+				flag = 0;
+			}
+			if (flag == 0) {
+				this->getEntiPointer()->getSalaPointer()->hide(this->getEntiPointer());
+				flag = 1;
+			}
+		}
+}
+
+/*=============REGENERADOR==========*/
+regenerador::regenerador(const int &value, entidades *enti) : abils(enti) {
+	this->value = value;
+}
+regenerador::~regenerador(){}
+string regenerador::toString() const{
+	string temp = "Regenerador ";
+	return temp;
+}
+void regenerador::execAbility(){
+
+	if ((this->getEntiPointer()->getVida() + value) > this->getEntiPointer()->getMaxVida()) {
+		this->getEntiPointer()->setVida(this->getEntiPointer()->getMaxVida());
+	}
+	else {
+		this->getEntiPointer()->setVida(this->getEntiPointer()->getVida() + value);
+	}
+}
+
+/*==============EXOESQEUELETO============*/
+
+exoskeleton::exoskeleton(const int &value, entidades *enti) : abils(enti) {
+	this->value = value;
+}
+exoskeleton::~exoskeleton(){}
+string exoskeleton::toString() const{
+	string temp = "Exoesqueleto ";
+	return temp;
+}
+int exoskeleton::getExoSkel() const{
+	return this->value;
+}
+void exoskeleton::setExoSkel(const int &value) {
+	this->value = value;
+}

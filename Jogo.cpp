@@ -19,8 +19,7 @@ void Jogo::avancaTurno() {
 
 		if (this->AtaquePirata() == true)
 		{
-
-			
+	
 			c.gotoxy(0, 36);
 			cout << "Foi atacado por piratas\n";
 		}

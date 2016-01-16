@@ -30,7 +30,7 @@ public:
 	void opt_salas();
 	void updateDistance();
 	int showDistance() const;
-	sala * getRoom(const int &x, const int &y);
+	sala * getRoom(const int &y, const int &x);
 	bool AtaquePirata();
 	void PrimeiroAtaquePirata();
 

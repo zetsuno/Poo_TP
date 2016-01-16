@@ -40,6 +40,9 @@ string pirata::getNome() const {
 	return this->nome;
 }
 
+int pirata::getMaxVida() const {
+	return PIRATE_HP;
+}
 void pirata::respira() {
 
 	if (getSalaPointer()->getOxigenio() <= 0)

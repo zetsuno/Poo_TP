@@ -10,13 +10,18 @@ nave::nave()
 		}
 	}
 	/* ==== CRIA SALAS DEFAULT ==== */     /* ==== NAVE_PTR A APONTAR PARA A NAVE ==== */
+	
 
 	salas[0][0] = new sala_maquinas_esq();     salas[0][0]->setNavePtr(this);
 	salas[1][0] = new sala_maquinas();         salas[1][0]->setNavePtr(this);
 	salas[1][1] = new sala_vida();             salas[1][1]->setNavePtr(this);
-	salas[1][2] = new sala_escudo();           salas[1][2]->setNavePtr(this);
+	shield = new sala_escudo();
+	salas[1][2] = shield;					   salas[1][2]->setNavePtr(this);
 	salas[1][3] = new sala_ponte();            salas[1][3]->setNavePtr(this);
 	salas[2][0] = new sala_maquinas_dir();     salas[2][0]->setNavePtr(this);
+
+	
+	
 
 	opt_salas();
 
@@ -250,20 +255,53 @@ bool nave::AtaquePirata(){
 
 void nave::PrimeiroAtaquePirata()
 {
-	int random_sala_x, random_sala_y, random_piratas, random;
+	int random_sala_x, random_sala_y, random_piratas, random, dano ,total;
 
 	srand((unsigned int)time(NULL)); //Seed = Hora
 
 	random = rand() % (60 - 30 + 1) + 30;
 
-	if (shield != nullptr)
-		if (shield->getEscudo() == 100)
-		{
-			
-			shield->setEscudo(random);
 
-		}
+	if (shield != nullptr)
+		/*if (shield->getEscudo() == 100)
+		{
+			shield->setEscudo(shield->getEscudo() - random);
+		}*/
 	
+		if (shield->getEscudo() - random >= 0)
+		{
+			shield->setEscudo(shield->getEscudo() - random);
+		}
+
+		else
+		{
+			dano = random - shield->getEscudo();
+			shield->setEscudo(0);
+			
+			random_sala_x = rand() % ((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO;
+			random_sala_y = rand() % ((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO;
+
+			while (salas[random_sala_y][random_sala_x] == nullptr) {
+				random_sala_x = rand() % ((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO;
+				random_sala_y = rand() % ((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO;
+			}
+			
+			total = salas[random_sala_y][random_sala_x]->getIntegridade() - dano;
+			
+
+			if (total <= 0)
+			{
+				salas[random_sala_y][random_sala_x]->setIntegridade(0);
+
+				// FALTA METODO PARA TERMINAR O JOGO QUANDO SALA É DESTRUIDA
+			}
+
+			else
+			{
+				salas[random_sala_y][random_sala_x]->setIntegridade(total);
+			}
+		}
+
 }
 
 
@@ -278,6 +316,7 @@ int nave::showDistance() const {
 }
 
 sala *nave::getRoom(const int &x, const int &y){
-
-	return salas[x][y];
+	
+		return salas[x][y];
+	
 }

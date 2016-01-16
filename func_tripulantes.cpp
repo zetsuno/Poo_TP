@@ -39,7 +39,9 @@ string crew_member::getNome() const {
 	return this->nome;
 }
 
-
+int crew_member::getMaxVida() const {
+	return CREW_HP;
+}
 void crew_member::respira() {
 
 	if (getSalaPointer()->getOxigenio() <= 0)

@@ -31,7 +31,7 @@ public:
 	void insertAbility(abils *abil);
 	string showAbilities() const;
 	virtual string toString() const;
-
+	virtual int getMaxVida() const;
 	
 	
 

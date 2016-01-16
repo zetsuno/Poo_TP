@@ -17,6 +17,7 @@ public:
 	void respira();
 	void setAbilities();
 	int getID()const;
+	int getMaxVida() const;
 
 };
 

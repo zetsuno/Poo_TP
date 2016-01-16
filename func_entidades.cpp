@@ -51,6 +51,10 @@ sala *entidades::getSalaPointer() const {
 	return this->ondeestou_entidade;
 }
 
+int entidades::getMaxVida() const{
+	return 0;
+}
+
 void entidades::setDano(const int &dano){
 	this->dano = dano;
 }

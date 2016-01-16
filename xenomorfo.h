@@ -15,7 +15,9 @@ public:
 	string getNome() const;
 	void respira();
 	void setAbilities();
-
+	virtual int getMaxVida() const;
+	virtual int getExoSkel() const;
+	virtual void setExoSkel(const int &value);
 	int getID()const;
 
 };

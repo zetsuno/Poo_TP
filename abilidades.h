@@ -29,12 +29,71 @@ public:
 
 };
 
+class respira : public abils {
 
+public:
+	respira(entidades *enti);
+	virtual ~respira();
+	void execAbility();
+	virtual string toString() const;
+};
 
+class flamejante : public abils {
 
+public:
+	flamejante(entidades *enti);
+	virtual ~flamejante();
+	void execAbility();
+	virtual string toString() const;
+};
 
+class toxico : public abils {
 
+	int value;
 
+public:
+	toxico(const int &value, entidades *enti);
+	virtual ~toxico();
+	void execAbility();
+	virtual string toString() const;
+};
 
+class indeciso : public abils {
 
+public:
+	indeciso(entidades *enti);
+	virtual ~indeciso();
+	virtual string toString() const;
+
+};
+
+class misterioso : public abils {
+
+public:
+	misterioso(entidades *enti);
+	virtual ~misterioso();
+	virtual string toString() const;
+	void execAbility();
+};
+
+class regenerador : public abils {
+
+	int value;
+public:
+	regenerador(const int &value, entidades *enti);
+	virtual ~regenerador();
+	virtual string toString() const;
+	void execAbility();
+};
+
+class exoskeleton : public abils {
+
+	int value;
+public:
+	exoskeleton(const int &value, entidades *enti);
+	virtual ~exoskeleton();
+	virtual string toString() const;
+	int getExoSkel() const;
+	void setExoSkel(const int &value);
+};
 #endif

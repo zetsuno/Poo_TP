@@ -174,6 +174,9 @@ void sala::setSaude(const int &saude) {
 
  bool sala::move_pessoa(const int &id, const int &new_sala_x, const int &new_sala_y) {
 
+	 string aux;
+	 int aux_value;
+
 	 for (auto p = pessoas_sala.begin(); p != pessoas_sala.end(); p++) {
 		 
 		 if ((*p)->getID() == id) 
@@ -185,9 +188,25 @@ void sala::setSaude(const int &saude) {
 			 }
 			 else
 			 {
-				 this->getNavePtr()->getRoom(new_sala_x, new_sala_y)->pessoas_sala.push_back(*p);
-				 this->pessoas_sala.erase(p);
-				 return true;
+				 aux = (*p)->showAbilities();
+				 if (aux.find("Indeciso ") != std::string::npos) { //Procura na string aux a palavra "Indeciso "
+																   //Caso a entidade ter a abilidade "Indeciso";
+					 aux_value = rand() % 100 + 1;
+						 if (aux_value >= 50) {
+							 this->getNavePtr()->getRoom(new_sala_x, new_sala_y)->pessoas_sala.push_back(*p);
+							 this->pessoas_sala.erase(p);
+							 return true;
+						 }
+						 else {
+							 cout << "A unidade esta' indecisa! -- Nao se mexeu este turno!";
+							 return false;
+						 }
+				 }
+				 else {
+					 this->getNavePtr()->getRoom(new_sala_x, new_sala_y)->pessoas_sala.push_back(*p);
+					 this->pessoas_sala.erase(p);
+					 return true;
+				 }
 			 }
 
 		 }
@@ -206,3 +225,63 @@ void sala::setSaude(const int &saude) {
 	 return pessoas_sala.size();
  }
 
+
+ void sala::dmgNonToxic(const int &value, sala *sala_ptr) {
+
+	  string aux;
+	  /*======TRIPULANTES=====*/
+	 for (auto p = sala_ptr->pessoas_sala.begin(); p != sala_ptr->pessoas_sala.end(); p++) {
+		 aux = (*p)->showAbilities();
+		 if (aux.find("Toxico ") != std::string::npos) { //Procura na string aux a palavra "Toxico "
+			 //Caso a entidade ter a abilidade "Toxico";
+		 }
+		 else {
+			 (*p)->setVida((*p)->getVida() - value);
+		 }
+	 }
+	 /*=======PIRATAS======*/
+	 for (auto p = sala_ptr->piratas.begin(); p != sala_ptr->piratas.end(); p++) {
+		 aux = (*p)->showAbilities();
+		 if (aux.find("Toxico ") != std::string::npos) { //Procura na string aux a palavra "Toxico "
+														 //Caso a entidade ter a abilidade "Toxico";
+		 }
+		 else {
+			 (*p)->setVida((*p)->getVida() - value);
+		 }
+	 }
+	 /*======XENOMORPHS=====*/
+	 for (auto p = sala_ptr->xenomorfos.begin(); p != sala_ptr->xenomorfos.end(); p++) {
+		 aux = (*p)->showAbilities();
+		 if (aux.find("Toxico ") != std::string::npos) { //Procura na string aux a palavra "Toxico "
+														 //Caso a entidade ter a abilidade "Toxico";
+		 }
+		 else {
+			 (*p)->setVida((*p)->getVida() - value);
+		 }
+	 }
+ }
+
+ void sala::hide(entidades *enti) { //mete o xenomorfo num vetor auxiliar que esta 'escondido' no mapa
+
+	 for (auto p = xenomorfos.begin(); p != xenomorfos.end(); p++) {
+		 if ((*p) == enti) {
+			 this->hidden.push_back(*p);
+			 this->xenomorfos.erase(p);
+		 }
+	 }
+ }
+
+ void sala::show(entidades *enti) { //Coloca o xenomorfo numa sala aleatoria
+	 sala * aux;
+	 int rand_x = rand() % ((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO, rand_y = rand() % ((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO;
+	 for (auto p = hidden.begin(); p != hidden.end(); p++) {
+		 if ((*p) == enti) {
+			 while ((aux = this->getNavePtr()->getRoom(rand_x, rand_y)) == nullptr) {
+				 rand_x = rand() % ((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO;
+				 rand_y = rand() % ((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO;
+			 }
+			 aux->xenomorfos.push_back(*p);
+			 this->hidden.erase(p);
+		 }
+	 }
+ }
