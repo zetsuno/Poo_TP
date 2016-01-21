@@ -20,7 +20,7 @@ public:
 	virtual ~entidades();
 	virtual int getID() const;
 	int getVida() const;
-	int getDano() const;\
+	int getDano() const;
 	int getCombatFlag() const;
 	sala *getSalaPointer() const;
 	void setVida(const int &vida);
@@ -32,6 +32,7 @@ public:
 	string showAbilities() const;
 	virtual string toString() const;
 	virtual int getMaxVida() const;
+	
 	
 	
 

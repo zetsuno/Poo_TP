@@ -89,7 +89,7 @@ string entidades::showAbilities() const {
 }
 
 string entidades::toString() const {
-
 	ostringstream os;
 	return os.str();
 }
+

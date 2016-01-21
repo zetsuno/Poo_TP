@@ -12,7 +12,7 @@ class nave;
 class sala
 {	
 	string tipo;
-	int id, saude, oxigenio, integridade;
+	int id, saude, oxigenio, integridade, dano;
 	bool brecha, fogo, CC;
 	vector <entidades *> pessoas_sala;
 	vector <pirata *> piratas;
@@ -32,10 +32,12 @@ public:
 	int getIntegridade() const;
 	int getSaude() const;
 	string getTipo() const;
+	int getDano() const;
 	void setOxigenio(const int &oxigenio);
 	void setIntegridade(const int &integridade);
 	void setSaude(const int &saude);
 	void setTipo(const string &s);
+	void setDano(const int &dano);
 	virtual string toString() const;
 	void setNavePtr(nave *n);
 	nave * getNavePtr() const;
@@ -43,7 +45,8 @@ public:
 	void addPirata(pirata *p);
 	void addXenomorfo(xenomorfo *x);
 	int getNumeroTripulantes()const;
-	void dmgNonToxic(const int &value, sala *sala_ptr); 
+	void dmgNonToxic(const int &value, sala *sala_ptr);
+	void dmgEnemies(sala *sala, entidades *enti, const int &value);
 	void hide(entidades *enti);
 	void show(entidades *enti);
 	virtual void mostra_info_sala(int x, int y, Consola &c);

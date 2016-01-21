@@ -19,6 +19,12 @@ string abils::toString() const {
 	return os.str();
 }
 
+int abils::getExoSkel() const {
+	return 0;
+}
+void abils::setExoSkel(const int &value) {}
+void abils::execAbility(){}
+
 /*================  REPARADOR  =================*/
 reparador::reparador(const int &value, entidades *enti) : abils(enti) {
 
@@ -157,4 +163,29 @@ int exoskeleton::getExoSkel() const{
 }
 void exoskeleton::setExoSkel(const int &value) {
 	this->value = value;
+}
+
+/*===========ROBOTICO===============*/
+
+robotico::robotico(const bool &value, entidades*enti): abils(enti) {
+	this->value = value;
+}
+robotico::~robotico(){}
+string robotico::toString() const{
+	string temp = "Robotico ";
+	return temp;
+}
+
+/*=============COMBATENTE==========*/
+
+combatente::combatente(const int &value, entidades *enti): abils(enti) {
+	this->value = value;
+}
+combatente::~combatente(){}
+string combatente::toString() const {
+	string temp = "Combatente ";
+	return temp;
+}
+void combatente::execAbility() {
+	this->getEntiPointer()->getSalaPointer()->dmgEnemies(this->getEntiPointer()->getSalaPointer(), this->getEntiPointer(), this->value);
 }

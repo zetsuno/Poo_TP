@@ -14,6 +14,9 @@ public:
 	virtual ~abils();
 	virtual string toString() const;
 	entidades * getEntiPointer() const;
+	void execAbility();
+	virtual int getExoSkel() const;
+	virtual void setExoSkel(const int &value);
 };
 
 class reparador : public abils {
@@ -95,5 +98,25 @@ public:
 	virtual string toString() const;
 	int getExoSkel() const;
 	void setExoSkel(const int &value);
+};
+
+class robotico : public abils {
+
+	bool value;
+public:
+	robotico(const bool &value, entidades *enti);
+	virtual ~robotico();
+	virtual string toString() const;
+};
+
+class combatente : public abils {
+
+	int value;
+public:
+	combatente(const int &value, entidades *enti);
+	virtual ~combatente();
+	virtual string toString() const;
+	void execAbility();
+
 };
 #endif

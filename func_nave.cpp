@@ -15,7 +15,7 @@ nave::nave()
 	salas[0][0] = new sala_maquinas_esq();     salas[0][0]->setNavePtr(this);
 	salas[1][0] = new sala_maquinas();         salas[1][0]->setNavePtr(this);
 	salas[1][1] = new sala_vida();             salas[1][1]->setNavePtr(this);
-	shield = new sala_escudo();
+	shield = new sala_escudo();              
 	salas[1][2] = shield;					   salas[1][2]->setNavePtr(this);
 	salas[1][3] = new sala_ponte();            salas[1][3]->setNavePtr(this);
 	salas[2][0] = new sala_maquinas_dir();     salas[2][0]->setNavePtr(this);

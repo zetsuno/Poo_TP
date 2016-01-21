@@ -53,6 +53,14 @@ string sala::getTipo() const {
 	return this->tipo;
 }
 
+int sala::getDano() const {
+	return this->dano;
+}
+
+void sala::setDano(const int &dano) {
+	this->dano = dano;
+}
+
 void sala::setIntegridade(const int &integridade){
 
 	this->integridade = integridade;
@@ -181,6 +189,7 @@ void sala::setSaude(const int &saude) {
 		 
 		 if ((*p)->getID() == id) 
 		 {
+			 
 			 if (this == this->getNavePtr()->getRoom(new_sala_x, new_sala_y))
 			 {
 				 cout << "Essa pessoa já se encontra nessa sala\n";
@@ -201,6 +210,10 @@ void sala::setSaude(const int &saude) {
 							 cout << "A unidade esta' indecisa! -- Nao se mexeu este turno!";
 							 return false;
 						 }
+				 }
+				 if(aux.find("Robotico ") != std::string::npos && this->CC == true){
+					 cout << "Curto circuito na sala! Nao e' possivel realizar acoes!";
+					 return false;
 				 }
 				 else {
 					 this->getNavePtr()->getRoom(new_sala_x, new_sala_y)->pessoas_sala.push_back(*p);
@@ -283,5 +296,129 @@ void sala::setSaude(const int &saude) {
 			 aux->xenomorfos.push_back(*p);
 			 this->hidden.erase(p);
 		 }
+	 }
+ }
+
+ void sala::dmgEnemies(sala *sala, entidades *enti, const int &value) {
+	 //AS ABILIDADES (***ENIMIGO), (***COMBATENTE) e (***XENOMORFO) ESTÃO TODAS AQUI!
+
+	 int flag_ppl = 0, flag_xeno = 0, flag_pirate = 0, aux, aux2;
+
+
+	 // ==============COMBATENTE================
+	 //encontra o vector onde a entidade passada por argumento está
+	 if ((sala->piratas.size() > 0 || sala->xenomorfos.size() > 0) && sala->pessoas_sala.size() > 0) {
+		 for (auto a = sala->pessoas_sala.begin(); a != sala->pessoas_sala.end(); a++) {
+			 if ((*a) == enti) {
+				 flag_ppl = 1;
+			 }
+		 }
+		 for (auto a = sala->piratas.begin(); a != sala->piratas.end(); a++) {
+			 if ((*a) == enti) {
+				 flag_pirate = 1;
+			 }
+		 }
+		 for (auto a = sala->xenomorfos.begin(); a != sala->xenomorfos.end(); a++) {
+			 if ((*a) == enti) {
+				 flag_xeno = 1;
+			 }
+		 }
+		 if (flag_ppl == 1) {
+			 aux2 = rand() % ((SALA_OXI - 1) - ZERO + 1) + ZERO; //aproveitar constantes definidas que já existem (100%)
+			 if (aux2 < GEIGER_CHANCE_MOVE) {  //50%
+				 aux = rand() % ((sala->piratas.size() - 1) - ZERO + 1) + ZERO;
+				 piratas[aux]->setVida(piratas[aux]->getVida() - value);
+			 }
+			 else {
+				 aux = rand() % ((sala->xenomorfos.size() - 1) - ZERO + 1) + ZERO;
+				 xenomorfos[aux]->setVida(xenomorfos[aux]->getVida() - value);
+			 }
+		 }
+		 // ataca aleatoriamente uma entidade num vetor onde a entidade passada por argumento não está
+		 if (flag_xeno == 1) {
+			 aux2 = rand() % ((SALA_OXI - 1) - ZERO + 1) + ZERO; //aproveitar constantes definidas que já existem (100%)
+			 if (aux2 < GEIGER_CHANCE_MOVE) {  //50%
+				 aux = rand() % ((sala->pessoas_sala.size() - 1) - ZERO + 1) + ZERO;
+				 pessoas_sala[aux]->setVida(pessoas_sala[aux]->getVida() - value);
+			 }
+			 else {
+				 aux = rand() % ((sala->piratas.size() - 1) - ZERO + 1) + ZERO;
+				 piratas[aux]->setVida(piratas[aux]->getVida() - value);
+			 }
+		 }
+		 if (flag_pirate == 1) {
+			 aux2 = rand() % ((SALA_OXI - 1) - ZERO + 1) + ZERO; //aproveitar constantes definidas que já existem (100%)
+			 if (aux2 < GEIGER_CHANCE_MOVE) {  //50%
+				 aux = rand() % ((sala->pessoas_sala.size() - 1) - ZERO + 1) + ZERO;
+				 pessoas_sala[aux]->setVida(pessoas_sala[aux]->getVida() - value);
+			 }
+			 else {
+				 aux = rand() % ((sala->xenomorfos.size() - 1) - ZERO + 1) + ZERO;
+				 xenomorfos[aux]->setVida(xenomorfos[aux]->getVida() - value);
+			 }
+		 }
+		 return;
+	 }
+	 //*======================INIMIGO============//
+	 if ((sala->pessoas_sala.size() == 0 && sala->xenomorfos.size() == 0) && sala->piratas.size() > 0) {
+		 for (auto a = sala->piratas.begin(); a != sala->piratas.end(); a++) {
+			 if ((*a) == enti) {
+				 sala->setIntegridade(sala->getIntegridade() - (value * 5));
+			 }
+		 }
+		 return;
+	 }
+	 //=====================XENOMORPH============//
+	 if ((sala->piratas.size() > 0 || sala->pessoas_sala.size() > 0) && sala->xenomorfos.size() > 0) {
+		 for (auto a = sala->pessoas_sala.begin(); a != sala->pessoas_sala.end(); a++) {
+			 if ((*a) == enti) {
+				 flag_ppl = 1;
+			 }
+		 }
+		 for (auto a = sala->piratas.begin(); a != sala->piratas.end(); a++) {
+			 if ((*a) == enti) {
+				 flag_pirate = 1;
+			 }
+		 }
+		 for (auto a = sala->xenomorfos.begin(); a != sala->xenomorfos.end(); a++) {
+			 if ((*a) == enti) {
+				 flag_xeno = 1;
+			 }
+		 }
+		 if (flag_ppl == 1) {
+			 aux2 = rand() % ((SALA_OXI - 1) - ZERO + 1) + ZERO; //aproveitar constantes definidas que já existem (100%)
+			 if (aux2 < GEIGER_CHANCE_MOVE) {  //50%
+				 aux = rand() % ((sala->piratas.size() - 1) - ZERO + 1) + ZERO;
+				 piratas[aux]->setVida(piratas[aux]->getVida() - value);
+			 }
+			 else {
+				 aux = rand() % ((sala->xenomorfos.size() - 1) - ZERO + 1) + ZERO;
+				 xenomorfos[aux]->setVida(xenomorfos[aux]->getVida() - value);
+			 }
+		 }
+		 // ataca aleatoriamente uma entidade num vetor onde a entidade passada por argumento não está
+		 if (flag_xeno == 1) {
+			 aux2 = rand() % ((SALA_OXI - 1) - ZERO + 1) + ZERO; //aproveitar constantes definidas que já existem (100%)
+			 if (aux2 < GEIGER_CHANCE_MOVE) {  //50%
+				 aux = rand() % ((sala->pessoas_sala.size() - 1) - ZERO + 1) + ZERO;
+				 pessoas_sala[aux]->setVida(pessoas_sala[aux]->getVida() - value);
+			 }
+			 else {
+				 aux = rand() % ((sala->piratas.size() - 1) - ZERO + 1) + ZERO;
+				 piratas[aux]->setVida(piratas[aux]->getVida() - value);
+			 }
+		 }
+		 if (flag_pirate == 1) {
+			 aux2 = rand() % ((SALA_OXI - 1) - ZERO + 1) + ZERO; //aproveitar constantes definidas que já existem (100%)
+			 if (aux2 < GEIGER_CHANCE_MOVE) {  //50%
+				 aux = rand() % ((sala->pessoas_sala.size() - 1) - ZERO + 1) + ZERO;
+				 pessoas_sala[aux]->setVida(pessoas_sala[aux]->getVida() - value);
+			 }
+			 else {
+				 aux = rand() % ((sala->xenomorfos.size() - 1) - ZERO + 1) + ZERO;
+				 xenomorfos[aux]->setVida(xenomorfos[aux]->getVida() - value);
+			 }
+		 }
+		 return;
 	 }
  }
