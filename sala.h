@@ -45,6 +45,8 @@ public:
 	void addPirata(pirata *p);
 	void addXenomorfo(xenomorfo *x);
 	int getNumeroTripulantes()const;
+	int getNumeroXenos() const;
+	int getNumeroPiratas() const;
 	void dmgNonToxic(const int &value, sala *sala_ptr);
 	void dmgEnemies(sala *sala, entidades *enti, const int &value);
 	void hide(entidades *enti);
@@ -52,6 +54,10 @@ public:
 	virtual void mostra_info_sala(int x, int y, Consola &c);
 	bool move_pessoa(const int &id, const int &new_sala_x, const int &new_sala_y);
 	virtual int getDistance();
+	void killUnit(sala *sala, entidades *enti);
+	virtual bool getOperada() const;
+	virtual void setOperada(const bool &condi);
+	virtual void execAbils();
 };
 
 	

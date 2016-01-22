@@ -17,6 +17,7 @@ int main(){
 		j.meu_Clean();
 		c.clrscr();
 		j.mostra();
+		j.execAbils();
 		EXIT = j.lecomando();
 		j.fazcomando();
 		j.avancaTurno();

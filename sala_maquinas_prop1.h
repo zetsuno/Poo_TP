@@ -15,6 +15,8 @@ public:
 	string toString() const;
 	void mostra_info_sala(int x, int y, Consola &c);
 	int getDistance();
+	bool getOperada() const;
+	void setOperada(const bool &condi);
 
 };
 

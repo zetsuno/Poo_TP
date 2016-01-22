@@ -48,3 +48,10 @@ int sala_maquinas_esq::getDistance() {
 
 	return this->propulsor;
 }
+
+bool sala_maquinas_esq::getOperada() const {
+	return this->operada;
+}
+void sala_maquinas_esq::setOperada(const bool &condi) {
+	this->operada = condi;
+}

@@ -4,7 +4,7 @@ sala_raio_laser::sala_raio_laser()
 {
 	
 	this->setTipo("Sala_Raio_Laser");
-	//this->operada = false;
+	this->operada = false;
 	cout << " do tipo: Raio Laser" << endl;
 }
 
@@ -21,7 +21,7 @@ bool sala_raio_laser::getOperada() const {
 }
 
 
-/*void sala_raio_laser::setOperada(const bool &valor) {
+void sala_raio_laser::setOperada(const bool &valor) {
 
 	this->operada = valor;
-}*/
+}

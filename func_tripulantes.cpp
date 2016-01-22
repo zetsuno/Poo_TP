@@ -15,7 +15,6 @@ crew_member::crew_member(const string &nome):entidades(CREW_HP, CREW_ATTACK){
 	this->setAbilities();
 	this->tipo = "crewmember";
 	this->nome = nome;
-	this->setAbilities();
 	cout << " A construir uma entidade do tipo crewmember de nome " << nome << endl;
 }
 
@@ -60,5 +59,7 @@ void crew_member::respira() {
 void crew_member::setAbilities() {
 
 	reparador *novo = new reparador(CREW_REPAIR, this);
+	operador *novo2 = new operador(this);
 	this->insertAbility(novo);
+	this->insertAbility(novo2);
 }

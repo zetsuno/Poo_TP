@@ -4,12 +4,12 @@
 
 class sala_raio_laser : public sala
 {
-	//bool operada;
+	bool operada;
 public:
 	sala_raio_laser();
 	virtual ~sala_raio_laser();
 	bool getOperada() const;
-	//void setOperada(const bool &condi);
+	void setOperada(const bool &condi);
 
 };
 

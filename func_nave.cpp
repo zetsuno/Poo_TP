@@ -316,7 +316,10 @@ int nave::showDistance() const {
 }
 
 sala *nave::getRoom(const int &x, const int &y){
-	
+	if (salas[x][y] != nullptr) {
 		return salas[x][y];
-	
+	}
+	else {
+		return nullptr;
+	}
 }

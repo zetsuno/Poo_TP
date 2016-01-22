@@ -19,9 +19,8 @@ string abils::toString() const {
 	return os.str();
 }
 
-int abils::getExoSkel() const {
-	return 0;
-}
+int abils::getExoSkel() const {	return 0; }
+int abils::getArmadoValue() const { return 0; }
 void abils::setExoSkel(const int &value) {}
 void abils::execAbility(){}
 
@@ -188,4 +187,32 @@ string combatente::toString() const {
 }
 void combatente::execAbility() {
 	this->getEntiPointer()->getSalaPointer()->dmgEnemies(this->getEntiPointer()->getSalaPointer(), this->getEntiPointer(), this->value);
+}
+
+/*============ARMADO=============*/
+
+armado::armado(const int &value, entidades *enti) : abils(enti) {
+	this->value = value;
+}
+armado::~armado(){}
+string armado::toString() const {
+	string temp = "Armado ";
+	return temp;
+}
+
+int armado::getArmadoValue() const {
+	return this->value;
+}
+
+/*=================OPERADOR===========*/
+operador::operador(entidades *enti):abils(enti){}
+operador::~operador(){}
+string operador::toString() const {
+	string temp = "Operador ";
+	return temp;
+}
+void operador::execAbility() {
+	if ((this->getEntiPointer()->getSalaPointer()->getNumeroPiratas() + this->getEntiPointer()->getSalaPointer()->getNumeroXenos()) == 0 && this->getEntiPointer()->getSalaPointer()->getOperada() == false) {
+		this->getEntiPointer()->getSalaPointer()->setOperada(true);
+	}
 }

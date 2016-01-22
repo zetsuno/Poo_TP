@@ -53,3 +53,11 @@ void sala_escudo::mostra_info_sala(int x, int y, Consola &c)
 	c.gotoxy(x + 8, y + 3);
 
 }
+
+
+bool sala_escudo::getOperada() const {
+	return this->operada;
+}
+void sala_escudo::setOperada(const bool &condi) {
+	this->operada = condi;
+}

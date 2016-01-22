@@ -37,6 +37,8 @@ public:
 	int getDistance();
 	bool AtaquePirata();
 	void PrimeiroAtaquePirata();
+	nave * getNave();
+	void execAbils();
 
 };
 

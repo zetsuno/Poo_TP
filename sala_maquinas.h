@@ -10,6 +10,8 @@ public:
 	bool Chk_Props() const;
 	sala_maquinas();
 	virtual ~sala_maquinas();
+	bool getOperada() const;
+	void setOperada(const bool &condi);
 	
 };
 

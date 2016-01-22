@@ -17,6 +17,7 @@ public:
 	void execAbility();
 	virtual int getExoSkel() const;
 	virtual void setExoSkel(const int &value);
+	virtual int getArmadoValue() const;
 };
 
 class reparador : public abils {
@@ -118,5 +119,25 @@ public:
 	virtual string toString() const;
 	void execAbility();
 
+};
+
+class armado : public abils {
+
+	int value;
+public:
+	armado(const int &value, entidades *enti);
+	virtual ~armado();
+	virtual string toString() const;
+	virtual int getArmadoValue() const;
+
+};
+
+class operador : public abils {
+
+public:
+	operador(entidades *enti);
+	virtual ~operador();
+	virtual string toString() const;
+	void execAbility();
 };
 #endif

@@ -14,6 +14,8 @@ public:
 	void setPropulsor(const int &propulsor);
 	string toString() const;
 	int getDistance();
+	bool getOperada() const;
+	void setOperada(const bool &condi);
 
 
 };

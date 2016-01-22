@@ -24,3 +24,9 @@ bool sala_maquinas::Chk_Props() const {
 		return false;
 }
 
+bool sala_maquinas::getOperada() const {
+	return this->operada;
+}
+void sala_maquinas::setOperada(const bool &condi) {
+	this->operada = condi;
+}

@@ -35,3 +35,10 @@ int sala_maquinas_dir::getDistance() {
 
 	return this->propulsor;
 }
+
+bool sala_maquinas_dir::getOperada() const {
+	return this->operada;
+}
+void sala_maquinas_dir::setOperada(const bool &condi) {
+	this->operada = condi;
+}

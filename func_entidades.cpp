@@ -93,3 +93,19 @@ string entidades::toString() const {
 	return os.str();
 }
 
+abils * entidades::getAbilPtr(const string &nome) const {
+
+	for (auto a = this->abilidades.begin(); a != this->abilidades.end(); a++) {
+		if ((*a)->toString() == nome) {
+			return *a;
+		}
+	}
+	cout << "A abilidade não existe nessa pessoa!";
+	return nullptr;
+}
+
+void entidades::execAbils() {
+	for (auto a = this->abilidades.begin(); a != this->abilidades.end(); a++) {
+		(*a)->execAbility();
+	}
+}

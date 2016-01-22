@@ -32,11 +32,8 @@ public:
 	string showAbilities() const;
 	virtual string toString() const;
 	virtual int getMaxVida() const;
-	
-	
-	
-
-
+	abils * getAbilPtr(const string &nome) const;
+	virtual void execAbils();
 };
 
 

@@ -57,6 +57,12 @@ int sala::getDano() const {
 	return this->dano;
 }
 
+bool sala::getOperada() const {
+	return false;
+}
+
+void sala::setOperada(const bool &condi) {}
+
 void sala::setDano(const int &dano) {
 	this->dano = dano;
 }
@@ -234,8 +240,15 @@ void sala::setSaude(const int &saude) {
 
 
  int sala::getNumeroTripulantes()const{
-
 	 return pessoas_sala.size();
+ }
+
+ int sala::getNumeroXenos() const {
+	 return xenomorfos.size();
+ }
+
+ int sala::getNumeroPiratas() const {
+	 return piratas.size();
  }
 
 
@@ -303,6 +316,7 @@ void sala::setSaude(const int &saude) {
 	 //AS ABILIDADES (***ENIMIGO), (***COMBATENTE) e (***XENOMORFO) ESTÃO TODAS AQUI!
 
 	 int flag_ppl = 0, flag_xeno = 0, flag_pirate = 0, aux, aux2;
+	 string aux_str = enti->toString();
 
 
 	 // ==============COMBATENTE================
@@ -311,27 +325,56 @@ void sala::setSaude(const int &saude) {
 		 for (auto a = sala->pessoas_sala.begin(); a != sala->pessoas_sala.end(); a++) {
 			 if ((*a) == enti) {
 				 flag_ppl = 1;
+				 (*a)->setCombatFlag(1);
 			 }
 		 }
 		 for (auto a = sala->piratas.begin(); a != sala->piratas.end(); a++) {
 			 if ((*a) == enti) {
 				 flag_pirate = 1;
+				 (*a)->setCombatFlag(1);
 			 }
 		 }
 		 for (auto a = sala->xenomorfos.begin(); a != sala->xenomorfos.end(); a++) {
 			 if ((*a) == enti) {
 				 flag_xeno = 1;
+				 (*a)->setCombatFlag(1);
 			 }
 		 }
 		 if (flag_ppl == 1) {
 			 aux2 = rand() % ((SALA_OXI - 1) - ZERO + 1) + ZERO; //aproveitar constantes definidas que já existem (100%)
 			 if (aux2 < GEIGER_CHANCE_MOVE) {  //50%
 				 aux = rand() % ((sala->piratas.size() - 1) - ZERO + 1) + ZERO;
-				 piratas[aux]->setVida(piratas[aux]->getVida() - value);
+				 if (aux_str.find("Armado ") != std::string::npos) {    //Procura na string aux a palavra "Armado "
+					 piratas[aux]->setCombatFlag(1);
+					 piratas[aux]->setVida(piratas[aux]->getVida() - (value + enti->getAbilPtr("Armado ")->getArmadoValue()));  //Caso a entidade ter a abilidade "Armado ";
+					 if (piratas[aux]->getVida() <= 0) {
+						 killUnit(sala, piratas[aux]);
+					 }															
+				 }
+				 else {
+					 piratas[aux]->setCombatFlag(1);
+					 piratas[aux]->setVida(piratas[aux]->getVida() - value);
+					 if (piratas[aux]->getVida() <= 0) {
+						 killUnit(sala, piratas[aux]);
+					 }
+				 }
 			 }
 			 else {
 				 aux = rand() % ((sala->xenomorfos.size() - 1) - ZERO + 1) + ZERO;
-				 xenomorfos[aux]->setVida(xenomorfos[aux]->getVida() - value);
+				 if (aux_str.find("Armado ") != std::string::npos) {    //Procura na string aux a palavra "Armado "
+					 xenomorfos[aux]->setCombatFlag(1);
+					 xenomorfos[aux]->setVida(xenomorfos[aux]->getVida() - (value + enti->getAbilPtr("Armado ")->getArmadoValue()));										        //Caso a entidade ter a abilidade "Armado ";
+					 if (xenomorfos[aux]->getVida() <= 0) {
+						 killUnit(sala, xenomorfos[aux]);
+					 }
+				 }
+				 else {
+					 xenomorfos[aux]->setCombatFlag(1);
+					 xenomorfos[aux]->setVida(xenomorfos[aux]->getVida() - value);
+					 if (xenomorfos[aux]->getVida() <= 0) {
+						 killUnit(sala, xenomorfos[aux]);
+					 }
+				 }
 			 }
 		 }
 		 // ataca aleatoriamente uma entidade num vetor onde a entidade passada por argumento não está
@@ -339,22 +382,38 @@ void sala::setSaude(const int &saude) {
 			 aux2 = rand() % ((SALA_OXI - 1) - ZERO + 1) + ZERO; //aproveitar constantes definidas que já existem (100%)
 			 if (aux2 < GEIGER_CHANCE_MOVE) {  //50%
 				 aux = rand() % ((sala->pessoas_sala.size() - 1) - ZERO + 1) + ZERO;
+				 pessoas_sala[aux]->setCombatFlag(1);
 				 pessoas_sala[aux]->setVida(pessoas_sala[aux]->getVida() - value);
+				 if (pessoas_sala[aux]->getVida() <= 0) {
+					 killUnit(sala, pessoas_sala[aux]);
+				 }
 			 }
 			 else {
 				 aux = rand() % ((sala->piratas.size() - 1) - ZERO + 1) + ZERO;
+				 piratas[aux]->setCombatFlag(1);
 				 piratas[aux]->setVida(piratas[aux]->getVida() - value);
+				 if (piratas[aux]->getVida() <= 0) {
+					 killUnit(sala, piratas[aux]);
+				 }
 			 }
 		 }
 		 if (flag_pirate == 1) {
 			 aux2 = rand() % ((SALA_OXI - 1) - ZERO + 1) + ZERO; //aproveitar constantes definidas que já existem (100%)
 			 if (aux2 < GEIGER_CHANCE_MOVE) {  //50%
 				 aux = rand() % ((sala->pessoas_sala.size() - 1) - ZERO + 1) + ZERO;
+				 pessoas_sala[aux]->setCombatFlag(1);
 				 pessoas_sala[aux]->setVida(pessoas_sala[aux]->getVida() - value);
+				 if (pessoas_sala[aux]->getVida() <= 0) {
+					 killUnit(sala, pessoas_sala[aux]);
+				 }
 			 }
 			 else {
 				 aux = rand() % ((sala->xenomorfos.size() - 1) - ZERO + 1) + ZERO;
+				 xenomorfos[aux]->setCombatFlag(1);
 				 xenomorfos[aux]->setVida(xenomorfos[aux]->getVida() - value);
+				 if (xenomorfos[aux]->getVida() <= 0) {
+					 killUnit(sala, xenomorfos[aux]);
+				 }
 			 }
 		 }
 		 return;
@@ -373,27 +432,38 @@ void sala::setSaude(const int &saude) {
 		 for (auto a = sala->pessoas_sala.begin(); a != sala->pessoas_sala.end(); a++) {
 			 if ((*a) == enti) {
 				 flag_ppl = 1;
+				 (*a)->setCombatFlag(1);
 			 }
 		 }
 		 for (auto a = sala->piratas.begin(); a != sala->piratas.end(); a++) {
 			 if ((*a) == enti) {
 				 flag_pirate = 1;
+				 (*a)->setCombatFlag(1);
 			 }
 		 }
 		 for (auto a = sala->xenomorfos.begin(); a != sala->xenomorfos.end(); a++) {
 			 if ((*a) == enti) {
 				 flag_xeno = 1;
+				 (*a)->setCombatFlag(1);
 			 }
 		 }
 		 if (flag_ppl == 1) {
 			 aux2 = rand() % ((SALA_OXI - 1) - ZERO + 1) + ZERO; //aproveitar constantes definidas que já existem (100%)
 			 if (aux2 < GEIGER_CHANCE_MOVE) {  //50%
 				 aux = rand() % ((sala->piratas.size() - 1) - ZERO + 1) + ZERO;
+				 piratas[aux]->setCombatFlag(1);
 				 piratas[aux]->setVida(piratas[aux]->getVida() - value);
+				 if (piratas[aux]->getVida() <= 0) {
+					 killUnit(sala, piratas[aux]);
+				 }
 			 }
 			 else {
 				 aux = rand() % ((sala->xenomorfos.size() - 1) - ZERO + 1) + ZERO;
+				 xenomorfos[aux]->setCombatFlag(1);
 				 xenomorfos[aux]->setVida(xenomorfos[aux]->getVida() - value);
+				 if (xenomorfos[aux]->getVida() <= 0) {
+					 killUnit(sala, xenomorfos[aux]);
+				 }
 			 }
 		 }
 		 // ataca aleatoriamente uma entidade num vetor onde a entidade passada por argumento não está
@@ -401,24 +471,74 @@ void sala::setSaude(const int &saude) {
 			 aux2 = rand() % ((SALA_OXI - 1) - ZERO + 1) + ZERO; //aproveitar constantes definidas que já existem (100%)
 			 if (aux2 < GEIGER_CHANCE_MOVE) {  //50%
 				 aux = rand() % ((sala->pessoas_sala.size() - 1) - ZERO + 1) + ZERO;
+				 pessoas_sala[aux]->setCombatFlag(1);
 				 pessoas_sala[aux]->setVida(pessoas_sala[aux]->getVida() - value);
+				 if (pessoas_sala[aux]->getVida() <= 0) {
+					 killUnit(sala, pessoas_sala[aux]);
+				 }
 			 }
 			 else {
 				 aux = rand() % ((sala->piratas.size() - 1) - ZERO + 1) + ZERO;
+				 piratas[aux]->setCombatFlag(1);
 				 piratas[aux]->setVida(piratas[aux]->getVida() - value);
+				 if (piratas[aux]->getVida() <= 0) {
+					 killUnit(sala, piratas[aux]);
+				 }
 			 }
 		 }
 		 if (flag_pirate == 1) {
 			 aux2 = rand() % ((SALA_OXI - 1) - ZERO + 1) + ZERO; //aproveitar constantes definidas que já existem (100%)
 			 if (aux2 < GEIGER_CHANCE_MOVE) {  //50%
 				 aux = rand() % ((sala->pessoas_sala.size() - 1) - ZERO + 1) + ZERO;
+				 pessoas_sala[aux]->setCombatFlag(1);
 				 pessoas_sala[aux]->setVida(pessoas_sala[aux]->getVida() - value);
+				 if (pessoas_sala[aux]->getVida() <= 0) {
+					 killUnit(sala, pessoas_sala[aux]);
+				 }
 			 }
 			 else {
 				 aux = rand() % ((sala->xenomorfos.size() - 1) - ZERO + 1) + ZERO;
+				 xenomorfos[aux]->setCombatFlag(1);
 				 xenomorfos[aux]->setVida(xenomorfos[aux]->getVida() - value);
+				 if (xenomorfos[aux]->getVida() <= 0) {
+					 killUnit(sala, xenomorfos[aux]);
+				 }
 			 }
 		 }
 		 return;
+	 }
+ }
+
+ void sala::killUnit(sala *sala, entidades *enti) {
+	 for (auto a = sala->pessoas_sala.begin(); a != sala->pessoas_sala.end(); a++) {
+
+		 if ((*a) == enti) {
+			 this->pessoas_sala.erase(a);
+		 }
+	 }
+	 for (auto a = sala->xenomorfos.begin(); a != sala->xenomorfos.end(); a++) {
+
+		 if ((*a) == enti) {
+			 this->xenomorfos.erase(a);
+		 }
+	 }
+	 for (auto a = sala->piratas.begin(); a != sala->piratas.end(); a++) {
+
+		 if ((*a) == enti) {
+			 this->piratas.erase(a);
+		 }
+	 }
+ }
+
+ void sala::execAbils() {
+
+	 for (auto a = this->pessoas_sala.begin(); a != this->pessoas_sala.end(); a++) {
+		 (*a)->execAbils();
+	 }
+	 for (auto a = this->piratas.begin(); a != this->piratas.end(); a++) {
+		 (*a)->execAbils();
+	 }
+	 for (auto a = this->xenomorfos.begin(); a != this->xenomorfos.end(); a++) {
+		 (*a)->execAbils();
 	 }
  }

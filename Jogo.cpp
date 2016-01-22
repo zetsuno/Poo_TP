@@ -285,7 +285,9 @@ void Jogo::goto_sala(const int &id, const int &sala_x, const int &sala_y) {
 
 void Jogo::updateDistance() {
 
-	 this->nave_jogo.updateDistance();
+	if (this->nave_jogo.getRoom(1, 3)->getOperada() == true) {
+		this->nave_jogo.updateDistance();
+	}
 }
 
 int Jogo::getDistance() {
@@ -293,4 +295,19 @@ int Jogo::getDistance() {
 	int dist;
 	dist = this->nave_jogo.showDistance();
 	return dist;
+}
+
+nave * Jogo::getNave() {
+	return &nave_jogo;
+}
+
+void Jogo::execAbils() {
+	
+	for (unsigned int i = 0; i < 3; i++) {
+		for (unsigned int j = 0; j < 4; j++) {
+			if (this->getNave()->getRoom(i, j) != nullptr) {
+				this->getNave()->getRoom(i, j)->execAbils();
+			}
+		}
+	}
 }
