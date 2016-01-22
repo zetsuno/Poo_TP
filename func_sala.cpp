@@ -514,18 +514,21 @@ void sala::setSaude(const int &saude) {
 
 		 if ((*a) == enti) {
 			 this->pessoas_sala.erase(a);
+			 delete *a;
 		 }
 	 }
 	 for (auto a = sala->xenomorfos.begin(); a != sala->xenomorfos.end(); a++) {
 
 		 if ((*a) == enti) {
 			 this->xenomorfos.erase(a);
+			 delete *a;
 		 }
 	 }
 	 for (auto a = sala->piratas.begin(); a != sala->piratas.end(); a++) {
 
 		 if ((*a) == enti) {
 			 this->piratas.erase(a);
+			 delete *a;
 		 }
 	 }
  }
