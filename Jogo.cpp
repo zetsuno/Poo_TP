@@ -285,7 +285,7 @@ void Jogo::goto_sala(const int &id, const int &sala_x, const int &sala_y) {
 
 void Jogo::updateDistance() {
 
-	if (this->nave_jogo.getRoom(1, 3)->getOperada() == true) {
+	if (this->nave_jogo.getRoom(1,3)->getOperada() == true) {
 		this->nave_jogo.updateDistance();
 	}
 }

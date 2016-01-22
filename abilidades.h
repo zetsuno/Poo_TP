@@ -14,7 +14,7 @@ public:
 	virtual ~abils();
 	virtual string toString() const;
 	entidades * getEntiPointer() const;
-	void execAbility();
+	virtual void execAbility();
 	virtual int getExoSkel() const;
 	virtual void setExoSkel(const int &value);
 	virtual int getArmadoValue() const;

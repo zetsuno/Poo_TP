@@ -215,4 +215,7 @@ void operador::execAbility() {
 	if ((this->getEntiPointer()->getSalaPointer()->getNumeroPiratas() + this->getEntiPointer()->getSalaPointer()->getNumeroXenos()) == 0 && this->getEntiPointer()->getSalaPointer()->getOperada() == false) {
 		this->getEntiPointer()->getSalaPointer()->setOperada(true);
 	}
+	if ((this->getEntiPointer()->getSalaPointer()->getNumeroPiratas() + this->getEntiPointer()->getSalaPointer()->getNumeroXenos()) > 0 && this->getEntiPointer()->getSalaPointer()->getOperada() == true) {
+		this->getEntiPointer()->getSalaPointer()->setOperada(false);
+	}
 }

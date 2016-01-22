@@ -535,10 +535,10 @@ void sala::setSaude(const int &saude) {
 	 for (auto a = this->pessoas_sala.begin(); a != this->pessoas_sala.end(); a++) {
 		 (*a)->execAbils();
 	 }
-	 for (auto a = this->piratas.begin(); a != this->piratas.end(); a++) {
+	 /*for (auto a = this->piratas.begin(); a != this->piratas.end(); a++) {
 		 (*a)->execAbils();
 	 }
 	 for (auto a = this->xenomorfos.begin(); a != this->xenomorfos.end(); a++) {
 		 (*a)->execAbils();
-	 }
+	 }*/
  }
