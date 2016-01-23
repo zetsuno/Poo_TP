@@ -41,13 +41,7 @@ string crew_member::getNome() const {
 int crew_member::getMaxVida() const {
 	return CREW_HP;
 }
-void crew_member::respira() {
 
-	if (getSalaPointer()->getOxigenio() <= 0)
-		this->setVida(getVida() - 1);
-	else
-		getSalaPointer()->setOxigenio(getSalaPointer()->getOxigenio() - 1);
-}
 
 
 /*void crew_member::combatente(const int a) {
@@ -60,6 +54,11 @@ void crew_member::setAbilities() {
 
 	reparador *novo = new reparador(CREW_REPAIR, this);
 	operador *novo2 = new operador(this);
+	respira *novo3 = new respira(this);
+	combatente *novo4 = new combatente(1, this);
 	this->insertAbility(novo);
 	this->insertAbility(novo2);
+	this->insertAbility(novo3);
+	this->insertAbility(novo4);
+
 }

@@ -13,7 +13,6 @@ public:
 	virtual ~crew_member();
 	string toString() const;
 	string getNome() const;
-	void respira();
 	void setAbilities();
 	int getNewID()const;
 	int getMaxVida() const;
