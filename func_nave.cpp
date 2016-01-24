@@ -267,7 +267,7 @@ bool nave::AtaquePirata(){
 
 	int random_sala_x, random_sala_y, random_piratas, random;
 
-	srand((unsigned int)time(NULL)); //Seed = Hora
+	
 
 	random = rand() % (5 - 3 + 1) + 3;
 
