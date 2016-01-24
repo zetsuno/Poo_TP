@@ -208,8 +208,8 @@ void sala::setSaude(const int &saude) {
 																   //Caso a entidade ter a abilidade "Indeciso";
 					 aux_value = rand() % 100 + 1;
 						 if (aux_value >= 50) {
-							 this->getNavePtr()->getRoom(new_sala_x, new_sala_y)->pessoas_sala.push_back(*p);
-							 this->pessoas_sala.erase(p);
+							 getNavePtr()->getRoom(new_sala_x, new_sala_y)->pessoas_sala.push_back(*p);
+							  p = pessoas_sala.erase(p);
 							 return true;
 						 }
 						 else {
@@ -222,8 +222,8 @@ void sala::setSaude(const int &saude) {
 					 return false;
 				 }
 				 else {
-					 this->getNavePtr()->getRoom(new_sala_x, new_sala_y)->pessoas_sala.push_back(*p);
-					 this->pessoas_sala.erase(p);
+					 getNavePtr()->getRoom(new_sala_x, new_sala_y)->pessoas_sala.push_back(*p);
+					 p = pessoas_sala.erase(p);
 					 return true;
 				 }
 			 }
@@ -291,8 +291,9 @@ void sala::setSaude(const int &saude) {
 
 	 for (auto p = xenomorfos.begin(); p != xenomorfos.end(); p++) {
 		 if ((*p) == enti) {
-			 this->hidden.push_back(*p);
-			 this->xenomorfos.erase(p);
+			 hidden.push_back(*p);
+			 p = xenomorfos.erase(p);
+
 		 }
 	 }
  }
@@ -307,7 +308,7 @@ void sala::setSaude(const int &saude) {
 				 rand_y = rand() % ((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO;
 			 }
 			 aux->xenomorfos.push_back(*p);
-			 this->hidden.erase(p);
+			 p = hidden.erase(p);
 		 }
 	 }
  }
@@ -337,16 +338,16 @@ void sala::setSaude(const int &saude) {
 		 }
 	 }
 	 
-	 
-	 if ((sala->getNumeroPiratas() + sala->getNumeroTripulantes() + sala->getNumeroXenos()) == 1) {
-		 flag_pirate = 0; flag_ppl = 0; flag_xeno = 0;
-		 return;
-	 }
 	 if (sala->getNumeroPiratas() >= 1 && sala->getNumeroTripulantes() == 0 && sala->getNumeroXenos() == 0 && flag_pirate == 1) {
 		
 			 for (auto a = sala->piratas.begin(); a != sala->piratas.end(); a++) {
 				 if ((*a) == enti) {
-					 sala->setIntegridade(sala->getIntegridade() - (value * 5));
+					 if (sala->getIntegridade() <= 0) {
+						 sala->setIntegridade(1);
+						 return;
+					 }
+					 sala->setIntegridade(sala->getIntegridade() - (value ));
+					 return;
 				 }
 			 }
 		 flag_pirate = 0; flag_ppl = 0; flag_xeno = 0;
@@ -370,6 +371,7 @@ void sala::setSaude(const int &saude) {
 				 sala->xenomorfos[aux]->setVida(sala->xenomorfos[aux]->getVida() - (value + enti->getAbilPtr("Armado ")->getArmadoValue()));  //Caso a entidade ter a abilidade "Armado "; 
 				 if (sala->xenomorfos[aux]->getVida() <= 0) {
 					 killUnit(sala, sala->xenomorfos[aux]);
+					 return;
 
 				 }
 			 }
@@ -378,6 +380,7 @@ void sala::setSaude(const int &saude) {
 				 sala->xenomorfos[aux]->setVida(sala->xenomorfos[aux]->getVida() - value);
 				 if (sala->xenomorfos[aux]->getVida() <= 0) {
 					 killUnit(sala, sala->xenomorfos[aux]);
+					 return;
 				 }
 			 }
 			 flag_ppl = 0;
@@ -390,14 +393,16 @@ void sala::setSaude(const int &saude) {
 				 sala->piratas[aux]->setVida(sala->piratas[aux]->getVida() - (value + enti->getAbilPtr("Armado ")->getArmadoValue()));  //Caso a entidade ter a abilidade "Armado "; 
 				 if (sala->piratas[aux]->getVida() <= 0) {
 					 killUnit(sala, sala->piratas[aux]);
-
+					 return;
 				 }
 			 }
 			 else {
 				 sala->piratas[aux]->setCombatFlag(1);
-				 sala->piratas[aux]->setVida(sala->piratas[aux]->getVida() - value);
+				 sala->piratas[aux]->setVida(sala->piratas[aux]->getVida() - value*3);
 				 if (sala->piratas[aux]->getVida() <= 0) {
 					 killUnit(sala, sala->piratas[aux]);
+					 return;
+					 
 				 }
 			 }
 			 flag_ppl = 0;
@@ -412,6 +417,7 @@ void sala::setSaude(const int &saude) {
 				 sala->xenomorfos[aux]->setVida(sala->xenomorfos[aux]->getVida() - (value + enti->getAbilPtr("Armado ")->getArmadoValue()));  //Caso a entidade ter a abilidade "Armado "; 
 				 if (sala->xenomorfos[aux]->getVida() <= 0) {
 					 killUnit(sala, sala->xenomorfos[aux]);
+					 return;
 
 				 }
 			 }
@@ -420,6 +426,7 @@ void sala::setSaude(const int &saude) {
 				 sala->xenomorfos[aux]->setVida(sala->xenomorfos[aux]->getVida() - value);
 				 if (sala->xenomorfos[aux]->getVida() <= 0) {
 					 killUnit(sala, sala->xenomorfos[aux]);
+					 return;
 				 }
 			 }
 			 flag_pirate = 0;
@@ -432,7 +439,7 @@ void sala::setSaude(const int &saude) {
 				 sala->pessoas_sala[aux]->setVida(sala->pessoas_sala[aux]->getVida() - (value + enti->getAbilPtr("Armado ")->getArmadoValue()));  //Caso a entidade ter a abilidade "Armado "; 
 				 if (sala->pessoas_sala[aux]->getVida() <= 0) {
 					 killUnit(sala, sala->pessoas_sala[aux]);
-
+					 return;
 				 }
 			 }
 			 else {
@@ -440,6 +447,7 @@ void sala::setSaude(const int &saude) {
 				 sala->pessoas_sala[aux]->setVida(sala->pessoas_sala[aux]->getVida() - value);
 				 if (sala->pessoas_sala[aux]->getVida() <= 0) {
 					 killUnit(sala, sala->pessoas_sala[aux]);
+					 return;
 				 }
 			 }
 			 flag_pirate = 0;
@@ -454,6 +462,7 @@ void sala::setSaude(const int &saude) {
 				 sala->pessoas_sala[aux]->setVida(sala->pessoas_sala[aux]->getVida() - (value + enti->getAbilPtr("Armado ")->getArmadoValue()));  //Caso a entidade ter a abilidade "Armado "; 
 				 if (sala->pessoas_sala[aux]->getVida() <= 0) {
 					 killUnit(sala, sala->pessoas_sala[aux]);
+					 return;
 
 				 }
 			 }
@@ -462,6 +471,7 @@ void sala::setSaude(const int &saude) {
 				 sala->pessoas_sala[aux]->setVida(sala->pessoas_sala[aux]->getVida() - value);
 				 if (sala->pessoas_sala[aux]->getVida() <= 0) {
 					 killUnit(sala, sala->pessoas_sala[aux]);
+					 return;
 				 }
 			 }
 			 flag_xeno = 0;
@@ -474,6 +484,7 @@ void sala::setSaude(const int &saude) {
 				 sala->piratas[aux]->setVida(sala->piratas[aux]->getVida() - (value + enti->getAbilPtr("Armado ")->getArmadoValue()));  //Caso a entidade ter a abilidade "Armado "; 
 				 if (sala->piratas[aux]->getVida() <= 0) {
 					 killUnit(sala, sala->piratas[aux]);
+					 return;
 
 				 }
 			 }
@@ -482,6 +493,7 @@ void sala::setSaude(const int &saude) {
 				 sala->pessoas_sala[aux]->setVida(sala->pessoas_sala[aux]->getVida() - value);
 				 if (sala->pessoas_sala[aux]->getVida() <= 0) {
 					 killUnit(sala, sala->pessoas_sala[aux]);
+					 return;
 				 }
 			 }
 			 flag_xeno = 0;
@@ -489,13 +501,22 @@ void sala::setSaude(const int &saude) {
 		 }
 	 }
 	 flag_pirate = 0; flag_ppl = 0; flag_xeno = 0;
+	 
  }
 
  void sala::killUnit(sala *sala, entidades *enti) {
+	 for (auto c = sala->piratas.begin(); c != sala->piratas.end(); c++) {
+
+		 if ((*c) == enti) {
+			 c = piratas.erase(c);
+			 delete enti;
+			 break;
+		 }
+	 }
 	 for (auto a = sala->pessoas_sala.begin(); a != sala->pessoas_sala.end(); a++) {
 
 		 if ((*a) == enti) {
-			 this->pessoas_sala.erase(a);
+			 a = pessoas_sala.erase(a);
 			 delete enti;
 			 break;
 		 }
@@ -503,19 +524,12 @@ void sala::setSaude(const int &saude) {
 	 for (auto b = sala->xenomorfos.begin(); b != sala->xenomorfos.end(); b++) {
 
 		 if ((*b) == enti) {
-			 this->xenomorfos.erase(b);
+			 b = xenomorfos.erase(b);
 			 delete enti;
 			 break;
 		 }
 	 }
-	 for (auto c = sala->piratas.begin(); c != sala->piratas.end(); c++) {
-
-		 if ((*c) == enti) {
-			 this->piratas.erase(c);
-			 delete enti;
-			 break;
-		 }
-	 }
+	 
  }
 
  void sala::execAbils() {
@@ -523,15 +537,15 @@ void sala::setSaude(const int &saude) {
 	 for (auto a = this->pessoas_sala.begin(); a != this->pessoas_sala.end(); a++) {
 		 (*a)->execAbils();
 	 }
-	 /*for (auto a = this->piratas.begin(); a != this->piratas.end(); a++) {
-		 (*a)->execAbils();
+	 for (auto b = this->piratas.begin(); b != this->piratas.end(); b++) {
+		 (*b)->execAbils();
 	 }
-	 for (auto a = this->xenomorfos.begin(); a != this->xenomorfos.end(); a++) {
+	 /*for (auto a = this->xenomorfos.begin(); a != this->xenomorfos.end(); a++) {
 		 (*a)->execAbils();
 	 }*/
  }
 
- void sala::MoveAdj(entidades *enti, sala *salas, const int &value) {
+ void sala::MoveAdj(const int &id, sala *salas, const int &value) {
 
 	 int aux_x, aux_y, random;
 
@@ -550,30 +564,14 @@ void sala::setSaude(const int &saude) {
 				 }
 			 }
 		 }
+		
 		 for (auto a = salas->piratas.begin(); a != salas->piratas.end(); a++) {
-			 if ((*a) == enti) {
-				 //this->getNavePtr()->getRoom(aux_x, aux_y)->addPirata((pirata*)enti);
-				 //sala->piratas.erase(a);
+			 if ((*a)->getID() == id) {
+				 //this->getNavePtr()->getRoom(aux_x, aux_y)->addPirata(*a);
+				 //salas->piratas.erase(a);
 				 return;
 			 }
-		 }
-		 
-		 for (auto it = salas->pessoas_sala.begin(); it != salas->pessoas_sala.end(); it++) {
-			 if ((*it) == enti) {
-				 //getNavePtr()->getRoom(aux_x, aux_y)->pessoas_sala.push_back(*it);
-				 //sala->pessoas_sala.erase(it);
-				 return;
-			 }
-
-		 }
-		 
-		 for (auto a = salas->xenomorfos.begin(); a != salas->xenomorfos.end(); a++) {
-			 if ((*a) == enti) {
-				 //this->getNavePtr()->getRoom(aux_x, aux_y)->addXenomorfo((xenomorfo *)enti);
-				 //sala->xenomorfos.erase(a);
-				 return;
-			 }
-		 }
+		 }	
 	 }
 	 return;
  }

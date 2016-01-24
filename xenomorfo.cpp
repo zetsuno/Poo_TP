@@ -68,5 +68,7 @@ getSalaPointer()->atacaEnimigoRandom(a, *this);
 void xenomorfo::setAbilities() {
 
 	reparador *novo = new reparador(CREW_REPAIR, this);
+	//misterioso *novo2 = new misterioso(this);
 	this->insertAbility(novo);
+	//this->insertAbility(novo2);
 }

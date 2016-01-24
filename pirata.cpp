@@ -9,7 +9,7 @@ int pirata::getID()const{
 }
 
 
-pirata::pirata(const string &nome) :entidades(CREW_HP, CREW_ATTACK){
+pirata::pirata(const string &nome) :entidades(PIRATE_HP, PIRATE_ATTACK_OTHERS){
 	this->setAbilities();
 	this->tipo = "pirata";
 	this->nome = nome;
@@ -43,13 +43,6 @@ string pirata::getNome() const {
 int pirata::getMaxVida() const {
 	return PIRATE_HP;
 }
-void pirata::respira() {
-
-	if (getSalaPointer()->getOxigenio() <= 0)
-		this->setVida(getVida() - 1);
-	else
-		getSalaPointer()->setOxigenio(getSalaPointer()->getOxigenio() - 1);
-}
 
 
 /*void pirata::combatente(const int a) {
@@ -59,7 +52,10 @@ getSalaPointer()->atacaEnimigoRandom(a, *this);
 }*/
 
 void pirata::setAbilities() {
-
-	reparador *novo = new reparador(CREW_REPAIR, this);
+	combatente *novo3 = new combatente(0, this);
+	respira *novo = new respira(this);
+	mover *novo2 = new mover(50,this);
 	this->insertAbility(novo);
+	this->insertAbility(novo2);
+	this->insertAbility(novo3);
 }

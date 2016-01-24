@@ -230,6 +230,6 @@ string mover::toString() const {
 	return temp;
 }
 void mover::execAbility() {
-	this->getEntiPointer()->getSalaPointer()->MoveAdj(this->getEntiPointer(), this->getEntiPointer()->getSalaPointer(), this->value);
+	this->getEntiPointer()->getSalaPointer()->MoveAdj(this->getEntiPointer()->getID(), this->getEntiPointer()->getSalaPointer(), this->value);
 	
 }

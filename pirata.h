@@ -14,7 +14,6 @@ public:
 	virtual ~pirata();
 	string toString() const;
 	string getNome() const;
-	void respira();
 	void setAbilities();
 	int getID()const;
 	int getMaxVida() const;
