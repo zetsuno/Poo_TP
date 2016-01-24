@@ -148,24 +148,24 @@ void nave::oxigena_salas() {
 	}
 }
 
-void nave::meteor(sala_ponte *p, sala_raio_laser *r, sala_escudo *s) {
+void nave::meteor() {
 
 	int contador, random, random_laser, random_x, random_y;
 
 	
-	if (p->getOperada() == true) {
+	if (getRoom(1,3)->getOperada() == true) {
 		random = rand() % (meteor_max_1 - meteor_min_1 + 1) + meteor_min_1;
 		for (int i = 0; i < random; i++) {	
-			if (((random_laser = rand() % ((SHIP_HP + 1) + ZERO)) < GEIGER_CHANCE_MOVE) && r != nullptr && r->getOperada() == true) {  //testa se a sala_raio_laser existe e se está operada;
+			if (((random_laser = rand() % ((SHIP_HP + 1) + ZERO)) < GEIGER_CHANCE_MOVE) && raio_laser != nullptr && raio_laser->getOperada() == true) {  //testa se a sala_raio_laser existe e se está operada;
 
 			}
 			else {
-				if (s->getEscudo() > 0) {  
-					if ((s->getEscudo() - 10) < 0) {
-						s->setEscudo(0);
+				if (shield->getEscudo() > 0) {  
+					if ((shield->getEscudo() - 10) < 0) {
+						shield->setEscudo(0);
 					}
 					else {
-						s->setEscudo(s->getEscudo() - 10);
+						shield->setEscudo(shield->getEscudo() - 10);
 					}
 				}
 				else {
@@ -175,8 +175,14 @@ void nave::meteor(sala_ponte *p, sala_raio_laser *r, sala_escudo *s) {
 						random_x = rand() % (((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO);
 						random_y = rand() % (((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO);
 					}
-					salas[random_x][random_y]->setIntegridade(salas[random_x][random_y]->getIntegridade() - METEOR_COSMIC_DMG);
-					salas[random_x][random_y]->setBrecha(true);
+					if ((salas[random_x][random_y]->getIntegridade() - METEOR_COSMIC_DMG) < 0) {
+						salas[random_x][random_y]->setIntegridade(0);
+						salas[random_x][random_y]->setBrecha(true);
+					}
+					else {
+						salas[random_x][random_y]->setIntegridade(salas[random_x][random_y]->getIntegridade() - METEOR_COSMIC_DMG);
+						salas[random_x][random_y]->setBrecha(true);
+					}
 				}
 			}
 			
@@ -185,16 +191,16 @@ void nave::meteor(sala_ponte *p, sala_raio_laser *r, sala_escudo *s) {
 	else {
 		random = rand() % (meteor_max_2 - meteor_min_2 + 1) + meteor_min_2;
 		for (int i = 0; i < random; i++) {
-			if (((random_laser = rand() % ((SHIP_HP + 1) + ZERO)) < GEIGER_CHANCE_MOVE) && r != nullptr && r->getOperada() == true) {  //testa se a sala_raio_laser existe e se está operada;
+			if (((random_laser = rand() % ((SHIP_HP + 1) + ZERO)) < GEIGER_CHANCE_MOVE) && raio_laser != nullptr && raio_laser->getOperada() == true) {  //testa se a sala_raio_laser existe e se está operada;
 
 			}
 			else {
-				if (s->getEscudo() > 0) {
-					if ((s->getEscudo() - 10) < 0) {
-						s->setEscudo(0);
+				if (shield->getEscudo() > 0) {
+					if ((shield->getEscudo() - 10) < 0) {
+						shield->setEscudo(0);
 					}
 					else {
-						s->setEscudo(s->getEscudo() - 10);
+						shield->setEscudo(shield->getEscudo() - 10);
 					}
 				}
 				else {
@@ -204,8 +210,14 @@ void nave::meteor(sala_ponte *p, sala_raio_laser *r, sala_escudo *s) {
 						random_x = rand() % (((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO);
 						random_y = rand() % (((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO);
 					}
-					salas[random_x][random_y]->setIntegridade(salas[random_x][random_y]->getIntegridade() - METEOR_COSMIC_DMG);
-					salas[random_x][random_y]->setBrecha(true);
+					if ((salas[random_x][random_y]->getIntegridade() - METEOR_COSMIC_DMG) < 0) {
+						salas[random_x][random_y]->setIntegridade(0);
+						salas[random_x][random_y]->setBrecha(true);
+					}
+					else {
+						salas[random_x][random_y]->setIntegridade(salas[random_x][random_y]->getIntegridade() - METEOR_COSMIC_DMG);
+						salas[random_x][random_y]->setBrecha(true);
+					}
 				}
 			}
 

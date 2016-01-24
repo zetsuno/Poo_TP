@@ -19,7 +19,7 @@ int main(){
 		j.mostra();
 		j.execAbils();
 		//j.cosmic_dust();
-		//j.getNave()->meteor((sala_ponte *)j.getNave()->getRoom(1,3),(sala_raio_laser *)j.getNave()->getRoom(0,2),(sala_escudo*)j.getNave()->getRoom(1,2));
+		j.getNave()->meteor();
 		EXIT = j.lecomando();
 		j.fazcomando();
 		j.avancaTurno();

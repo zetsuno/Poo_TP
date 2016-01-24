@@ -25,7 +25,7 @@ public:
 	bool addSala(const int &val, const string &tipo);
 	void associar_sala(sala *s);
 	void oxigena_salas();
-	void meteor(sala_ponte *p, sala_raio_laser *r, sala_escudo *s);
+	void meteor();
 	void cosmic_dust();
 	void opt_salas();
 	void updateDistance();
