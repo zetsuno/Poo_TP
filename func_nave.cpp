@@ -248,7 +248,7 @@ bool nave::AtaquePirata(){
 
 	}	
 
-
+	
 	return true;
 
 }
@@ -323,3 +323,4 @@ sala *nave::getRoom(const int &x, const int &y){
 		return nullptr;
 	}
 }
+

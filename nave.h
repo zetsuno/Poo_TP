@@ -8,7 +8,7 @@ class sala_escudo;
 
 class nave
 {	
-
+	
 	int distancia = 0;
 	sala* salas[3][4];
 	sala_raio_laser* raio_laser = nullptr;
@@ -33,7 +33,7 @@ public:
 	sala * getRoom(const int &y, const int &x);
 	bool AtaquePirata();
 	void PrimeiroAtaquePirata();
-
+	
 
 };
 

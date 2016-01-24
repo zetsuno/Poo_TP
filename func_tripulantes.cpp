@@ -56,9 +56,11 @@ void crew_member::setAbilities() {
 	operador *novo2 = new operador(this);
 	respira *novo3 = new respira(this);
 	combatente *novo4 = new combatente(1, this);
+	mover *novo5 = new mover(50, this);
 	this->insertAbility(novo);
 	this->insertAbility(novo2);
 	this->insertAbility(novo3);
 	this->insertAbility(novo4);
+	this->insertAbility(novo5);
 
 }

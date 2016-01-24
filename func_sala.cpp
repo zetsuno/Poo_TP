@@ -530,3 +530,50 @@ void sala::setSaude(const int &saude) {
 		 (*a)->execAbils();
 	 }*/
  }
+
+ void sala::MoveAdj(entidades *enti, sala *salas, const int &value) {
+
+	 int aux_x, aux_y, random;
+
+	 if ((random = rand() % (SHIP_HP - ZERO + 1) + ZERO) <= value) {
+		 for (unsigned int i = 0; i < 3; i++) {
+			 for (unsigned int j = 0; j < 4; j++) {
+				 if (this->getNavePtr()->getRoom(i, j) != nullptr && this->getNavePtr()->getRoom(i, j) == salas) { //procura coordenadas da sala pelo vetor
+					 aux_x = rand() % ((i + 1) - (i - 1)) + (i - 1); 
+					 aux_y = rand() % ((j + 1) - (j - 1)) + (j - 1);             //gera nº de sala aleatório
+					
+					 while (this->getNavePtr()->getRoom(aux_x, aux_y) == nullptr || aux_x >= 3 || aux_x < 0 || aux_y < 0 || aux_y >= 4 ) {  //verifica se o numero aletorio é valido
+						 aux_x = rand() % ((i + 1) - (i - 1)) + (i - 1);
+						 aux_y = rand() % ((j + 1) - (j - 1)) + (j - 1);
+						 
+					 }
+				 }
+			 }
+		 }
+		 for (auto a = salas->piratas.begin(); a != salas->piratas.end(); a++) {
+			 if ((*a) == enti) {
+				 //this->getNavePtr()->getRoom(aux_x, aux_y)->addPirata((pirata*)enti);
+				 //this->piratas.erase(a);
+				 return;
+			 }
+		 }
+		 
+		 for (auto it = salas->pessoas_sala.begin(); it != salas->pessoas_sala.end(); it++) {
+			 if ((*it) == enti) {
+				 //getNavePtr()->getRoom(aux_x, aux_y)->pessoas_sala.push_back(*it);
+				 //it = pessoas_sala.erase(it);
+				 return;
+			 }
+
+		 }
+		 
+		 for (auto a = salas->xenomorfos.begin(); a != salas->xenomorfos.end(); a++) {
+			 if ((*a) == enti) {
+				 //this->getNavePtr()->getRoom(aux_x, aux_y)->addXenomorfo((xenomorfo *)enti);
+				 //this->xenomorfos.erase(a);
+				 return;
+			 }
+		 }
+	 }
+	 return;
+ }

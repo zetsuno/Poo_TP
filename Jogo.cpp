@@ -223,6 +223,7 @@ void Jogo::inicia_jogo(const int &num_crew_mem)
 		cm.push_back(a);
 		nave_jogo.getRoom(1,3)->addEntidade(a);
 
+
 		
 	}
 	

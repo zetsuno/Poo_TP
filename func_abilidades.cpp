@@ -35,8 +35,7 @@ void reparador::execAbility() {
 	if (this->getEntiPointer()->getSalaPointer()->getIntegridade() < SALA_INT && (this->getEntiPointer()->getSalaPointer()->getIntegridade() + value) <= SALA_INT) {
 		this->getEntiPointer()->getSalaPointer()->setIntegridade(getEntiPointer()->getSalaPointer()->getIntegridade() + value);
 	}
-	else
-		cout << "Abilidade Reparador de " << this->getEntiPointer()->toString() << " falhou!" << endl;
+	
 }
 
 string reparador::toString() const{
@@ -218,4 +217,19 @@ void operador::execAbility() {
 	if ((this->getEntiPointer()->getSalaPointer()->getNumeroPiratas() + this->getEntiPointer()->getSalaPointer()->getNumeroXenos()) > 0 && this->getEntiPointer()->getSalaPointer()->getOperada() == true) {
 		this->getEntiPointer()->getSalaPointer()->setOperada(false);
 	}
+	
+}
+
+/*===============MOVE================*/
+mover::mover(const int &value, entidades *enti) : abils(enti) {
+	this->value = value;
+}
+mover::~mover(){}
+string mover::toString() const {
+	string temp = "Move ";
+	return temp;
+}
+void mover::execAbility() {
+	this->getEntiPointer()->getSalaPointer()->MoveAdj(this->getEntiPointer(), this->getEntiPointer()->getSalaPointer(), this->value);
+	
 }

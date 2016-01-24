@@ -58,6 +58,7 @@ public:
 	virtual bool getOperada() const;
 	virtual void setOperada(const bool &condi);
 	virtual void execAbils();
+	void MoveAdj(entidades *enti, sala *sala, const int &value);
 };
 
 	

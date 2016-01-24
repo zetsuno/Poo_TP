@@ -140,4 +140,13 @@ public:
 	virtual string toString() const;
 	void execAbility();
 };
+
+class mover : public abils {
+	int value;
+public:
+	mover(const int &value, entidades *enti);
+	virtual ~mover();
+	virtual string toString() const;
+	void execAbility();
+};
 #endif
