@@ -47,6 +47,24 @@ int sala::getSaude() const {
 
 	return saude;
 }
+bool sala::getBrecha() const {
+	return this->brecha;
+}
+bool sala::getCC() const {
+	return this->CC;
+}
+bool sala::getFogo() const {
+	return this->fogo;
+}
+void sala::setBrecha(const bool &val) {
+	this->brecha = val;
+}
+void sala::setCC(const bool &val) {
+	this->CC = val;
+}
+void sala::setFogo(const bool &val) {
+	this->fogo = val;
+}
 
 string sala::getTipo() const {
 

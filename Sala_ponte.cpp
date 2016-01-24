@@ -26,8 +26,3 @@ void sala_ponte::setOperada(const bool &valor) {
 
 	this->operada = valor;
 }
-
-void sala_ponte::meteor_nave() {
-
-	this->getNavePtr()->meteor(this);
-}

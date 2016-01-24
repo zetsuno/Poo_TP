@@ -6,7 +6,7 @@ int main(){
 	Jogo j;
 	Consola c;
 	
-	
+	srand((unsigned int)time(NULL));
 	//crew_member ze("ze nando");
 	//cout << ze.toString();
 	//crew_member nando(ze);
@@ -18,6 +18,8 @@ int main(){
 		c.clrscr();
 		j.mostra();
 		j.execAbils();
+		//j.cosmic_dust();
+		//j.getNave()->meteor((sala_ponte *)j.getNave()->getRoom(1,3),(sala_raio_laser *)j.getNave()->getRoom(0,2),(sala_escudo*)j.getNave()->getRoom(1,2));
 		EXIT = j.lecomando();
 		j.fazcomando();
 		j.avancaTurno();

@@ -33,6 +33,12 @@ public:
 	int getSaude() const;
 	string getTipo() const;
 	int getDano() const;
+	void setBrecha(const bool &val);
+	void setCC(const bool &val);
+	void setFogo(const bool &val);
+	bool getBrecha() const;
+	bool getCC() const;
+	bool getFogo() const;
 	void setOxigenio(const int &oxigenio);
 	void setIntegridade(const int &integridade);
 	void setSaude(const int &saude);
