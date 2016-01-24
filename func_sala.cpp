@@ -553,7 +553,7 @@ void sala::setSaude(const int &saude) {
 		 for (auto a = salas->piratas.begin(); a != salas->piratas.end(); a++) {
 			 if ((*a) == enti) {
 				 //this->getNavePtr()->getRoom(aux_x, aux_y)->addPirata((pirata*)enti);
-				 //this->piratas.erase(a);
+				 //sala->piratas.erase(a);
 				 return;
 			 }
 		 }
@@ -561,7 +561,7 @@ void sala::setSaude(const int &saude) {
 		 for (auto it = salas->pessoas_sala.begin(); it != salas->pessoas_sala.end(); it++) {
 			 if ((*it) == enti) {
 				 //getNavePtr()->getRoom(aux_x, aux_y)->pessoas_sala.push_back(*it);
-				 //it = pessoas_sala.erase(it);
+				 //sala->pessoas_sala.erase(it);
 				 return;
 			 }
 
@@ -570,7 +570,7 @@ void sala::setSaude(const int &saude) {
 		 for (auto a = salas->xenomorfos.begin(); a != salas->xenomorfos.end(); a++) {
 			 if ((*a) == enti) {
 				 //this->getNavePtr()->getRoom(aux_x, aux_y)->addXenomorfo((xenomorfo *)enti);
-				 //this->xenomorfos.erase(a);
+				 //sala->xenomorfos.erase(a);
 				 return;
 			 }
 		 }
