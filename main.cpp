@@ -13,6 +13,7 @@ int main(){
 		j.meu_Clean();
 		c.clrscr();
 		j.mostra();
+		j.chkIntZero();
 		j.execAbils();
 		EXIT = j.lecomando();
 		j.fazcomando();

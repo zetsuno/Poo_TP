@@ -42,6 +42,7 @@ public:
 	void AtaquePirataGlobal();
 	void AtaqueMeteoritosGlobal();
 	void AtaqueCosmicoGlobal();
+	void chkIntZero();
 
 };
 

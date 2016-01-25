@@ -3,6 +3,7 @@
 
 sala_vida::sala_vida()
 {
+	//this->setFogo(true);
 	this->brecha = false;
 	this->operada = false;
 	this->setTipo("Sala_Vida");

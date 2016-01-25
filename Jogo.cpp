@@ -363,3 +363,15 @@ void Jogo::AtaqueMeteoritosGlobal()
 	getNave()->meteor();
 	cout << "Foi atacado por Meteoros\n";
 }
+
+void Jogo::chkIntZero() {
+
+	for (unsigned int i = 0; i < 3; i++) {
+		for (unsigned int j = 0; j < 4; j++) {
+			if (getNave()->getRoom(i, j) != nullptr && getNave()->getRoom(i, j)->getIntegridade() <= 0) {
+				cout << "Uma sala tem a integridade a 0! GAME_OVER\n";
+				exit(1337);
+			}
+		}
+	}
+}

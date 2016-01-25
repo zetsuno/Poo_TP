@@ -42,3 +42,16 @@ bool sala_maquinas_dir::getOperada() const {
 void sala_maquinas_dir::setOperada(const bool &condi) {
 	this->operada = condi;
 }
+
+void sala_maquinas_dir::mostra_info_sala(int x, int y, Consola &c)
+{
+
+	sala::mostra_info_sala(x, y, c);
+
+	c.gotoxy(x + 8, y + 2);
+
+	cout << "P:" << this->propulsor;
+
+	c.gotoxy(x + 8, y + 3);
+
+}

@@ -16,6 +16,7 @@ public:
 	int getDistance();
 	bool getOperada() const;
 	void setOperada(const bool &condi);
+	void mostra_info_sala(int x, int y, Consola &c);
 
 
 };
