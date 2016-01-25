@@ -39,6 +39,9 @@ public:
 	void PrimeiroAtaquePirata();
 	nave * getNave();
 	void execAbils();
+	void AtaquePirataGlobal();
+	void AtaqueMeteoritosGlobal();
+	void AtaqueCosmicoGlobal();
 
 };
 

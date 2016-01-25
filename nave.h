@@ -33,7 +33,8 @@ public:
 	sala * getRoom(const int &y, const int &x);
 	bool AtaquePirata();
 	void PrimeiroAtaquePirata();
-	
+	sala* getSalaAdjacente(int x, int y, int contador);
+	void FimDeTurno();
 
 };
 

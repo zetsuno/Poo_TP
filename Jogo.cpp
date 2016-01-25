@@ -1,5 +1,7 @@
 #include "Jogo.h"
 
+int proximo_turno_evento = 1;
+
 Jogo::Jogo()
 {
 	this->turno = 0;
@@ -11,25 +13,39 @@ Jogo::~Jogo()
 
 void Jogo::avancaTurno() {
 
-	int random;
+	int random_dos_eventos;
+	int x;
 
-	if (turno % 5 == 0)
+
+
+	if (turno == proximo_turno_evento)
 	{
-		PrimeiroAtaquePirata();
 
-		if (this->AtaquePirata() == true)
+		x = rand() % (10 - 5 + 1) + 5;
+
+		proximo_turno_evento = x + turno;
+
+		random_dos_eventos = rand() % (2 - 0 + 1) + 0;
+
+		if (random_dos_eventos == 0)
 		{
-	
-			c.gotoxy(0, 36);
-			cout << "Foi atacado por piratas\n";
+			AtaquePirataGlobal();
+
 		}
 
-		else
+		else if (random_dos_eventos == 1)
 		{
-			c.gotoxy(0, 36);
-			cout << "Conseguiu afastar os piratas\n";
+			AtaqueMeteoritosGlobal();
 		}
+
+		else if (random_dos_eventos == 2)
+		{
+			AtaqueCosmicoGlobal();
+		}
+
 	}
+
+	nave_jogo.FimDeTurno();
 
 	this->turno++;
 }
@@ -311,4 +327,39 @@ void Jogo::execAbils() {
 			}
 		}
 	}
+}
+
+void Jogo::AtaquePirataGlobal()
+{
+	PrimeiroAtaquePirata();
+
+	if (this->AtaquePirata() == true)
+	{
+		//nave_jogo.TemFogo(y,x);
+
+
+		c.gotoxy(0, 36);
+		cout << "Foi atacado por piratas\n";
+	}
+
+	else
+	{
+		c.gotoxy(0, 36);
+		cout << "Conseguiu afastar os piratas\n";
+	}
+
+}
+
+void Jogo::AtaqueCosmicoGlobal()
+{
+	c.gotoxy(0, 36);
+	cosmic_dust();
+	cout << "Foi atacado por Cosmicos\n";
+}
+
+void Jogo::AtaqueMeteoritosGlobal()
+{
+	c.gotoxy(0, 36);
+	getNave()->meteor();
+	cout << "Foi atacado por Meteoros\n";
 }

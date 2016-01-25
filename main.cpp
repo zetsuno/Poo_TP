@@ -7,10 +7,6 @@ int main(){
 	Consola c;
 	
 	srand((unsigned int)time(NULL));
-	//crew_member ze("ze nando");
-	//cout << ze.toString();
-	//crew_member nando(ze);
-	//cout << nando.toString();
 	bool EXIT = false;
 	while (!EXIT)
 	{
@@ -18,8 +14,6 @@ int main(){
 		c.clrscr();
 		j.mostra();
 		j.execAbils();
-		//j.cosmic_dust();
-		j.getNave()->meteor();
 		EXIT = j.lecomando();
 		j.fazcomando();
 		j.avancaTurno();
@@ -33,13 +27,4 @@ int main(){
 			
 		}
 	}
-
-	
-	//nave nova;
-	//crew_member *a = new crew_member("ze");
-	//sala sala_nova;
-	//sala_vida vida;
-	//vida.addEntidade(a);
-	//vida.distributeOxi();
-	
 }

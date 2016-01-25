@@ -65,6 +65,14 @@ public:
 	virtual void setOperada(const bool &condi);
 	virtual void execAbils();
 	void MoveAdj(const int &id, sala *sala, const int &value);
+
+	virtual void FimDeTurno(int x, int y); // para o reparador
+
+	//virtual void TemFogo(int x, int y);
+	void FazFogo();
+	void FazBrecha();
+	void FazCC();
+	void setSaudePiratas();
 };
 
 	

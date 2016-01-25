@@ -16,4 +16,8 @@
 #include "sala_beliche.h"
 #include "sala_raio_laser.h"
 #include "abilidades.h"
+#include "sala_sistema_seguranca.h"
+#include "sala_capitao.h"
+#include "autoreparador.h"
+#include "Capitao.h"
 #endif

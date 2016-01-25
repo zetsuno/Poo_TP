@@ -135,73 +135,103 @@ void sala::setSaude(const int &saude) {
 	 this->xenomorfos.push_back(x);
  }
 
- void sala::mostra_info_sala(int x,int y, Consola &c)
+ void sala::mostra_info_sala(int x, int y, Consola &c)
  {
 	 c.gotoxy(x, y);
 
-	
+
 	 cout << (char)218 << (char)196 << (char)196 << (char)196
 		 << (char)196 << (char)196 << (char)196 << (char)196
 		 << (char)196 << (char)196 << (char)196 << (char)196// linha de cima da sala
 		 << (char)196 << (char)196 << (char)196 << (char)196
 		 << (char)196 << (char)196 << (char)196 << (char)191;
 
-	// c.gotoxy(x, y+1);
+	 // c.gotoxy(x, y+1);
 	 //cout << (char)192;
-	 for (int i = y+1; i < y+7; i++) // aqui ONDE ESTA O 7 METO AS LINHAS LATERAIS MAIS PARA BAIXO OU PARA CIMA
+	 for (int i = y + 1; i < y + 7; i++) // aqui ONDE ESTA O 7 METO AS LINHAS LATERAIS MAIS PARA BAIXO OU PARA CIMA
 	 {
-	 c.gotoxy(x, i);
-	 cout << (char)179;     // Linhas laterais do retangulo maior
-	 c.gotoxy(x+19, i);
-	 cout << (char)179;
+		 c.gotoxy(x, i);
+		 cout << (char)179;     // Linhas laterais do retangulo maior
+		 c.gotoxy(x + 19, i);
+		 cout << (char)179;
 	 }
 
-	 c.gotoxy(x + 1, y+1);
+	 c.gotoxy(x + 1, y + 1);
 
-	 cout << "S:" << this->id ;
+	 cout << "S:" << this->id;
 
-	 c.gotoxy(x + 1, y+2);
-		 cout << "O:" << this->getOxigenio();
-		 c.gotoxy(x+1,y+3);
-		 cout << "I:" << this->getIntegridade();
-
-		 
-
-		 c.gotoxy(x, y+7);
-		 cout << (char)192 << (char)196 << (char)196 << (char)196 //Acrescenta linha de baixo da sala
-			 << (char)196 << (char)196 << (char)196 << (char)196 
-			 << (char)196 << (char)196 << (char)196 << (char)196
-			 << (char)196 << (char)196 << (char)196 << (char)196 
-			 << (char)196 << (char)196  << (char)196 << (char)217;
+	 c.gotoxy(x + 1, y + 2);
+	 cout << "O:" << this->getOxigenio();
+	 c.gotoxy(x + 1, y + 3);
+	 cout << "I:" << this->getIntegridade();
 
 
-		 c.gotoxy(x,y+6);
 
-		c.gotoxy(x+1,y+4);
+	 c.gotoxy(x, y + 7);
+	 cout << (char)192 << (char)196 << (char)196 << (char)196 //Acrescenta linha de baixo da sala
+		 << (char)196 << (char)196 << (char)196 << (char)196
+		 << (char)196 << (char)196 << (char)196 << (char)196
+		 << (char)196 << (char)196 << (char)196 << (char)196
+		 << (char)196 << (char)196 << (char)196 << (char)217;
 
-		 
-		 for (unsigned int i = 0; i < pessoas_sala.size(); i++)
-		 {
-			 cout << "["<<pessoas_sala[i]->getID()<<"]";
-		 }
 
-		 c.gotoxy(x + 1, y + 5);
-		 for (unsigned int j = 0; j < piratas.size(); j++)
-		 {
-			 cout << "<" << piratas[j]->getID() << ">";
-		 }
+	 c.gotoxy(x, y + 6);
 
-		 c.gotoxy(x + 1, y + 6);
-		 for (unsigned int i = 0; i < xenomorfos.size(); i++)
-		 {
-			 cout << "(" << xenomorfos[i]->getID() << ")";
-		 }
+	 c.gotoxy(x + 1, y + 4);
 
-		// ostringstream os;
 
-		// os << "Sala: Oxigenio: " << this->getOxigenio() << " |  Integridade: " << this->getIntegridade() << endl;
+	 for (unsigned int i = 0; i < pessoas_sala.size(); i++)
+	 {
+		 cout << "[" << pessoas_sala[i]->getID() << "]";
+	 }
 
-		 
+	 /*for (unsigned int i = 0; i < pessoas_sala.size(); i++)
+	 {
+
+	 if (pessoas_sala[i]->getID() >= 1000)
+	 {
+	 cout << "'" << pessoas_sala[i]->getID() << "'";
+	 }
+	 }*/
+
+	 c.gotoxy(x + 1, y + 5);
+	 for (unsigned int j = 0; j < piratas.size(); j++)
+	 {
+		 cout << "<" << piratas[j]->getID() << ">";
+
+
+
+	 }
+
+	 c.gotoxy(x + 1, y + 6);
+	 for (unsigned int i = 0; i < xenomorfos.size(); i++)
+	 {
+		 cout << "(" << xenomorfos[i]->getID() << ")";
+	 }
+
+
+	 c.gotoxy(x + 8, y + 1);
+	 if (getFogo() == true)
+	 {
+		 cout << "F";
+	 }
+
+	 c.gotoxy(x + 9, y + 1);
+	 if (getBrecha() == true)
+	 {
+		 cout << "B";
+	 }
+
+	 c.gotoxy(x + 10, y + 1);
+	 if (getCC() == true)
+	 {
+		 cout << "C";
+	 }
+	 // ostringstream os;
+
+	 // os << "Sala: Oxigenio: " << this->getOxigenio() << " |  Integridade: " << this->getIntegridade() << endl;
+
+
  }
 
  bool sala::move_pessoa(const int &id, const int &new_sala_x, const int &new_sala_y) {
@@ -592,4 +622,116 @@ void sala::setSaude(const int &saude) {
 		 }	
 	 }
 	 return;
+ }
+
+ void sala::FimDeTurno(int x, int y)
+ {
+	 sala* salaAdjacente;
+	 int random, random_passar_fogo, escolha_sala_com_fogo;
+
+	 random = rand() % (1 - 0 + 1) + 0;
+
+	 escolha_sala_com_fogo = rand() % (3 - 0 + 1) + 0;
+
+	 if (this->getFogo() == true)
+	 {
+		 if (random == 0)
+		 {
+			 return;
+		 }
+		 else
+		 {
+			 this->setIntegridade(this->getIntegridade() - 10);
+
+
+		 }
+
+		 for (int i = 0; i < 4; i++)
+		 {
+			 salaAdjacente = this->getNavePtr()->getSalaAdjacente(x, y, i);
+
+			 if (salaAdjacente != nullptr)
+			 {
+
+				 random_passar_fogo = rand() % (100 - 1 + 1) + 0;
+
+				 if (random_passar_fogo <= 5)
+				 {
+					 salaAdjacente->setFogo(true);
+				 }
+			 }
+		 }
+
+
+	 }
+	 //Cada tipo de sala é que calcula 
+ }
+
+ void sala::FazFogo()
+ {
+	 //salas[x][y]->TemFogo(x,y);
+	 if (this->getOxigenio() > 0)
+		 this->setFogo(true);
+
+	 for (unsigned int i = 0; i < pessoas_sala.size(); i++)
+	 {
+
+		 if (pessoas_sala[i]->getVida() > 2)
+		 {
+			 pessoas_sala[i]->setVida(pessoas_sala[i]->getVida() - 2);
+		 }
+		 else
+		 {
+			 pessoas_sala[i]->setVida(0);
+		 }
+	 }
+
+	 for (unsigned int i = 0; i < piratas.size(); i++)
+	 {
+
+		 if (piratas[i]->getVida() > 2)
+		 {
+			 piratas[i]->setVida(piratas[i]->getVida() - 2);
+		 }
+		 else
+		 {
+			 piratas[i]->setVida(0);
+		 }
+	 }
+
+	 for (unsigned int i = 0; i < xenomorfos.size(); i++)
+	 {
+
+		 if (xenomorfos[i]->getVida() > 2)
+		 {
+			 xenomorfos[i]->setVida(xenomorfos[i]->getVida() - 2);
+		 }
+		 else
+		 {
+			 xenomorfos[i]->setVida(0);
+		 }
+	 }
+ }
+
+ void sala::FazBrecha()
+ {
+	 //salas[x][y]->TemFogo(x, y);
+
+	 this->setBrecha(true);
+	 this->setOxigenio(0);
+ }
+
+ void sala::FazCC()
+ {
+	 //salas[x][y]->TemFogo(x, y);
+	 this->setCC(true);
+ }
+
+ void sala::setSaudePiratas()
+ {
+
+	 for (unsigned int i = 0; i < piratas.size(); i++)
+	 {
+		 piratas[i]->setVida(piratas[i]->getVida() - 1);
+	 }
  }

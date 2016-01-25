@@ -54,7 +54,7 @@ void nave::opt_salas() {
 	int add_flag = 0, while_flag, salas_livres = 6;
 
 
-	do{
+	do {
 
 		cout << "Salas livres: " << salas_livres;
 		cout << "\nInsira o tipo de sala que quer inserir na nave:\nTipos:\n\t*Propulsor;\n\t*Beliche;\n\t*Raio Laser;\n\t*Auto-Reparador;\n\t*Sistema de segurança interno;\n\t*Enfermaria;\n\t*Sala de armas;\n\t*Alojamentos do Capitão;\n\t*Oficina Robótica;\n";
@@ -73,42 +73,83 @@ void nave::opt_salas() {
 			}
 		}
 
-			if (opcao_sala == "raiolaser" || opcao_sala == "Raio laser") {
-				for (int i = 0; i < 3; i++) {
-					for (int j = 0; j < 4; j++) {
-						if (salas[i][j] == nullptr) {
-							raio_laser = new sala_raio_laser; 
-							salas[i][j] = raio_laser;
-							salas[i][j]->setNavePtr(this);
-							add_flag = 1;
-							salas_livres--;
-							goto end_cycle;
-						}
+		if (opcao_sala == "autoreparador" || opcao_sala == "autoreparador") {
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 4; j++) {
+					if (salas[i][j] == nullptr) {
+						salas[i][j] = new autoreparador; salas[i][j]->setNavePtr(this);
+						add_flag = 1;
+						salas_livres--;
+						goto end_cycle;
 					}
 				}
 			}
-		end_cycle:
+		}
 
-			if (add_flag != 1){
-				cout << "[ERRO] - Sala nao adicionada, falta de espaco na nave possivel?..." << endl;
+		if (opcao_sala == "sistema" || opcao_sala == "Sistema") {
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 4; j++) {
+					if (salas[i][j] == nullptr) {
+						salas[i][j] = new sala_sistema_seguranca; salas[i][j]->setNavePtr(this);
+						add_flag = 1;
+						salas_livres--;
+						goto end_cycle;
+					}
+				}
 			}
-			else {
+		}
+
+		if (opcao_sala == "salacapitao" || opcao_sala == "salacapitao") {
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 4; j++) {
+					if (salas[i][j] == nullptr) {
+						salas[i][j] = new sala_capitao; salas[i][j]->setNavePtr(this);
+						add_flag = 1;
+						salas_livres--;
+						goto end_cycle;
+					}
+				}
+			}
+		}
+
+
+		if (opcao_sala == "raiolaser" || opcao_sala == "Raiolaser") {
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 4; j++) {
+					if (salas[i][j] == nullptr) {
+						raio_laser = new sala_raio_laser;
+						salas[i][j] = raio_laser;
+						salas[i][j]->setNavePtr(this);
+						add_flag = 1;
+						salas_livres--;
+						goto end_cycle;
+					}
+				}
+			}
+		}
+	end_cycle:
+
+		if (add_flag != 1) {
+			cout << "[ERRO] - Sala nao adicionada, falta de espaco na nave possivel?..." << endl;
+		}
+		else {
 			cout << "Salas ainda nao implementadas" << endl;
-			}
+		}
 
-			cout << "\nAdicionar mais salas?(S/N): ";
-			cin >> opcao_sn;
+		cout << "\nAdicionar mais salas?(S/N): ";
+		cin >> opcao_sn;
 
-			if (opcao_sn == "S" || opcao_sn == "s") {
-				while_flag = 1;
-			}
-			else {
-				break;
-			}
+		if (opcao_sn == "S" || opcao_sn == "s") {
+			while_flag = 1;
+		}
+		else {
+			break;
+		}
 
-		
+
 	} while (salas_livres > 0 && while_flag == 1);
 }
+
 string nave::toString() const {
 
 	ostringstream os;
@@ -150,7 +191,7 @@ void nave::oxigena_salas() {
 
 void nave::meteor() {
 
-	int contador, random, random_laser, random_x, random_y;
+	int  random, random_laser, random_x, random_y;
 
 	
 	if (getRoom(1,3)->getOperada() == true) {
@@ -275,11 +316,11 @@ void nave::cosmic_dust() {
 	}
 }
 
-bool nave::AtaquePirata(){
+bool nave::AtaquePirata() {
 
-	int random_sala_x, random_sala_y, random_piratas, random;
+	int random_sala_x, random_sala_y, random;
 
-	
+	srand((unsigned int)time(NULL)); //Seed = Hora
 
 	random = rand() % (5 - 3 + 1) + 3;
 
@@ -305,17 +346,21 @@ bool nave::AtaquePirata(){
 		pa->setPointerSala(salas[random_sala_y][random_sala_x]);
 		salas[random_sala_y][random_sala_x]->addPirata(pa);
 
-	}	
+	}
 
-	
+
+
+
+
 	return true;
 
 }
 
 void nave::PrimeiroAtaquePirata()
 {
-	int random_sala_x, random_sala_y, random_piratas, random, dano ,total;
+	int random_sala_x, random_sala_y, random, dano, total, random_consequencias;
 
+	srand((unsigned int)time(NULL)); //Seed = Hora
 
 	random = rand() % (60 - 30 + 1) + 30;
 
@@ -323,9 +368,9 @@ void nave::PrimeiroAtaquePirata()
 	if (shield != nullptr)
 		/*if (shield->getEscudo() == 100)
 		{
-			shield->setEscudo(shield->getEscudo() - random);
+		shield->setEscudo(shield->getEscudo() - random);
 		}*/
-	
+
 		if (shield->getEscudo() - random >= 0)
 		{
 			shield->setEscudo(shield->getEscudo() - random);
@@ -335,7 +380,7 @@ void nave::PrimeiroAtaquePirata()
 		{
 			dano = random - shield->getEscudo();
 			shield->setEscudo(0);
-			
+
 			random_sala_x = rand() % ((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO;
 			random_sala_y = rand() % ((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO;
 
@@ -343,9 +388,9 @@ void nave::PrimeiroAtaquePirata()
 				random_sala_x = rand() % ((SALAS_TABLE_X - 1) - ZERO + 1) + ZERO;
 				random_sala_y = rand() % ((SALAS_TABLE_Y - 1) - ZERO + 1) + ZERO;
 			}
-			
+
 			total = salas[random_sala_y][random_sala_x]->getIntegridade() - dano;
-			
+
 
 			if (total <= 0)
 			{
@@ -357,6 +402,21 @@ void nave::PrimeiroAtaquePirata()
 			else
 			{
 				salas[random_sala_y][random_sala_x]->setIntegridade(total);
+
+				random_consequencias = rand() % (2 - 0 + 1) + 0;
+
+				if (random_consequencias == 0)
+				{
+					salas[random_sala_y][random_sala_x]->FazFogo();
+				}
+				else if (random_consequencias == 1)
+				{
+					salas[random_sala_y][random_sala_x]->FazBrecha();//TemBrecha
+				}
+				else if (random_consequencias == 2)
+				{
+					salas[random_sala_y][random_sala_x]->FazCC();//TemCC
+				}
 			}
 		}
 
@@ -382,3 +442,52 @@ sala *nave::getRoom(const int &x, const int &y){
 	}
 }
 
+sala* nave::getSalaAdjacente(int x, int y, int contador)
+{
+	sala* resultado = nullptr;
+
+	if (x >= 0 && x < 3 && y >= 0 && y < 4)
+	{
+		if (salas[x][y] != nullptr)
+		{
+			if (contador == 0 && x > 0) //norte
+			{
+				return salas[x - 1][y];
+
+			}
+			else if (contador == 1 && y < 3) // este
+			{
+				return salas[x][y + 1];
+			}
+
+			else if (contador == 2 && x < 2) //sul
+			{
+				return salas[x + 1][y];
+			}
+			else if (contador == 3 && y >0) //oeste
+			{
+				return salas[x][y - 1];
+			}
+		}
+	}
+
+	return resultado;
+}
+
+void nave::FimDeTurno()
+{
+	for (unsigned int i = 0; i < 3; i++) {
+		for (unsigned int j = 0; j < 4; j++) {
+			if (salas[i][j] != nullptr)
+			{
+				if (salas[i][j]->getNavePtr() != nullptr)
+				{
+					salas[i][j]->FimDeTurno(i, j);
+
+				}
+			}
+		}
+	}
+
+
+}
